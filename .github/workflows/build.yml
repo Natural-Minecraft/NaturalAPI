@@ -50,16 +50,21 @@ jobs:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Download NaturalCore
+      - name: Download Dependencies (NaturalCore & NaturalSchool)
+        env:
+          # CATATAN: Jika NaturalCore dan NaturalSchool adalah repository PRIVATE, 
+          # GitHub Token bawaan tidak akan punya akses. Kamu harus membuat Personal Access Token (PAT),
+          # menyimpannya di Repository Secrets (misal: PAT_TOKEN), lalu ubah baris di bawah ini menjadi:
+          # GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p lib
-          curl -fSL -o lib/NaturalCore.jar \
-            "https://github.com/Natural-Minecraft/NaturalCore/releases/latest/download/NaturalCore.jar"
-
-      - name: Download NaturalSchool
-        run: |
-          curl -fSL -o lib/NaturalSchool.jar \
-            "https://github.com/Natural-Minecraft/NaturalSchool/releases/latest/download/NaturalSchool.jar"
+          
+          echo "Downloading NaturalCore..."
+          gh release download --repo Natural-Minecraft/NaturalCore --pattern "NaturalCore.jar" --dir lib
+          
+          echo "Downloading NaturalSchool..."
+          gh release download --repo Natural-Minecraft/NaturalSchool --pattern "NaturalSchool.jar" --dir lib
 
       - name: Install local JARs to Maven
         run: |
