@@ -1,0 +1,2015 @@
+openapi: "3.1.0"
+
+info:
+  title: NaturalAPI
+  description: |
+    REST API lengkap untuk server Minecraft 1.21.x.
+    Menyediakan akses real-time ke data server, player, world, Vault, LuckPerms, dan PlaceholderAPI.
+
+    ## Autentikasi
+    Semua endpoint memerlukan Bearer token kecuali `/admin/health` dan `/swagger`.
+    
+    ```
+    Authorization: Bearer napi_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    ```
+
+    ## Rate Limiting
+    Default: 120 request/menit per IP. Header response:
+    - `X-RateLimit-Limit` — batas request per menit
+    - `X-RateLimit-Remaining` — sisa request
+    - `X-RateLimit-Reset` — Unix timestamp reset berikutnya
+
+    ## Response Format
+    Semua response mengikuti format standar:
+    ```json
+    {
+      "success": true,
+      "timestamp": 1717600000000,
+      "data": { ... }
+    }
+    ```
+    Atau untuk error:
+    ```json
+    {
+      "success": false,
+      "error": {
+        "code": "PLAYER_NOT_FOUND",
+        "message": "...",
+        "timestamp": 1717600000000
+      }
+    }
+    ```
+  version: "1.0.0"
+  contact:
+    name: NaturalSMP Team
+    url: https://naturalsmp.id
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:7890/api/v1
+    description: Local Development
+  - url: http://your-server-ip:7890/api/v1
+    description: Production Server
+
+tags:
+  - name: Server
+    description: Statistik dan info server
+  - name: Players
+    description: Data player online dan offline
+  - name: Worlds
+    description: Data world yang ter-load
+  - name: Vault
+    description: Data Vault (economy, permissions, ranks)
+  - name: LuckPerms
+    description: Data LuckPerms (groups, nodes, meta)
+  - name: PAPI
+    description: PlaceholderAPI — evaluasi placeholder
+  - name: Admin
+    description: Manajemen API key, konfigurasi, health check
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: "API key yang di-generate via `/napi key generate`. Format: `napi_xxxxxx`"
+
+  schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        timestamp:
+          type: integer
+          format: int64
+          example: 1717600000000
+        data:
+          type: object
+
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: "PLAYER_NOT_FOUND"
+            message:
+              type: string
+              example: "No player found with UUID: abc123"
+            timestamp:
+              type: integer
+              format: int64
+
+    TpsData:
+      type: object
+      properties:
+        "1m":
+          type: number
+          format: double
+          example: 19.98
+        "5m":
+          type: number
+          format: double
+          example: 19.95
+        "15m":
+          type: number
+          format: double
+          example: 19.91
+
+    PlayerCount:
+      type: object
+      properties:
+        online:
+          type: integer
+          example: 12
+        visible:
+          type: integer
+          example: 10
+        vanished:
+          type: integer
+          example: 2
+        max:
+          type: integer
+          example: 100
+
+    ServerStatus:
+      type: object
+      properties:
+        online:
+          type: boolean
+        version:
+          type: string
+          example: "1.21.1"
+        platform:
+          type: string
+          example: "Paper"
+        tps:
+          $ref: "#/components/schemas/TpsData"
+        players:
+          $ref: "#/components/schemas/PlayerCount"
+        mspt:
+          type: number
+          example: 3.21
+        uptime:
+          type: integer
+          example: 86400
+
+    Location:
+      type: object
+      properties:
+        world:
+          type: string
+          example: "world"
+        x:
+          type: number
+          format: double
+          example: 128.5
+        y:
+          type: number
+          format: double
+          example: 64.0
+        z:
+          type: number
+          format: double
+          example: -256.3
+        yaw:
+          type: number
+          format: float
+          example: 90.0
+        pitch:
+          type: number
+          format: float
+          example: 0.0
+
+    ItemStack:
+      type: object
+      properties:
+        slot:
+          type: integer
+          example: 0
+        material:
+          type: string
+          example: "DIAMOND_SWORD"
+        amount:
+          type: integer
+          example: 1
+        displayName:
+          type: string
+          nullable: true
+          example: "§6Excalibur"
+        lore:
+          type: array
+          items:
+            type: string
+          nullable: true
+        damage:
+          type: integer
+          example: 0
+        enchantments:
+          type: object
+          additionalProperties:
+            type: integer
+          example:
+            SHARPNESS: 5
+            UNBREAKING: 3
+        customModelData:
+          type: integer
+          nullable: true
+        nbtJson:
+          type: string
+          nullable: true
+
+    ArmorInventory:
+      type: object
+      properties:
+        helmet:
+          $ref: "#/components/schemas/ItemStack"
+          nullable: true
+        chestplate:
+          $ref: "#/components/schemas/ItemStack"
+          nullable: true
+        leggings:
+          $ref: "#/components/schemas/ItemStack"
+          nullable: true
+        boots:
+          $ref: "#/components/schemas/ItemStack"
+          nullable: true
+
+    PotionEffect:
+      type: object
+      properties:
+        type:
+          type: string
+          example: "SPEED"
+        amplifier:
+          type: integer
+          example: 1
+        durationTicks:
+          type: integer
+          example: 600
+        durationSeconds:
+          type: number
+          example: 30.0
+        ambient:
+          type: boolean
+        particles:
+          type: boolean
+        icon:
+          type: boolean
+
+    SkinData:
+      type: object
+      properties:
+        textureUrl:
+          type: string
+          example: "https://textures.minecraft.net/texture/abc123..."
+        textureValue:
+          type: string
+          description: Base64 encoded texture value
+        signature:
+          type: string
+          description: Mojang signature
+        cachedAt:
+          type: integer
+          format: int64
+
+    VaultData:
+      type: object
+      properties:
+        group:
+          type: string
+          nullable: true
+          example: "admin"
+        groups:
+          type: array
+          items:
+            type: string
+          nullable: true
+        prefix:
+          type: string
+          nullable: true
+          example: "§c[Admin] "
+        suffix:
+          type: string
+          nullable: true
+          example: " §7✦"
+        balance:
+          type: number
+          format: double
+          nullable: true
+          example: 15000.50
+        currency:
+          type: string
+          nullable: true
+          example: "Dollars"
+        permissionPlugin:
+          type: string
+          nullable: true
+          example: "LuckPerms"
+        economyPlugin:
+          type: string
+          nullable: true
+          example: "EssentialsX"
+
+    LuckPermsData:
+      type: object
+      properties:
+        primaryGroup:
+          type: string
+          example: "admin"
+        parentGroups:
+          type: array
+          items:
+            type: string
+        inheritedGroups:
+          type: array
+          items:
+            type: string
+        permissionNodes:
+          type: array
+          items:
+            type: object
+            properties:
+              node:
+                type: string
+              value:
+                type: boolean
+              context:
+                type: object
+        meta:
+          type: object
+          additionalProperties:
+            type: string
+        weight:
+          type: integer
+          nullable: true
+
+    SchoolData:
+      type: object
+      properties:
+        nis:
+          type: string
+          nullable: true
+          example: "2026-0004"
+        academicStage:
+          type: string
+          nullable: true
+          example: "SMA"
+        academicClass:
+          type: integer
+          example: 10
+        currentSemester:
+          type: string
+          example: "GANJIL"
+        rank:
+          type: object
+          nullable: true
+          properties:
+            id:
+              type: string
+              example: "SMA_10"
+            displayName:
+              type: string
+              example: "§dSiswa X SMA"
+            priority:
+              type: integer
+              example: 30
+            type:
+              type: string
+              enum: [MANAGEMENT, STAFF, HELPER, STUDENT, NONE]
+              example: "STUDENT"
+        isStaff:
+          type: boolean
+          example: false
+        isManagement:
+          type: boolean
+          example: false
+
+    PlayerSummary:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          example: "069a79f4-44e9-4726-a5be-fca90e38aaf5"
+        username:
+          type: string
+          example: "Notch"
+        displayName:
+          type: string
+        online:
+          type: boolean
+        vanished:
+          type: boolean
+
+    PlayerFull:
+      allOf:
+        - $ref: "#/components/schemas/PlayerSummary"
+        - type: object
+          properties:
+            location:
+              $ref: "#/components/schemas/Location"
+            health:
+              type: number
+              format: double
+            maxHealth:
+              type: number
+              format: double
+            foodLevel:
+              type: integer
+            saturation:
+              type: number
+            expLevel:
+              type: integer
+            expProgress:
+              type: number
+            totalExp:
+              type: integer
+            gamemode:
+              type: string
+              enum: [SURVIVAL, CREATIVE, ADVENTURE, SPECTATOR]
+            ping:
+              type: integer
+            locale:
+              type: string
+            clientBrand:
+              type: string
+            protocolVersion:
+              type: integer
+            vault:
+              $ref: "#/components/schemas/VaultData"
+            luckperms:
+              $ref: "#/components/schemas/LuckPermsData"
+            school:
+              $ref: "#/components/schemas/SchoolData"
+            firstJoin:
+              type: integer
+              format: int64
+            lastSeen:
+              type: integer
+              format: int64
+            totalPlaytimeMs:
+              type: integer
+              format: int64
+
+    WorldInfo:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "world"
+        environment:
+          type: string
+          enum: [NORMAL, NETHER, THE_END, CUSTOM]
+        seed:
+          type: integer
+          format: int64
+          nullable: true
+        time:
+          type: integer
+        fullTime:
+          type: integer
+        dayCount:
+          type: integer
+        weather:
+          type: string
+          enum: [CLEAR, RAIN, THUNDER]
+        playerCount:
+          type: integer
+        entityCount:
+          type: integer
+        loadedChunks:
+          type: integer
+        pvp:
+          type: boolean
+        difficulty:
+          type: string
+
+    ApiKey:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        scopes:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: integer
+          format: int64
+        expiresAt:
+          type: integer
+          format: int64
+          nullable: true
+        lastUsed:
+          type: integer
+          format: int64
+          nullable: true
+        enabled:
+          type: boolean
+
+    ApiKeyCreated:
+      allOf:
+        - $ref: "#/components/schemas/ApiKey"
+        - type: object
+          properties:
+            key:
+              type: string
+              description: "Full API key. Only shown once!"
+              example: "napi_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+    PapiEvaluateRequest:
+      type: object
+      required:
+        - player
+        - placeholders
+      properties:
+        player:
+          type: string
+          description: UUID atau username
+          example: "Notch"
+        placeholders:
+          type: array
+          items:
+            type: string
+          example: ["%player_health%", "%vault_rank%", "%luckperms_primary_group%"]
+
+    CreateKeyRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: "MyDashboard"
+        scopes:
+          type: array
+          items:
+            type: string
+          example: ["read:server", "read:players"]
+          default: ["read:server", "read:players", "read:worlds"]
+        expiresAt:
+          type: integer
+          format: int64
+          nullable: true
+          description: Unix timestamp expiry, null = never
+
+  responses:
+    Unauthorized:
+      description: Token tidak valid atau hilang
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          example:
+            success: false
+            error:
+              code: "INVALID_TOKEN"
+              message: "Bearer token not found or invalid"
+              timestamp: 1717600000000
+
+    Forbidden:
+      description: Scope tidak cukup atau IP diblokir
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+
+    NotFound:
+      description: Resource tidak ditemukan
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+
+    TooManyRequests:
+      description: Rate limit terlampaui
+      headers:
+        X-RateLimit-Limit:
+          schema:
+            type: integer
+        X-RateLimit-Remaining:
+          schema:
+            type: integer
+        X-RateLimit-Reset:
+          schema:
+            type: integer
+            format: int64
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+
+security:
+  - BearerAuth: []
+
+paths:
+
+  # ─────────────────────────────────────────
+  # SERVER
+  # ─────────────────────────────────────────
+
+  /server:
+    get:
+      tags: [Server]
+      summary: Full server overview
+      operationId: getServer
+      security:
+        - BearerAuth: ["read:server"]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/ServerStatus"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+
+  /server/status:
+    get:
+      tags: [Server]
+      summary: Status ringkas server
+      operationId: getServerStatus
+      security:
+        - BearerAuth: ["read:server"]
+      responses:
+        "200":
+          description: OK
+
+  /server/tps:
+    get:
+      tags: [Server]
+      summary: TPS 1m/5m/15m
+      operationId: getServerTps
+      security:
+        - BearerAuth: ["read:server"]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/TpsData"
+
+  /server/mspt:
+    get:
+      tags: [Server]
+      summary: Rata-rata MSPT
+      operationId: getServerMspt
+      security:
+        - BearerAuth: ["read:server"]
+      responses:
+        "200":
+          description: OK
+
+  /server/ram:
+    get:
+      tags: [Server]
+      summary: RAM usage
+      operationId: getServerRam
+      security:
+        - BearerAuth: ["read:server"]
+      responses:
+        "200":
+          description: OK
+
+  /server/uptime:
+    get:
+      tags: [Server]
+      summary: Uptime server dalam detik
+      operationId: getServerUptime
+      security:
+        - BearerAuth: ["read:server"]
+      responses:
+        "200":
+          description: OK
+
+  /server/version:
+    get:
+      tags: [Server]
+      summary: Versi Minecraft + platform
+      operationId: getServerVersion
+      security:
+        - BearerAuth: ["read:server"]
+      responses:
+        "200":
+          description: OK
+
+  /server/players/count:
+    get:
+      tags: [Server]
+      summary: Jumlah player (vanish-aware)
+      operationId: getServerPlayerCount
+      security:
+        - BearerAuth: ["read:server"]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/PlayerCount"
+
+  /server/plugins:
+    get:
+      tags: [Server]
+      summary: Semua plugin ter-load
+      operationId: getServerPlugins
+      security:
+        - BearerAuth: ["read:server"]
+      responses:
+        "200":
+          description: OK
+
+  /server/whitelist:
+    get:
+      tags: [Server]
+      summary: Daftar player di whitelist
+      operationId: getServerWhitelist
+      security:
+        - BearerAuth: ["read:server"]
+      responses:
+        "200":
+          description: OK
+
+  /server/banlist:
+    get:
+      tags: [Server]
+      summary: Daftar player yang dibanned
+      operationId: getServerBanlist
+      security:
+        - BearerAuth: ["read:server"]
+      responses:
+        "200":
+          description: OK
+
+  /server/leaderboard:
+    get:
+      tags: [Server]
+      summary: Leaderboard player berdasarkan statistik
+      description: Mengambil data leaderboard player berdasarkan jenis statistik tertentu (playtime, balance, kills, deaths, votes, exp, atau custom PlaceholderAPI placeholder).
+      operationId: getLeaderboard
+      security:
+        - BearerAuth: ["read:server"]
+      parameters:
+        - name: type
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Jenis statistik (playtime, balance, kills, deaths, votes, exp, ajlb:<board>[:time_type], atau placeholder)
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 10
+            minimum: 1
+            maximum: 100
+          description: Jumlah entry maksimal yang dikembalikan
+      responses:
+        "200":
+          description: OK
+
+  # ─────────────────────────────────────────
+  # PLAYERS
+  # ─────────────────────────────────────────
+
+  /players:
+    get:
+      tags: [Players]
+      summary: Daftar semua player online
+      operationId: getPlayers
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: includeVanished
+          in: query
+          required: false
+          schema:
+            type: boolean
+            default: false
+          description: Sertakan player yang sedang vanish
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 50
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessResponse"
+                  - type: object
+                    properties:
+                       data:
+                         type: array
+                         items:
+                           $ref: "#/components/schemas/PlayerSummary"
+ 
+   /players/all:
+     get:
+       tags: [Players]
+       summary: Daftar semua player online dan offline (paged & searchable)
+       operationId: getAllPlayers
+       security:
+         - BearerAuth: ["read:players"]
+       parameters:
+         - name: page
+           in: query
+           schema:
+             type: integer
+             default: 1
+           description: Halaman data yang ingin diambil
+         - name: pageSize
+           in: query
+           schema:
+             type: integer
+             default: 50
+           description: Jumlah data per halaman
+         - name: search
+           in: query
+           schema:
+             type: string
+           description: Pencarian berdasarkan username atau displayName
+         - name: status
+           in: query
+           schema:
+             type: string
+             enum: [all, online, offline]
+             default: all
+           description: Filter status player (all, online, offline)
+         - name: includeVanished
+           in: query
+           schema:
+             type: boolean
+             default: false
+           description: Sertakan player online yang sedang vanish
+       responses:
+         "200":
+           description: OK
+           content:
+             application/json:
+               schema:
+                 allOf:
+                   - $ref: "#/components/schemas/SuccessResponse"
+                   - type: object
+                     properties:
+                       data:
+                         type: object
+                         properties:
+                           players:
+                             type: array
+                             items:
+                               type: object
+                               properties:
+                                 uuid:
+                                   type: string
+                                   format: uuid
+                                 username:
+                                   type: string
+                                 displayName:
+                                   type: string
+                                 online:
+                                   type: boolean
+                                 vanished:
+                                   type: boolean
+                                 afk:
+                                   type: boolean
+                                 staffMode:
+                                   type: boolean
+                                 lastSeen:
+                                   type: integer
+                                   format: int64
+                           pagination:
+                             type: object
+                             properties:
+                               page:
+                                 type: integer
+                               pageSize:
+                                 type: integer
+                               total:
+                                 type: integer
+                               totalPages:
+                                 type: integer
+
+  /players/{uuid}:
+    get:
+      tags: [Players]
+      summary: Data lengkap player by UUID
+      operationId: getPlayerByUuid
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/PlayerFull"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /players/name/{username}:
+    get:
+      tags: [Players]
+      summary: Data lengkap player by username
+      operationId: getPlayerByUsername
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /players/{uuid}/location:
+    get:
+      tags: [Players]
+      summary: Lokasi player (world, x, y, z, yaw, pitch)
+      operationId: getPlayerLocation
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/Location"
+
+  /players/{uuid}/health:
+    get:
+      tags: [Players]
+      summary: Health, food, saturation
+      operationId: getPlayerHealth
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+
+  /players/{uuid}/experience:
+    get:
+      tags: [Players]
+      summary: Level, XP progress, total XP
+      operationId: getPlayerExperience
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+
+  /players/{uuid}/gamemode:
+    get:
+      tags: [Players]
+      summary: Gamemode saat ini
+      operationId: getPlayerGamemode
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+
+  /players/{uuid}/inventory:
+    get:
+      tags: [Players]
+      summary: Full inventory (36 slot + armor + offhand)
+      operationId: getPlayerInventory
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          uuid:
+                            type: string
+                          username:
+                            type: string
+                          inventory:
+                            type: array
+                            items:
+                              $ref: "#/components/schemas/ItemStack"
+                          armor:
+                            $ref: "#/components/schemas/ArmorInventory"
+                          offhand:
+                            $ref: "#/components/schemas/ItemStack"
+
+  /players/{uuid}/inventory/hotbar:
+    get:
+      tags: [Players]
+      summary: Hotbar saja (slot 0-8)
+      operationId: getPlayerHotbar
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+
+  /players/{uuid}/inventory/armor:
+    get:
+      tags: [Players]
+      summary: Armor (helm, dada, kaki, sepatu)
+      operationId: getPlayerArmor
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/ArmorInventory"
+
+  /players/{uuid}/inventory/offhand:
+    get:
+      tags: [Players]
+      summary: Item di tangan kiri (offhand)
+      operationId: getPlayerOffhand
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+
+  /players/{uuid}/effects:
+    get:
+      tags: [Players]
+      summary: Potion effects aktif
+      operationId: getPlayerEffects
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/PotionEffect"
+
+  /players/{uuid}/skin:
+    get:
+      tags: [Players]
+      summary: Skin texture URL + Mojang signature
+      operationId: getPlayerSkin
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/SkinData"
+
+  /players/{uuid}/ping:
+    get:
+      tags: [Players]
+      summary: Ping player dalam ms
+      operationId: getPlayerPing
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+
+  /players/{uuid}/network:
+    get:
+      tags: [Players]
+      summary: Network info (ping, locale, brand, protocol)
+      operationId: getPlayerNetwork
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+
+  /players/{uuid}/vault:
+    get:
+      tags: [Players]
+      summary: Data Vault player (group, prefix, balance)
+      operationId: getPlayerVault
+      security:
+        - BearerAuth: ["read:players", "read:vault"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/VaultData"
+
+  /players/{uuid}/luckperms:
+    get:
+      tags: [Players]
+      summary: Data LuckPerms player
+      operationId: getPlayerLuckperms
+      security:
+        - BearerAuth: ["read:players", "read:luckperms"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/LuckPermsData"
+
+  /players/{uuid}/permissions:
+    get:
+      tags: [Players]
+      summary: Semua permission player via Vault
+      operationId: getPlayerPermissions
+      security:
+        - BearerAuth: ["read:players", "read:vault"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+
+  /players/{uuid}/permission/{node}:
+    get:
+      tags: [Players]
+      summary: Cek satu permission node
+      operationId: checkPlayerPermission
+      security:
+        - BearerAuth: ["read:players", "read:vault"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: node
+          in: path
+          required: true
+          schema:
+            type: string
+          example: "essentials.fly"
+      responses:
+        "200":
+          description: OK
+
+  /players/{uuid}/stats:
+    get:
+      tags: [Players]
+      summary: Statistik player (playtime, first join, last seen)
+      operationId: getPlayerStats
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+
+  /players/{uuid}/snapshot:
+    get:
+      tags: [Players]
+      summary: Snapshot terakhir player dari DB
+      operationId: getPlayerSnapshot
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      tags: [Players]
+      summary: Trigger snapshot manual untuk player online
+      operationId: savePlayerSnapshot
+      security:
+        - BearerAuth: ["admin"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Snapshot berhasil disimpan
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /players/offline/{uuid}:
+    get:
+      tags: [Players]
+      summary: Data player offline dari snapshot DB
+      operationId: getOfflinePlayerByUuid
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /players/offline/name/{username}:
+    get:
+      tags: [Players]
+      summary: Data player offline by username dari snapshot DB
+      operationId: getOfflinePlayerByUsername
+      security:
+        - BearerAuth: ["read:players"]
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  # ─────────────────────────────────────────
+  # WORLDS
+  # ─────────────────────────────────────────
+
+  /worlds:
+    get:
+      tags: [Worlds]
+      summary: Semua world ter-load
+      operationId: getWorlds
+      security:
+        - BearerAuth: ["read:worlds"]
+      responses:
+        "200":
+          description: OK
+
+  /worlds/{name}:
+    get:
+      tags: [Worlds]
+      summary: Info lengkap sebuah world
+      operationId: getWorld
+      security:
+        - BearerAuth: ["read:worlds"]
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/WorldInfo"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /worlds/{name}/time:
+    get:
+      tags: [Worlds]
+      summary: Waktu in-game + jumlah hari
+      operationId: getWorldTime
+      security:
+        - BearerAuth: ["read:worlds"]
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+
+  /worlds/{name}/weather:
+    get:
+      tags: [Worlds]
+      summary: Cuaca (clear/rain/thunder)
+      operationId: getWorldWeather
+      security:
+        - BearerAuth: ["read:worlds"]
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+
+  /worlds/{name}/players:
+    get:
+      tags: [Worlds]
+      summary: Player yang sedang ada di world ini
+      operationId: getWorldPlayers
+      security:
+        - BearerAuth: ["read:worlds"]
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: includeVanished
+          in: query
+          schema:
+            type: boolean
+            default: false
+      responses:
+        "200":
+          description: OK
+
+  /worlds/{name}/entities:
+    get:
+      tags: [Worlds]
+      summary: Jumlah entity per tipe
+      operationId: getWorldEntities
+      security:
+        - BearerAuth: ["read:worlds"]
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+
+  /worlds/{name}/chunks:
+    get:
+      tags: [Worlds]
+      summary: Jumlah chunk ter-load
+      operationId: getWorldChunks
+      security:
+        - BearerAuth: ["read:worlds"]
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+
+  /worlds/{name}/border:
+    get:
+      tags: [Worlds]
+      summary: Info world border
+      operationId: getWorldBorder
+      security:
+        - BearerAuth: ["read:worlds"]
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+
+  /worlds/{name}/gamerules:
+    get:
+      tags: [Worlds]
+      summary: Semua gamerule dan nilainya
+      operationId: getWorldGamerules
+      security:
+        - BearerAuth: ["read:worlds"]
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+
+  # ─────────────────────────────────────────
+  # VAULT
+  # ─────────────────────────────────────────
+
+  /vault/player/{uuid}:
+    get:
+      tags: [Vault]
+      summary: Full Vault data player
+      operationId: getVaultPlayer
+      security:
+        - BearerAuth: ["read:vault"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+        "503":
+          description: Vault tidak tersedia
+
+  /vault/groups:
+    get:
+      tags: [Vault]
+      summary: Semua group terdaftar
+      operationId: getVaultGroups
+      security:
+        - BearerAuth: ["read:vault"]
+      responses:
+        "200":
+          description: OK
+
+  /vault/groups/{group}:
+    get:
+      tags: [Vault]
+      summary: Detail group
+      operationId: getVaultGroup
+      security:
+        - BearerAuth: ["read:vault"]
+      parameters:
+        - name: group
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+
+  /vault/economy/status:
+    get:
+      tags: [Vault]
+      summary: Status economy plugin
+      operationId: getVaultEconomyStatus
+      security:
+        - BearerAuth: ["read:vault"]
+      responses:
+        "200":
+          description: OK
+
+  # ─────────────────────────────────────────
+  # LUCKPERMS
+  # ─────────────────────────────────────────
+
+  /luckperms/player/{uuid}:
+    get:
+      tags: [LuckPerms]
+      summary: Full LuckPerms data player
+      operationId: getLpPlayer
+      security:
+        - BearerAuth: ["read:luckperms"]
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+
+  /luckperms/groups:
+    get:
+      tags: [LuckPerms]
+      summary: Semua LP group
+      operationId: getLpGroups
+      security:
+        - BearerAuth: ["read:luckperms"]
+      responses:
+        "200":
+          description: OK
+
+  /luckperms/groups/{group}:
+    get:
+      tags: [LuckPerms]
+      summary: Detail LP group
+      operationId: getLpGroup
+      security:
+        - BearerAuth: ["read:luckperms"]
+      parameters:
+        - name: group
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+
+  /luckperms/groups/{group}/members:
+    get:
+      tags: [LuckPerms]
+      summary: Semua member dari group LP
+      operationId: getLpGroupMembers
+      security:
+        - BearerAuth: ["read:luckperms"]
+      parameters:
+        - name: group
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+
+  /luckperms/groups/{group}/permissions:
+    get:
+      tags: [LuckPerms]
+      summary: Permission nodes dari group LP
+      operationId: getLpGroupPermissions
+      security:
+        - BearerAuth: ["read:luckperms"]
+      parameters:
+        - name: group
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+
+  # ─────────────────────────────────────────
+  # PAPI
+  # ─────────────────────────────────────────
+
+  /papi/evaluate:
+    post:
+      tags: [PAPI]
+      summary: Evaluasi placeholder untuk seorang player
+      operationId: evaluatePapi
+      security:
+        - BearerAuth: ["read:papi"]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PapiEvaluateRequest"
+            example:
+              player: "Notch"
+              placeholders:
+                - "%player_health%"
+                - "%vault_rank%"
+                - "%luckperms_primary_group%"
+      responses:
+        "200":
+          description: Placeholder berhasil dievaluasi
+          content:
+            application/json:
+              example:
+                success: true
+                timestamp: 1717600000000
+                data:
+                  player: "Notch"
+                  uuid: "069a79f4-44e9-4726-a5be-fca90e38aaf5"
+                  results:
+                    "%player_health%": "20.0"
+                    "%vault_rank%": "Admin"
+                    "%luckperms_primary_group%": "admin"
+
+  /papi/plugins:
+    get:
+      tags: [PAPI]
+      summary: Daftar ekspansi PAPI yang terdaftar
+      operationId: getPapiPlugins
+      security:
+        - BearerAuth: ["read:papi"]
+      responses:
+        "200":
+          description: OK
+
+  # ─────────────────────────────────────────
+  # ADMIN
+  # ─────────────────────────────────────────
+
+  /admin/health:
+    get:
+      tags: [Admin]
+      summary: Health check (no auth required)
+      operationId: getHealth
+      security: []
+      responses:
+        "200":
+          description: Plugin berjalan normal
+          content:
+            application/json:
+              example:
+                success: true
+                data:
+                  status: "UP"
+                  database: "UP"
+                  httpServer: "UP"
+                  version: "1.0.0"
+
+  /admin/keys:
+    get:
+      tags: [Admin]
+      summary: Daftar semua API key (tanpa secret)
+      operationId: getApiKeys
+      security:
+        - BearerAuth: ["admin"]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/ApiKey"
+    post:
+      tags: [Admin]
+      summary: Buat API key baru
+      operationId: createApiKey
+      security:
+        - BearerAuth: ["admin"]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateKeyRequest"
+      responses:
+        "201":
+          description: Key berhasil dibuat
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/SuccessResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/ApiKeyCreated"
+
+  /admin/keys/{keyId}:
+    delete:
+      tags: [Admin]
+      summary: Revoke API key
+      operationId: revokeApiKey
+      security:
+        - BearerAuth: ["admin"]
+      parameters:
+        - name: keyId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Key berhasil direvoke
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /admin/config:
+    get:
+      tags: [Admin]
+      summary: Konfigurasi aktif (sensitive fields dimask)
+      operationId: getConfig
+      security:
+        - BearerAuth: ["admin"]
+      responses:
+        "200":
+          description: OK
+
+  /admin/reload:
+    post:
+      tags: [Admin]
+      summary: Trigger reload plugin
+      operationId: reloadPlugin
+      security:
+        - BearerAuth: ["admin"]
+      responses:
+        "200":
+          description: Reload berhasil
+
+  /admin/rate-limits:
+    get:
+      tags: [Admin]
+      summary: Counter rate limit per IP
+      operationId: getRateLimits
+      security:
+        - BearerAuth: ["admin"]
+      responses:
+        "200":
+          description: OK
+
+  /admin/rate-limits/{ip}:
+    delete:
+      tags: [Admin]
+      summary: Reset rate limit untuk IP tertentu
+      operationId: resetRateLimit
+      security:
+        - BearerAuth: ["admin"]
+      parameters:
+        - name: ip
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Rate limit berhasil direset
+
+  /admin/snapshot/history:
+    get:
+      tags: [Admin]
+      summary: Riwayat snapshot terakhir
+      operationId: getSnapshotHistory
+      security:
+        - BearerAuth: ["admin"]
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+      responses:
+        "200":
+          description: OK
+
+  /admin/snapshot/purge:
+    delete:
+      tags: [Admin]
+      summary: Purge snapshot lama
+      operationId: purgeSnapshots
+      security:
+        - BearerAuth: ["admin"]
+      parameters:
+        - name: olderThanDays
+          in: query
+          required: true
+          schema:
+            type: integer
+          example: 30
+      responses:
+        "200":
+          description: Purge selesai
+
+  /admin/openapi.json:
+    get:
+      tags: [Admin]
+      summary: OpenAPI 3.1 JSON spec
+      operationId: getOpenApiJson
+      security:
+        - BearerAuth: ["admin"]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /admin/openapi.yaml:
+    get:
+      tags: [Admin]
+      summary: OpenAPI 3.1 YAML spec
+      operationId: getOpenApiYaml
+      security:
+        - BearerAuth: ["admin"]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/yaml:
+              schema:
+                type: string

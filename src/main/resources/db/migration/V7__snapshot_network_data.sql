@@ -1,0 +1,9 @@
+ALTER TABLE napi_player_snapshots ADD COLUMN ip_address VARCHAR(45);
+ALTER TABLE napi_player_snapshots ADD COLUMN country VARCHAR(100);
+ALTER TABLE napi_player_snapshots ADD COLUMN region VARCHAR(100);
+ALTER TABLE napi_player_snapshots ADD COLUMN city VARCHAR(100);
+ALTER TABLE napi_player_snapshots ADD COLUMN isp VARCHAR(150);
+ALTER TABLE napi_player_snapshots ADD COLUMN asn VARCHAR(150);
+ALTER TABLE napi_player_snapshots ADD COLUMN locale VARCHAR(10);
+ALTER TABLE napi_player_snapshots ADD COLUMN client_brand VARCHAR(100);
+ALTER TABLE napi_player_snapshots ADD COLUMN ping INT;

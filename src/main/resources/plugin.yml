@@ -1,0 +1,25 @@
+name: NaturalAPI
+version: 1.0.0
+main: id.naturalsmp.naturalApi.NaturalAPI
+api-version: "1.21"
+authors: [NaturalSMP Team]
+description: REST API lengkap untuk server Minecraft 1.21.x.
+
+softdepend: [Vault, LuckPerms, PlaceholderAPI, SuperVanish, PremiumVanish, CMI, Essentials, SkinsRestorer, NaturalSchool, NaturalCore]
+
+commands:
+  napi:
+    description: NaturalAPI commands
+    permission: naturalapi.use
+    aliases: [naturalapi]
+
+permissions:
+  naturalapi.use:
+    description: Basic plugin usage
+    default: true
+  naturalapi.admin:
+    description: Admin commands
+    default: op
+  naturalapi.bypass.ratelimit:
+    description: Bypass rate limit
+    default: op

@@ -1,0 +1,89 @@
+# NaturalAPI Configuration
+# Plugin: NaturalAPI v1.0.0
+
+server:
+  port: 7890
+  bind-address: "0.0.0.0"   # "" or "0.0.0.0" for all interfaces
+  public-url: "http://localhost:7890"
+  base-path: "/api/v1"
+  swagger-enabled: true
+  swagger-path: "/swagger"
+
+database:
+  provider: sqlite             # sqlite | mysql | mariadb
+  sqlite:
+    file: "data.db"
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "naturalapi"
+    username: "root"
+    password: "change_me"
+    pool-size: 10
+    connection-timeout: 30000
+  mariadb:
+    host: "localhost"
+    port: 3306
+    database: "naturalapi"
+    username: "root"
+    password: "change_me"
+    pool-size: 10
+
+security:
+  ip-allowlist:
+    enabled: false
+    ips: []
+  rate-limit:
+    enabled: true
+    requests-per-minute: 120
+    burst: 30
+  cors:
+    enabled: true
+    allowed-origins:
+      - "*"
+    allowed-methods: ["GET", "POST", "DELETE"]
+    allowed-headers: ["Authorization", "Content-Type"]
+  swagger-auth-required: false   # set true to require Bearer on /swagger
+
+features:
+  vanish:
+    show-vanished-in-count: false   # true = include vanished in /server/players/count
+    show-vanished-in-list: false    # true = include vanished in /players list by default
+  snapshot:
+    auto-save: true
+    interval-minutes: 10
+    retention-days: 30
+  skin:
+    cache-ttl-hours: 6
+  papi:
+    enabled: true
+  vault:
+    enabled: true
+  luckperms:
+    enabled: true
+  websocket:
+    enabled: true                   # Master switch for WebSocket support
+    server-stats-interval: 20       # Interval broadcast /ws/server dalam tick (20 tick = 1 detik)
+    endpoints:
+      server-stats: true            # /ws/server — real-time server status (TPS, RAM, CPU, storage, network)
+      player-events: true           # /ws/players — player join/leave events
+      chat: true                    # /ws/chat — real-time chat messages
+      player-detail: true           # /ws/player/{uuid} — individual player detail stream
+  leaderboard:
+    providers:
+      playtime: "database"    # database | ajlb
+      balance: "database"     # database | ajlb
+      kills: "database"       # database | ajlb
+      deaths: "database"      # database | ajlb
+      votes: "database"       # database | ajlb
+      exp: "database"         # database | ajlb
+  endpoints:
+    server: true
+    players: true
+    worlds: true
+    offline-players: true
+
+logging:
+  log-requests: true
+  log-auth-failures: true
+  log-level: INFO              # DEBUG | INFO | WARN | ERROR
