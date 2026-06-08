@@ -34,11 +34,6 @@
             <id>placeholderapi</id>
             <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
-        <repository>
-            <id>github-naturalsmp</id>
-            <name>NaturalSMP GitHub Packages</name>
-            <url>https://maven.pkg.github.com/Natural-Minecraft/NaturalAPI</url>
-        </repository>
     </repositories>
 
     <distributionManagement>
@@ -186,6 +181,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <finalName>NaturalAPI</finalName>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <relocations>
                                 <relocation>
