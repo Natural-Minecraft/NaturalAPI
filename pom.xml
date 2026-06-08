@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>id.naturalsmp</groupId>
-    <artifactId>NaturalAPI</artifactId>
-    <version>1.0.0</version>
+    <artifactId>naturalapi</artifactId>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>NaturalAPI</name>
@@ -22,22 +22,18 @@
     </properties>
 
     <repositories>
-        <!-- Paper Repository -->
         <repository>
             <id>papermc</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
-        <!-- Vault Repository -->
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
-        <!-- PlaceholderAPI -->
         <repository>
             <id>placeholderapi</id>
             <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
-        <!-- GitHub Packages for NaturalSchool & NaturalCore -->
         <repository>
             <id>github-naturalsmp</id>
             <name>NaturalSMP GitHub Packages</name>
@@ -54,7 +50,6 @@
     </distributionManagement>
 
     <dependencies>
-        <!-- Paper API -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
@@ -62,14 +57,12 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Javalin -->
         <dependency>
             <groupId>io.javalin</groupId>
             <artifactId>javalin</artifactId>
             <version>${javalin.version}</version>
         </dependency>
 
-        <!-- Jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -81,7 +74,6 @@
             <version>${jackson.version}</version>
         </dependency>
 
-        <!-- Database -->
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
@@ -108,7 +100,6 @@
             <version>${flyway.version}</version>
         </dependency>
 
-        <!-- Drivers -->
         <dependency>
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
@@ -125,14 +116,12 @@
             <version>3.4.0</version>
         </dependency>
 
-        <!-- Swagger/OpenAPI Annotations -->
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-annotations</artifactId>
             <version>2.2.22</version>
         </dependency>
 
-        <!-- Vault -->
         <dependency>
             <groupId>com.github.MilkBowl</groupId>
             <artifactId>VaultAPI</artifactId>
@@ -140,7 +129,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- LuckPerms -->
         <dependency>
             <groupId>net.luckperms</groupId>
             <artifactId>api</artifactId>
@@ -148,21 +136,18 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- PlaceholderAPI -->
         <dependency>
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>
             <version>2.11.6</version>
             <scope>provided</scope>
         </dependency>
-        <!-- NaturalSchool (GitHub Packages) -->
         <dependency>
             <groupId>id.naturalsmp</groupId>
             <artifactId>naturalschool</artifactId>
             <version>1.0.0</version>
             <scope>provided</scope>
         </dependency>
-        <!-- NaturalCore (GitHub Packages) -->
         <dependency>
             <groupId>id.naturalsmp</groupId>
             <artifactId>NaturalCore</artifactId>
