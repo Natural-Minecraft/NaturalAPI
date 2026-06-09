@@ -10,6 +10,9 @@ import java.util.Optional;
 
 public interface PlayerSnapshotDao {
 
+    @SqlUpdate("DELETE FROM napi_player_snapshots WHERE player_uuid = :uuid")
+    void deleteByUuid(@Bind("uuid") String uuid);
+
     @SqlUpdate("INSERT INTO napi_player_snapshots (id, player_uuid, player_name, snapshot_time, world, x, y, z, yaw, pitch, health, max_health, food_level, saturation, exp_level, exp_progress, total_exp, gamemode, inventory_json, armor_json, effects_json, skin_texture, skin_signature, vault_group, vault_prefix, vault_suffix, lp_group, playtime, balance, kills, deaths, votes, ip_address, country, region, city, isp, asn, locale, client_brand, ping) VALUES (:id, :player_uuid, :player_name, :snapshot_time, :world, :x, :y, :z, :yaw, :pitch, :health, :max_health, :food_level, :saturation, :exp_level, :exp_progress, :total_exp, :gamemode, :inventory_json, :armor_json, :effects_json, :skin_texture, :skin_signature, :vault_group, :vault_prefix, :vault_suffix, :lp_group, :playtime, :balance, :kills, :deaths, :votes, :ip_address, :country, :region, :city, :isp, :asn, :locale, :client_brand, :ping)")
     void insertSnapshot(
             @Bind("id") String id,

@@ -95,9 +95,6 @@ public class SnapshotService {
         
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
             try {
-                PlayerSnapshotDao dao = plugin.getDatabaseManager().getJdbi().onDemand(PlayerSnapshotDao.class);
-                
-                String id = UUID.randomUUID().toString();
                 String inventoryJson = mapper.writeValueAsString(inventoryList);
                 String armorJson = mapper.writeValueAsString(armorMap);
                 String effectsJson = mapper.writeValueAsString(effectsList);
@@ -125,49 +122,58 @@ public class SnapshotService {
                 @SuppressWarnings("unchecked")
                 Map<String, Object> loc = (Map<String, Object>) playerData.get("location");
 
-                dao.insertSnapshot(
-                        id,
-                        player.getUniqueId().toString(),
-                        player.getName(),
-                        System.currentTimeMillis(),
-                        (String) loc.get("world"),
-                        (Double) loc.get("x"),
-                        (Double) loc.get("y"),
-                        (Double) loc.get("z"),
-                        (Float) loc.get("yaw"),
-                        (Float) loc.get("pitch"),
-                        (Double) playerData.get("health"),
-                        (Double) playerData.get("maxHealth"),
-                        (Integer) playerData.get("foodLevel"),
-                        (Float) playerData.get("saturation"),
-                        (Integer) playerData.get("expLevel"),
-                        (Float) playerData.get("expProgress"),
-                        (Integer) playerData.get("totalExp"),
-                        (String) playerData.get("gamemode"),
-                        inventoryJson,
-                        armorJson,
-                        effectsJson,
-                        null, // skin texture
-                        null, // skin signature
-                        vaultGroup,
-                        vaultPrefix,
-                        vaultSuffix,
-                        lpGroup,
-                        finalPlaytime,
-                        finalBalance,
-                        finalKills,
-                        finalDeaths,
-                        finalVotes,
-                        ipAddress,
-                        country,
-                        region,
-                        city,
-                        isp,
-                        asn,
-                        locale,
-                        clientBrand,
-                        ping
-                );
+                String playerUuid = player.getUniqueId().toString();
+                String playerName = player.getName();
+                long snapshotTime = System.currentTimeMillis();
+
+                plugin.getDatabaseManager().getJdbi().inTransaction(h -> {
+                    PlayerSnapshotDao dao = h.attach(PlayerSnapshotDao.class);
+                    dao.deleteByUuid(playerUuid);
+                    dao.insertSnapshot(
+                            UUID.randomUUID().toString(),
+                            playerUuid,
+                            playerName,
+                            snapshotTime,
+                            (String) loc.get("world"),
+                            (Double) loc.get("x"),
+                            (Double) loc.get("y"),
+                            (Double) loc.get("z"),
+                            (Float) loc.get("yaw"),
+                            (Float) loc.get("pitch"),
+                            (Double) playerData.get("health"),
+                            (Double) playerData.get("maxHealth"),
+                            (Integer) playerData.get("foodLevel"),
+                            (Float) playerData.get("saturation"),
+                            (Integer) playerData.get("expLevel"),
+                            (Float) playerData.get("expProgress"),
+                            (Integer) playerData.get("totalExp"),
+                            (String) playerData.get("gamemode"),
+                            inventoryJson,
+                            armorJson,
+                            effectsJson,
+                            null, // skin texture
+                            null, // skin signature
+                            vaultGroup,
+                            vaultPrefix,
+                            vaultSuffix,
+                            lpGroup,
+                            finalPlaytime,
+                            finalBalance,
+                            finalKills,
+                            finalDeaths,
+                            finalVotes,
+                            ipAddress,
+                            country,
+                            region,
+                            city,
+                            isp,
+                            asn,
+                            locale,
+                            clientBrand,
+                            ping
+                    );
+                    return null;
+                });
             } catch (JsonProcessingException e) {
                 plugin.getLogger().log(Level.SEVERE, "Failed to serialize snapshot data for " + player.getName(), e);
             } catch (Exception e) {
