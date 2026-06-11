@@ -126,6 +126,11 @@ public class SnapshotService {
                 String playerName = player.getName();
                 long snapshotTime = System.currentTimeMillis();
 
+                final String finalVaultGroup = vaultGroup;
+                final String finalVaultPrefix = vaultPrefix;
+                final String finalVaultSuffix = vaultSuffix;
+                final String finalLpGroup = lpGroup;
+
                 plugin.getDatabaseManager().getJdbi().inTransaction(h -> {
                     PlayerSnapshotDao dao = h.attach(PlayerSnapshotDao.class);
                     dao.deleteByUuid(playerUuid);
@@ -153,10 +158,10 @@ public class SnapshotService {
                             effectsJson,
                             null, // skin texture
                             null, // skin signature
-                            vaultGroup,
-                            vaultPrefix,
-                            vaultSuffix,
-                            lpGroup,
+                            finalVaultGroup,
+                            finalVaultPrefix,
+                            finalVaultSuffix,
+                            finalLpGroup,
                             finalPlaytime,
                             finalBalance,
                             finalKills,
