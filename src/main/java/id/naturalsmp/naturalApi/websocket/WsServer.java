@@ -129,7 +129,16 @@ public class WsServer {
     }
 
     private void handleError(WsErrorContext ctx) {
-        plugin.getLogger().warning("WebSocket error on session " + ctx.sessionId() + ": " + ctx.error().getMessage());
+        String errorMsg = ctx.error() != null ? ctx.error().getMessage() : "Unknown error";
+        if (errorMsg != null && (errorMsg.contains("Idle Timeout") || errorMsg.contains("Timeout") || errorMsg.contains("Connection reset by peer") || errorMsg.contains("Connection closed"))) {
+            // Suppress normal network disconnection and timeout warnings to prevent log spam
+            plugin.getLogger().fine("WebSocket connection closed/timed out on session " + ctx.sessionId() + ": " + errorMsg);
+        } else {
+            plugin.getLogger().warning("WebSocket error on session " + ctx.sessionId() + ": " + errorMsg);
+            if (ctx.error() != null) {
+                plugin.getLogger().fine(ctx.error().toString()); // Log full trace to fine/debug
+            }
+        }
         broadcaster.unregisterAll(ctx);
     }
 
