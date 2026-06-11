@@ -10,6 +10,8 @@ import java.util.Map;
 
 public class ItemSerializer {
 
+    private static final com.fasterxml.jackson.databind.ObjectMapper MAPPER = new com.fasterxml.jackson.databind.ObjectMapper();
+
     public static Map<String, Object> serialize(ItemStack item, int slot) {
         if (item == null || item.getType().isAir()) {
             return null;
@@ -19,6 +21,14 @@ public class ItemSerializer {
         data.put("slot", slot);
         data.put("material", item.getType().name());
         data.put("amount", item.getAmount());
+
+        // Initialize defaults to match expected schema exactly
+        data.put("displayName", null);
+        data.put("lore", new java.util.ArrayList<String>());
+        data.put("damage", 0);
+        data.put("enchantments", new HashMap<String, Integer>());
+        data.put("customModelData", 0);
+        data.put("nbtJson", "{}");
 
         ItemMeta meta = item.getItemMeta();
         if (meta != null) {
@@ -33,8 +43,6 @@ public class ItemSerializer {
             }
             if (meta instanceof Damageable) {
                 data.put("damage", ((Damageable) meta).getDamage());
-            } else {
-                data.put("damage", 0);
             }
 
             if (meta.hasEnchants()) {
@@ -44,8 +52,16 @@ public class ItemSerializer {
                 }
                 data.put("enchantments", enchants);
             }
-        } else {
-            data.put("damage", 0);
+
+            // Serialize NBT/meta using Bukkit serialization
+            try {
+                Map<String, Object> serialized = item.serialize();
+                if (serialized.containsKey("meta")) {
+                    data.put("nbtJson", MAPPER.writeValueAsString(serialized.get("meta")));
+                }
+            } catch (Exception e) {
+                // Ignore
+            }
         }
 
         return data;

@@ -140,11 +140,23 @@ public class PlayerController {
         String identifier = ctx.pathParam("identifier");
         Player player = playerService.getPlayer(identifier);
         if (player != null) {
-            ctx.json(ResponseBuilder.success(playerService.getInventory(player)));
+            Map<String, Object> responseData = new HashMap<>();
+            responseData.put("uuid", player.getUniqueId().toString());
+            responseData.put("username", player.getName());
+            responseData.put("inventory", playerService.getInventory(player));
+            responseData.put("armor", playerService.getArmor(player));
+            responseData.put("offhand", playerService.getOffhand(player));
+            ctx.json(ResponseBuilder.success(responseData));
         } else {
             Map<String, Object> offlineData = playerService.getOfflinePlayer(identifier);
             if (offlineData != null) {
-                ctx.json(ResponseBuilder.success(offlineData.get("inventory")));
+                Map<String, Object> responseData = new HashMap<>();
+                responseData.put("uuid", offlineData.get("uuid"));
+                responseData.put("username", offlineData.get("username"));
+                responseData.put("inventory", offlineData.get("inventory"));
+                responseData.put("armor", offlineData.get("armor"));
+                responseData.put("offhand", offlineData.get("offhand"));
+                ctx.json(ResponseBuilder.success(responseData));
             } else {
                 ctx.status(404).json(ResponseBuilder.error("PLAYER_NOT_FOUND", "Player not found."));
             }
