@@ -1,5 +1,5 @@
 name: NaturalAPI
-version: 1.0.4
+version: 1.0.5
 main: id.naturalsmp.naturalApi.NaturalAPI
 api-version: "1.21"
 authors: [NaturalSMP Team]

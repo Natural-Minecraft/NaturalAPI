@@ -16,7 +16,7 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), dan p
 
 ---
 
-## [1.0.4] — 2026-06-11
+## [1.0.5] — 2026-06-11
 
 ### Security
 - Menutup celah keamanan bypass otentikasi pada endpoint `/players/{player}/health` dengan memperbaiki validasi `basePath` pada middleware.
@@ -27,11 +27,14 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), dan p
 - Memperbaiki kebocoran memori (OOM) dengan membatasi jumlah cache alamat GeoIP (limit 2000) dan token bucket rate limiter (limit 5000).
 - Memperbaiki database write lock congestion (`SQLITE_BUSY`) pada SQLite dengan mengimplementasikan batch writing menggunakan single transaction.
 - Memperbaiki kegagalan broadcast WebSocket agar error dari satu koneksi klien tidak mengganggu pengiriman data klien lainnya.
+- Memperbaiki payload data barang/item detail (`lore`, `displayName`, `enchantments`, `customModelData`) agar selalu mengembalikan nilai default untuk konsistensi skema JSON.
+- Memperbaiki endpoint `/players/{id}/inventory` agar mengembalikan wrapper data lengkap yang berisi objek `uuid`, `username`, `inventory`, `armor`, dan `offhand`.
 
 ### Added / Changed
 - Mengubah endpoint `/skin` dan `/network` menjadi sepenuhnya asinkron agar web request ke Mojang/GeoIP tidak membekukan tick-loop utama server Minecraft (menghilangkan TPS drop).
 - Mengimplementasikan database skin cache (`napi_skin_cache`) untuk menghindari rate-limit Mojang.
 - Mengubah background stats loop ke sinkronisasi Scheduler Bukkit thread utama demi menjamin keamanan data multithread.
+- Mengimplementasikan penulisan metadata NBT ItemStack ke field `nbtJson` menggunakan serialisasi internal Bukkit ItemStack secara aman.
 
 ---
 
@@ -234,7 +237,7 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), dan p
 
 ---
 
-[Unreleased]: https://github.com/naturalsmp/NaturalAPI/compare/v1.0.4...HEAD
-[1.0.4]: https://github.com/naturalsmp/NaturalAPI/compare/v1.0.0...v1.0.4
+[Unreleased]: https://github.com/naturalsmp/NaturalAPI/compare/v1.0.5...HEAD
+[1.0.5]: https://github.com/naturalsmp/NaturalAPI/compare/v1.0.0...v1.0.5
 [1.0.0]: https://github.com/naturalsmp/NaturalAPI/releases/tag/v1.0.0
 [0.1.0-SNAPSHOT]: https://github.com/naturalsmp/NaturalAPI/releases/tag/v0.1.0-SNAPSHOT
