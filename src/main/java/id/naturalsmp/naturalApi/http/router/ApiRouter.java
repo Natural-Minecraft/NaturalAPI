@@ -166,6 +166,12 @@ public class ApiRouter {
                 ApiBuilder.post("/evaluate", sync(plugin, integrationController::evaluatePapi));
                 ApiBuilder.get("/plugins", sync(plugin, integrationController::getPapiPlugins));
             });
+
+            ApiBuilder.path("/naturalschool", () -> {
+                ApiBuilder.before(new AuthMiddleware(plugin, "read:naturalschool"));
+                ApiBuilder.get("/player/{identifier}", sync(plugin, integrationController::getNaturalSchoolData));
+                ApiBuilder.post("/refresh", sync(plugin, integrationController::refreshNaturalSchool));
+            });
             
             // Admin Endpoints
             ApiBuilder.path("/admin", () -> {

@@ -139,8 +139,67 @@ public class IntegrationController {
         ctx.json(ResponseBuilder.success(plugin.getIntegrationManager().getPapiIntegration().getRegisteredExpansions()));
     }
 
+    public void getNaturalSchoolData(Context ctx) {
+        Player player = plugin.getPlayerService().getPlayer(ctx.pathParam("identifier"));
+        if (player == null) {
+            ctx.status(404).json(ResponseBuilder.error("PLAYER_NOT_FOUND", "Player not found"));
+            return;
+        }
+
+        if (plugin.getIntegrationManager().getNaturalSchoolIntegration() == null || !plugin.getIntegrationManager().getNaturalSchoolIntegration().isEnabled()) {
+            ctx.status(400).json(ResponseBuilder.error("NATURALSCHOOL_DISABLED", "NaturalSchool integration is not enabled"));
+            return;
+        }
+
+        Map<String, Object> data = plugin.getIntegrationManager().getNaturalSchoolIntegration().getSchoolData(player.getUniqueId());
+        if (data == null) {
+            ctx.status(404).json(ResponseBuilder.error("DATA_NOT_FOUND", "NaturalSchool data not found for player"));
+            return;
+        }
+        ctx.json(ResponseBuilder.success(data));
+    }
+
+    public void refreshNaturalSchool(Context ctx) {
+        if (plugin.getIntegrationManager().getNaturalSchoolIntegration() == null || !plugin.getIntegrationManager().getNaturalSchoolIntegration().isEnabled()) {
+            ctx.status(400).json(ResponseBuilder.error("NATURALSCHOOL_DISABLED", "NaturalSchool integration is not enabled"));
+            return;
+        }
+
+        try {
+            NaturalSchoolRefreshRequest req = ctx.bodyAsClass(NaturalSchoolRefreshRequest.class);
+            if (req != null && req.uuid != null && !req.uuid.isEmpty()) {
+                Player player = plugin.getPlayerService().getPlayer(req.uuid);
+                if (player != null) {
+                    // Update database (snapshot) untuk player ini agar data NaturalSchool yang baru masuk
+                    plugin.getSnapshotService().saveSnapshotAsync(player);
+                    ctx.json(ResponseBuilder.success(Map.of(
+                        "message", "Player snapshot update triggered successfully.",
+                        "uuid", req.uuid
+                    )));
+                    return;
+                } else {
+                    ctx.status(404).json(ResponseBuilder.error("PLAYER_NOT_FOUND", "Player not found or offline."));
+                    return;
+                }
+            }
+        } catch (Exception e) {
+            // Jika body kosong atau tidak valid, lanjutkan ke refresh general
+        }
+
+        // General refresh: merefresh state integrasi
+        boolean setupSuccess = plugin.getIntegrationManager().getNaturalSchoolIntegration().setup();
+        ctx.json(ResponseBuilder.success(Map.of(
+            "message", "NaturalSchool integration reloaded.",
+            "success", setupSuccess
+        )));
+    }
+
     public static class PapiEvaluateRequest {
         public String player;
         public List<String> placeholders;
+    }
+
+    public static class NaturalSchoolRefreshRequest {
+        public String uuid;
     }
 }

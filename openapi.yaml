@@ -1869,6 +1869,63 @@ paths:
           description: OK
 
   # ─────────────────────────────────────────
+  # NATURALSCHOOL
+  # ─────────────────────────────────────────
+
+  /naturalschool/player/{identifier}:
+    get:
+      tags: [NaturalSchool]
+      summary: Get NaturalSchool profile data for player
+      operationId: getNaturalSchoolPlayer
+      security:
+        - BearerAuth: ["read:naturalschool"]
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          description: UUID or username of the player
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: NaturalSchool integration disabled
+        "404":
+          description: Player or Data not found
+
+  /naturalschool/refresh:
+    post:
+      tags: [NaturalSchool]
+      summary: Refresh NaturalSchool Integration / Data
+      description: |
+        Triggered by NaturalSchool plugin or an admin. 
+        If a JSON body with `uuid` is provided, it triggers a snapshot update for that specific player so NaturalSchool data is refreshed in the database.
+        If no body is provided, it attempts to reload the general integration setup.
+      operationId: refreshNaturalSchool
+      security:
+        - BearerAuth: ["read:naturalschool"]
+      requestBody:
+        description: Optional body to target a specific player.
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                uuid:
+                  type: string
+                  format: uuid
+                  description: "UUID dari player yang ingin di-refresh snapshotnya"
+      responses:
+        "200":
+          description: OK (Refresh berhasil atau Snapshot triggered)
+        "400":
+          description: NaturalSchool integration disabled
+        "404":
+          description: Player offline atau tidak ditemukan (jika uuid diberikan)
+
+  # ─────────────────────────────────────────
   # ADMIN
   # ─────────────────────────────────────────
 

@@ -199,6 +199,12 @@ POST /papi/evaluate            → Evaluasi placeholder untuk player
 GET  /papi/plugins             → Daftar ekspansi PAPI terdaftar
 ```
 
+### 🏫 NaturalSchool
+```
+GET  /naturalschool/player/{uuid}      → Data akademik siswa (NaturalSchool)
+POST /naturalschool/refresh            → Event handler untuk sync/update data
+```
+
 ### 🔧 Admin
 ```
 GET    /admin/keys             → Daftar API keys
@@ -315,6 +321,8 @@ GET /swagger/openapi.json      → OpenAPI 3.1 JSON spec
 | CMI | Soft-depend | Deteksi status vanish |
 | Essentials | Soft-depend | Deteksi status vanish |
 | SkinsRestorer | Soft-depend | Ambil skin kustom player |
+| NaturalSchool | Soft-depend | Data akademik & event sync |
+| NaturalCore | Soft-depend | AFK & status staf |
 
 Semua integrasi bersifat opsional — plugin tetap berjalan normal tanpa plugin di atas.
 
@@ -331,6 +339,7 @@ Semua integrasi bersifat opsional — plugin tetap berjalan normal tanpa plugin 
 | API Endpoints — Vault | [`docs/api/endpoints-vault.md`](docs/api/endpoints-vault.md) |
 | API Endpoints — LuckPerms | [`docs/api/endpoints-luckperms.md`](docs/api/endpoints-luckperms.md) |
 | API Endpoints — PAPI | [`docs/api/endpoints-papi.md`](docs/api/endpoints-papi.md) |
+| API Endpoints — NaturalSchool | [`docs/api/endpoints-naturalschool.md`](docs/api/endpoints-naturalschool.md) |
 | API Endpoints — Admin | [`docs/api/endpoints-admin.md`](docs/api/endpoints-admin.md) |
 | OpenAPI Spec | [`docs/api/openapi.yaml`](docs/api/openapi.yaml) |
 | Konfigurasi | [`docs/config/config.md`](docs/config/config.md) |
