@@ -18,7 +18,10 @@ public class AuthMiddleware implements Handler {
     @Override
     public void handle(Context ctx) throws Exception {
         String path = ctx.path();
-        if (path.endsWith("/health") || path.endsWith("/openapi.yaml") || path.endsWith("/openapi.json")) {
+        String basePath = plugin.getConfigManager().getBasePath();
+        if (path.equals(basePath + "/admin/health") || 
+            path.equals(basePath + "/admin/openapi.yaml") || 
+            path.equals(basePath + "/admin/openapi.json")) {
             return; // Skip authentication for public endpoints
         }
 

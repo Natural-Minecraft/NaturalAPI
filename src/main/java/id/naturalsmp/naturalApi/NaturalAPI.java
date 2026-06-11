@@ -69,7 +69,9 @@ public class NaturalAPI extends JavaPlugin {
         // Start WebSocket server stats broadcaster (interval dari config)
         if (configManager.isWebSocketEnabled() && getConfig().getBoolean("features.websocket.endpoints.server-stats", true)) {
             int intervalTicks = configManager.getWebSocketStatsInterval();
-            getServer().getScheduler().runTaskTimerAsynchronously(this, () -> {
+            // runTaskTimer is synchronous, ensuring thread-safe access to Bukkit APIs.
+            // WsBroadcaster.broadcast handles the asynchronous network writes itself.
+            getServer().getScheduler().runTaskTimer(this, () -> {
                 try {
                     id.naturalsmp.naturalApi.websocket.WsServer wsServer = httpServer.getWsServer();
                     if (wsServer != null) {
@@ -94,6 +96,12 @@ public class NaturalAPI extends JavaPlugin {
     @Override
     public void onDisable() {
         getLogger().info("Disabling NaturalAPI...");
+
+        // Cancel all tasks registered by this plugin (prevents repeating task leaks)
+        getServer().getScheduler().cancelTasks(this);
+
+        // Unregister all listeners (prevents event listener duplicate leaks)
+        org.bukkit.event.HandlerList.unregisterAll(this);
 
         if (snapshotService != null) {
             snapshotService.stop();

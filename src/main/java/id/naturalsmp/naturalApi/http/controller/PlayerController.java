@@ -259,28 +259,38 @@ public class PlayerController {
     @SuppressWarnings("unchecked")
     public void getNetwork(Context ctx) {
         String identifier = ctx.pathParam("identifier");
-        Player player = playerService.getPlayer(identifier);
-        if (player != null) {
-            ctx.json(ResponseBuilder.success(playerService.getPlayerNetworkData(player)));
-        } else {
-            Map<String, Object> offlineData = playerService.getOfflinePlayer(identifier);
-            if (offlineData != null) {
-                Map<String, Object> data = new HashMap<>();
-                data.put("ping", null); // Offline = no ping
-                data.put("locale", offlineData.get("locale"));
-                data.put("clientBrand", offlineData.get("clientBrand"));
-                data.put("ipAddress", offlineData.get("ipAddress"));
-                data.put("country", offlineData.get("country"));
-                data.put("region", offlineData.get("region"));
-                data.put("city", offlineData.get("city"));
-                data.put("isp", offlineData.get("isp"));
-                data.put("asn", offlineData.get("asn"));
-                data.put("ipHistory", offlineData.getOrDefault("ipHistory", new ArrayList<>()));
-                ctx.json(ResponseBuilder.success(data));
+        
+        java.util.concurrent.CompletableFuture<Map<String, Object>> networkFuture = java.util.concurrent.CompletableFuture.supplyAsync(() -> {
+            Player player = playerService.getPlayer(identifier);
+            if (player != null) {
+                return playerService.getPlayerNetworkData(player);
+            } else {
+                return playerService.getOfflinePlayer(identifier);
+            }
+        });
+
+        ctx.future(() -> networkFuture.thenAccept(data -> {
+            if (data != null) {
+                if (data.containsKey("ipAddress")) {
+                    Map<String, Object> netData = new HashMap<>();
+                    netData.put("ping", null); // Offline = no ping
+                    netData.put("locale", data.get("locale"));
+                    netData.put("clientBrand", data.get("clientBrand"));
+                    netData.put("ipAddress", data.get("ipAddress"));
+                    netData.put("country", data.get("country"));
+                    netData.put("region", data.get("region"));
+                    netData.put("city", data.get("city"));
+                    netData.put("isp", data.get("isp"));
+                    netData.put("asn", data.get("asn"));
+                    netData.put("ipHistory", data.getOrDefault("ipHistory", new ArrayList<>()));
+                    ctx.json(ResponseBuilder.success(netData));
+                } else {
+                    ctx.json(ResponseBuilder.success(data));
+                }
             } else {
                 ctx.status(404).json(ResponseBuilder.error("PLAYER_NOT_FOUND", "Player not found."));
             }
-        }
+        }));
     }
 
     public void getStats(Context ctx) {
@@ -308,20 +318,43 @@ public class PlayerController {
 
     public void getSkin(Context ctx) {
         String identifier = ctx.pathParam("identifier");
-        Player player = playerService.getPlayer(identifier);
-        if (player != null) {
-            SkinResolver resolver = new SkinResolver(plugin);
-            ctx.json(ResponseBuilder.success(resolver.getSkin(player.getUniqueId().toString())));
-        } else {
-            Map<String, Object> offlineData = playerService.getOfflinePlayer(identifier);
-            if (offlineData != null) {
-                String uuid = (String) offlineData.get("uuid");
-                SkinResolver resolver = new SkinResolver(plugin);
-                ctx.json(ResponseBuilder.success(resolver.getSkin(uuid)));
+        
+        java.util.concurrent.CompletableFuture<String> uuidFuture = new java.util.concurrent.CompletableFuture<>();
+        org.bukkit.Bukkit.getScheduler().runTask(plugin, () -> {
+            Player player = playerService.getPlayer(identifier);
+            if (player != null) {
+                uuidFuture.complete(player.getUniqueId().toString());
             } else {
-                ctx.status(404).json(ResponseBuilder.error("PLAYER_NOT_FOUND", "Player not found."));
+                uuidFuture.complete(null);
             }
-        }
+        });
+
+        java.util.concurrent.CompletableFuture<Map<String, String>> skinFuture = uuidFuture.thenCompose(uuid -> {
+            if (uuid != null) {
+                return java.util.concurrent.CompletableFuture.supplyAsync(() -> {
+                    SkinResolver resolver = new SkinResolver(plugin);
+                    return resolver.getSkin(uuid);
+                });
+            } else {
+                return java.util.concurrent.CompletableFuture.supplyAsync(() -> {
+                    Map<String, Object> offlineData = playerService.getOfflinePlayer(identifier);
+                    if (offlineData != null) {
+                        String offUuid = (String) offlineData.get("uuid");
+                        SkinResolver resolver = new SkinResolver(plugin);
+                        return resolver.getSkin(offUuid);
+                    }
+                    return null;
+                });
+            }
+        });
+
+        ctx.future(() -> skinFuture.thenAccept(skin -> {
+            if (skin != null && !skin.isEmpty()) {
+                ctx.json(ResponseBuilder.success(skin));
+            } else {
+                ctx.status(404).json(ResponseBuilder.error("PLAYER_NOT_FOUND", "Player or skin not found."));
+            }
+        }));
     }
 
     public void getOfflinePlayer(Context ctx) {

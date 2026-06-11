@@ -81,9 +81,9 @@ public class ApiRouter {
                         ApiBuilder.get("/inventory/armor", sync(plugin, playerController::getArmor));
                         ApiBuilder.get("/inventory/offhand", sync(plugin, playerController::getOffhand));
                         ApiBuilder.get("/effects", sync(plugin, playerController::getEffects));
-                        ApiBuilder.get("/skin", sync(plugin, playerController::getSkin));
+                        ApiBuilder.get("/skin", playerController::getSkin);
                         ApiBuilder.get("/ping", sync(plugin, playerController::getPing));
-                        ApiBuilder.get("/network", sync(plugin, playerController::getNetwork));
+                        ApiBuilder.get("/network", playerController::getNetwork);
                         ApiBuilder.get("/stats", sync(plugin, playerController::getStats));
                         ApiBuilder.get("/permissions", sync(plugin, playerController::getPermissions));
                         ApiBuilder.get("/permission/{node}", sync(plugin, playerController::checkPermission));
@@ -103,9 +103,9 @@ public class ApiRouter {
                         ApiBuilder.get("/inventory/armor", sync(plugin, playerController::getArmor));
                         ApiBuilder.get("/inventory/offhand", sync(plugin, playerController::getOffhand));
                         ApiBuilder.get("/effects", sync(plugin, playerController::getEffects));
-                        ApiBuilder.get("/skin", sync(plugin, playerController::getSkin));
+                        ApiBuilder.get("/skin", playerController::getSkin);
                         ApiBuilder.get("/ping", sync(plugin, playerController::getPing));
-                        ApiBuilder.get("/network", sync(plugin, playerController::getNetwork));
+                        ApiBuilder.get("/network", playerController::getNetwork);
                         ApiBuilder.get("/stats", sync(plugin, playerController::getStats));
                         ApiBuilder.get("/permissions", sync(plugin, playerController::getPermissions));
                         ApiBuilder.get("/permission/{node}", sync(plugin, playerController::checkPermission));

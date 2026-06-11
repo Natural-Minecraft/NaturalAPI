@@ -18,7 +18,15 @@ public class GeoIpService {
     private final NaturalAPI plugin;
     private final HttpClient httpClient;
     private final ObjectMapper mapper;
-    private final Map<String, Map<String, Object>> cache = new ConcurrentHashMap<>();
+    private final Map<String, Map<String, Object>> cache = new ConcurrentHashMap<>() {
+        @Override
+        public Map<String, Object> put(String key, Map<String, Object> value) {
+            if (this.size() > 2000) {
+                this.clear(); // Bounded cache clearing to prevent memory leaks
+            }
+            return super.put(key, value);
+        }
+    };
 
     public GeoIpService(NaturalAPI plugin) {
         this.plugin = plugin;

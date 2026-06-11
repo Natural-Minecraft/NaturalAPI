@@ -28,6 +28,12 @@ public class RateLimiterMiddleware implements Handler {
         if (!enabled) return;
 
         String ip = ctx.ip();
+        
+        // Simple cache cleanup to prevent memory leaks from unbounded unique guest IPs
+        if (buckets.size() > 5000) {
+            buckets.clear();
+        }
+        
         TokenBucket bucket = buckets.computeIfAbsent(ip, k -> new TokenBucket(burst, requestsPerMinute));
 
         if (!bucket.tryConsume()) {

@@ -26,6 +26,9 @@ public class PlayerListener implements Listener {
 
         if (!plugin.getConfigManager().isWebSocketEnabled()) return;
         if (!plugin.getConfig().getBoolean("features.websocket.endpoints.player-events", true)) return;
+        
+        // Prevent vanished staff member join event leak
+        if (plugin.getPlayerService().isPlayerVanished(event.getPlayer())) return;
 
         WsServer wsServer = plugin.getHttpServer().getWsServer();
         if (wsServer == null) return;
@@ -42,6 +45,9 @@ public class PlayerListener implements Listener {
     public void onPlayerQuit(PlayerQuitEvent event) {
         if (!plugin.getConfigManager().isWebSocketEnabled()) return;
         if (!plugin.getConfig().getBoolean("features.websocket.endpoints.player-events", true)) return;
+        
+        // Prevent vanished staff member quit event leak
+        if (plugin.getPlayerService().isPlayerVanished(event.getPlayer())) return;
 
         WsServer wsServer = plugin.getHttpServer().getWsServer();
         if (wsServer == null) return;

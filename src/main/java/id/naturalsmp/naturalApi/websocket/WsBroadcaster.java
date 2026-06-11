@@ -46,8 +46,13 @@ public class WsBroadcaster {
 
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
             for (WsContext session : sessions) {
-                if (session.session.isOpen()) {
-                    session.send(json);
+                try {
+                    if (session.session.isOpen()) {
+                        session.send(json);
+                    }
+                } catch (Exception e) {
+                    // Suppress and continue to other sessions
+                    plugin.getLogger().fine("Failed to broadcast message to session " + session.sessionId() + ": " + e.getMessage());
                 }
             }
         });
