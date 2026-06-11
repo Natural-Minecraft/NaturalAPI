@@ -1,15 +1,15 @@
 # NaturalAPI Endpoints Live Request & Response Report
-Generated at: Sat Jun  6 17:37:51 2026
+Generated at: 2026-06-11 14:14:35
 Base URL: `http://natural.nodevoid.my.id:19133/api/v1`
 
-## 1. Server Endpoints
+## Get Server Overview
 
 ### `GET /server`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/server
 ```
-**Status:** `200` | **Latency:** `15314ms`
+**Status:** `200` | **Latency:** `50ms`
 **Response:**
 ```json
 {
@@ -22,42 +22,63 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
       "flat",
       "schoolmap"
     ],
-    "tps": {
-      "now": 20.0,
-      "1m": 19.999999478101596,
-      "5m": 19.956673076448787,
-      "15m": 19.98555607675455
-    },
     "players": {
-      "visible": 2,
+      "visible": 3,
       "vanished": 0,
       "max": 70,
-      "online": 2
+      "online": 3
     },
     "javaVersion": "25.0.3",
-    "online": true,
-    "mspt": 7.70308205940594,
     "osName": "Linux",
     "version": "1.21.11",
     "platform": "Paper",
-    "uptime": 1459,
+    "uptime": 174,
+    "system": {
+      "availableProcessors": 6,
+      "systemLoadAverage": 1.22,
+      "processCpuLoad": 7.5,
+      "systemCpuLoad": 0.0,
+      "storage": {
+        "totalBytes": 126716452864,
+        "usableBytes": 66423635968,
+        "freeBytes": 71656247296
+      },
+      "network": {
+        "rxBytesPerSec": 12137,
+        "txBytesTotal": 10321580,
+        "txBytesPerSec": 34642,
+        "rxBytesTotal": 2273109
+      }
+    },
+    "tps": {
+      "now": 19.997098412940645,
+      "5m": 20.0,
+      "15m": 20.0,
+      "1m": 20.0
+    },
+    "online": true,
+    "mspt": 8.907484821782177,
     "ram": {
       "maxMB": 8192,
-      "freeMB": 6228,
-      "usedMB": 1963
+      "freeMB": 4529,
+      "usedMB": 3662
     }
   },
   "success": true,
-  "timestamp": 1780742286966
+  "timestamp": 1781162075341
 }
 ```
+
+---
+
+## Get Server Status
 
 ### `GET /server/status`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/server/status
 ```
-**Status:** `200` | **Latency:** `5140ms`
+**Status:** `200` | **Latency:** `49ms`
 **Response:**
 ```json
 {
@@ -70,111 +91,148 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
       "flat",
       "schoolmap"
     ],
-    "tps": {
-      "now": 20.0,
-      "1m": 20.0,
-      "5m": 19.95667459230465,
-      "15m": 19.98555635607049
-    },
     "players": {
-      "visible": 2,
+      "visible": 3,
       "vanished": 0,
       "max": 70,
-      "online": 2
+      "online": 3
     },
     "javaVersion": "25.0.3",
-    "online": true,
-    "mspt": 6.81189802970297,
     "osName": "Linux",
     "version": "1.21.11",
     "platform": "Paper",
-    "uptime": 1464,
+    "uptime": 174,
+    "system": {
+      "availableProcessors": 6,
+      "systemLoadAverage": 1.22,
+      "processCpuLoad": 0.0,
+      "systemCpuLoad": 0.0,
+      "storage": {
+        "totalBytes": 126716452864,
+        "usableBytes": 66423635968,
+        "freeBytes": 71656247296
+      },
+      "network": {
+        "rxBytesPerSec": 36898,
+        "txBytesTotal": 10343460,
+        "txBytesPerSec": 41694,
+        "rxBytesTotal": 2281002
+      }
+    },
+    "tps": {
+      "now": 19.999461889226023,
+      "5m": 20.0,
+      "15m": 20.0,
+      "1m": 19.99999489059248
+    },
+    "online": true,
+    "mspt": 8.803267386138614,
     "ram": {
       "maxMB": 8192,
-      "freeMB": 6148,
-      "usedMB": 2043
+      "freeMB": 4517,
+      "usedMB": 3674
     }
   },
   "success": true,
-  "timestamp": 1780742292315
+  "timestamp": 1781162075891
 }
 ```
+
+---
+
+## Get Server TPS
 
 ### `GET /server/tps`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/server/tps
 ```
-**Status:** `200` | **Latency:** `5108ms`
+**Status:** `200` | **Latency:** `46ms`
 **Response:**
 ```json
 {
   "data": {
     "now": 20.0,
-    "1m": 19.999997906411544,
-    "5m": 19.95667540041535,
-    "15m": 19.985555783471714
+    "5m": 20.0,
+    "15m": 20.0,
+    "1m": 20.0
   },
   "success": true,
-  "timestamp": 1780742297666
+  "timestamp": 1781162076440
 }
 ```
+
+---
+
+## Get Server MSPT
 
 ### `GET /server/mspt`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/server/mspt
 ```
-**Status:** `200` | **Latency:** `5147ms`
+**Status:** `200` | **Latency:** `49ms`
 **Response:**
 ```json
 {
-  "data": 6.828696960396039,
+  "data": 9.203137544554455,
   "success": true,
-  "timestamp": 1780742303015
+  "timestamp": 1781162076990
 }
 ```
+
+---
+
+## Get Server RAM
 
 ### `GET /server/ram`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/server/ram
 ```
-**Status:** `200` | **Latency:** `5101ms`
+**Status:** `200` | **Latency:** `48ms`
 **Response:**
 ```json
 {
   "data": {
     "max": 8589934592,
-    "used": 2394342704,
-    "free": 6195591888
+    "used": 739545360,
+    "free": 7850389232
   },
   "success": true,
-  "timestamp": 1780742308315
+  "timestamp": 1781162077540
 }
 ```
+
+---
+
+## Get Server Uptime
 
 ### `GET /server/uptime`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/server/uptime
 ```
-**Status:** `200` | **Latency:** `5106ms`
+**Status:** `200` | **Latency:** `49ms`
 **Response:**
 ```json
 {
-  "data": 1485,
+  "data": 176,
   "success": true,
-  "timestamp": 1780742313615
+  "timestamp": 1781162078090
 }
 ```
+
+---
+
+## Get Server Version
 
 ### `GET /server/version`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/server/version
 ```
-**Status:** `200` | **Latency:** `5091ms`
+**Status:** `200` | **Latency:** `49ms`
 **Response:**
 ```json
 {
@@ -183,36 +241,44 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     "platform": "Paper"
   },
   "success": true,
-  "timestamp": 1780742318915
+  "timestamp": 1781162078640
 }
 ```
+
+---
+
+## Get Server Player Count
 
 ### `GET /server/players/count`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/server/players/count
 ```
-**Status:** `200` | **Latency:** `5101ms`
+**Status:** `200` | **Latency:** `49ms`
 **Response:**
 ```json
 {
   "data": {
-    "visible": 2,
+    "visible": 3,
     "vanished": 0,
     "max": 70,
-    "online": 2
+    "online": 3
   },
   "success": true,
-  "timestamp": 1780742324215
+  "timestamp": 1781162079190
 }
 ```
+
+---
+
+## Get Server Plugins
 
 ### `GET /server/plugins`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/server/plugins
 ```
-**Status:** `200` | **Latency:** `5098ms`
+**Status:** `200` | **Latency:** `50ms`
 **Response:**
 ```json
 {
@@ -259,7 +325,7 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     },
     {
       "name": "NaturalSchool",
-      "version": "1.6.1"
+      "version": "1.6.8"
     },
     {
       "name": "NaturalCore",
@@ -278,10 +344,6 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
       "version": "5.6.2"
     },
     {
-      "name": "NaturalAPI",
-      "version": "1.0.0"
-    },
-    {
       "name": "NaturalAuthPaper",
       "version": "1.0-SNAPSHOT"
     },
@@ -296,6 +358,10 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     {
       "name": "LoneLibs",
       "version": "1.0.65"
+    },
+    {
+      "name": "NaturalAPI",
+      "version": "1.0.4"
     },
     {
       "name": "SkQuery",
@@ -315,48 +381,211 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     }
   ],
   "success": true,
-  "timestamp": 1780742329515
+  "timestamp": 1781162079740
 }
 ```
+
+---
+
+## Get Server Whitelist
 
 ### `GET /server/whitelist`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/server/whitelist
 ```
-**Status:** `200` | **Latency:** `5098ms`
+**Status:** `200` | **Latency:** `49ms`
 **Response:**
 ```json
 {
   "data": [],
   "success": true,
-  "timestamp": 1780742334815
+  "timestamp": 1781162080290
 }
 ```
+
+---
+
+## Get Server Banlist
 
 ### `GET /server/banlist`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/server/banlist
 ```
-**Status:** `200` | **Latency:** `5098ms`
+**Status:** `200` | **Latency:** `49ms`
 **Response:**
 ```json
 {
   "data": [],
   "success": true,
-  "timestamp": 1780742340115
+  "timestamp": 1781162080840
 }
 ```
 
-## 2. Online Players List
+---
 
-### `GET /players` (Default / includeVanished=false)
+## Get Playtime Leaderboard
+
+### `GET /server/leaderboard?type=playtime&limit=5`
+**Curl Example:**
+```bash
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/server/leaderboard?type=playtime&limit=5
+```
+**Status:** `200` | **Latency:** `65ms`
+**Response:**
+```json
+{
+  "metadata": {
+    "last_sync_timestamp": 1781159181402,
+    "provider": "NaturalAPI Snapshots Database",
+    "sync_interval_minutes": 10,
+    "next_sync_timestamp": 1781159781402
+  },
+  "data": [
+    {
+      "uuid": "f32a30cb-1902-35b0-b9e7-a04ed64d13dd",
+      "username": "AdityaOkeGas",
+      "value": 254633250
+    },
+    {
+      "uuid": "e9467b23-b4d2-4d3f-8522-3b341bb7bb53",
+      "username": "Joselyz",
+      "value": 74986850
+    },
+    {
+      "uuid": "00000000-0000-0000-0009-01f210430d8f",
+      "username": ".FruitPunch5071",
+      "value": 3820050
+    },
+    {
+      "uuid": "9e3a9f2b-cfa7-39bc-9d0f-a26fdb9fa040",
+      "username": "AiKeiBot",
+      "value": 809600
+    },
+    {
+      "uuid": "647077f2-b8b2-35f3-8de6-09c473338e06",
+      "username": "AiKei",
+      "value": 414450
+    }
+  ],
+  "success": true,
+  "timestamp": 1781162081406
+}
+```
+
+---
+
+## Get Balance Leaderboard
+
+### `GET /server/leaderboard?type=balance&limit=5`
+**Curl Example:**
+```bash
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/server/leaderboard?type=balance&limit=5
+```
+**Status:** `200` | **Latency:** `44ms`
+**Response:**
+```json
+{
+  "metadata": {
+    "last_sync_timestamp": 1781159181402,
+    "provider": "NaturalAPI Snapshots Database",
+    "sync_interval_minutes": 10,
+    "next_sync_timestamp": 1781159781402
+  },
+  "data": [
+    {
+      "uuid": "f32a30cb-1902-35b0-b9e7-a04ed64d13dd",
+      "username": "AdityaOkeGas",
+      "value": 31000.0
+    },
+    {
+      "uuid": "e9467b23-b4d2-4d3f-8522-3b341bb7bb53",
+      "username": "Joselyz",
+      "value": 7100.0
+    },
+    {
+      "uuid": "647077f2-b8b2-35f3-8de6-09c473338e06",
+      "username": "AiKei",
+      "value": 0.0
+    },
+    {
+      "uuid": "74ce0d95-4602-30f1-a1ce-7831d68d7b42",
+      "username": "HermesBot",
+      "value": 0.0
+    },
+    {
+      "uuid": "9e3a9f2b-cfa7-39bc-9d0f-a26fdb9fa040",
+      "username": "AiKeiBot",
+      "value": 0.0
+    }
+  ],
+  "success": true,
+  "timestamp": 1781162081950
+}
+```
+
+---
+
+## Get Kills Leaderboard
+
+### `GET /server/leaderboard?type=kills&limit=5`
+**Curl Example:**
+```bash
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/server/leaderboard?type=kills&limit=5
+```
+**Status:** `200` | **Latency:** `49ms`
+**Response:**
+```json
+{
+  "metadata": {
+    "last_sync_timestamp": 1781159181402,
+    "provider": "NaturalAPI Snapshots Database",
+    "sync_interval_minutes": 10,
+    "next_sync_timestamp": 1781159781402
+  },
+  "data": [
+    {
+      "uuid": "9e3a9f2b-cfa7-39bc-9d0f-a26fdb9fa040",
+      "username": "AiKeiBot",
+      "value": 2
+    },
+    {
+      "uuid": "00000000-0000-0000-0009-01f210430d8f",
+      "username": ".FruitPunch5071",
+      "value": 1
+    },
+    {
+      "uuid": "e9467b23-b4d2-4d3f-8522-3b341bb7bb53",
+      "username": "Joselyz",
+      "value": 0
+    },
+    {
+      "uuid": "647077f2-b8b2-35f3-8de6-09c473338e06",
+      "username": "AiKei",
+      "value": 0
+    },
+    {
+      "uuid": "74ce0d95-4602-30f1-a1ce-7831d68d7b42",
+      "username": "HermesBot",
+      "value": 0
+    }
+  ],
+  "success": true,
+  "timestamp": 1781162082500
+}
+```
+
+---
+
+## Get Online Players
+
+### `GET /players`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players
 ```
-**Status:** `200` | **Latency:** `5150ms`
+**Status:** `200` | **Latency:** `39ms`
 **Response:**
 ```json
 {
@@ -364,324 +593,238 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     {
       "staffMode": false,
       "vanished": false,
-      "displayName": "AdityaOkeGas4",
-      "afk": true,
+      "displayName": "AdityaOkeGas2",
+      "afk": false,
       "online": true,
-      "uuid": "eea40d5a-6e98-3de2-9a0d-631505df935f",
-      "username": "AdityaOkeGas4"
+      "uuid": "de11f3ca-003f-3713-b771-62bc481dbfca",
+      "username": "AdityaOkeGas2"
     },
     {
       "staffMode": false,
       "vanished": false,
       "displayName": "AdityaOkeGas3",
-      "afk": true,
+      "afk": false,
       "online": true,
       "uuid": "75ed88b3-eb5c-3e45-a763-c3413042883d",
       "username": "AdityaOkeGas3"
-    }
-  ],
-  "success": true,
-  "timestamp": 1780742345465
-}
-```
-
-### `GET /players?includeVanished=true` (Query param test)
-**Curl Example:**
-```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players?includeVanished=true
-```
-**Status:** `200` | **Latency:** `4099ms`
-**Response:**
-```json
-{
-  "data": [
-    {
-      "staffMode": false,
-      "vanished": false,
-      "displayName": "AdityaOkeGas4",
-      "afk": true,
-      "online": true,
-      "uuid": "eea40d5a-6e98-3de2-9a0d-631505df935f",
-      "username": "AdityaOkeGas4"
     },
     {
       "staffMode": false,
       "vanished": false,
-      "displayName": "AdityaOkeGas3",
-      "afk": true,
+      "displayName": "AdityaOkeGas4",
+      "afk": false,
       "online": true,
-      "uuid": "75ed88b3-eb5c-3e45-a763-c3413042883d",
-      "username": "AdityaOkeGas3"
+      "uuid": "eea40d5a-6e98-3de2-9a0d-631505df935f",
+      "username": "AdityaOkeGas4"
     }
   ],
   "success": true,
-  "timestamp": 1780742349565
+  "timestamp": 1781162083040
 }
 ```
 
-### `GET /players/all` (List all players - online & offline, paged)
+---
+
+## Get Paged Players
+
+### `GET /players/all?page=1&pageSize=10`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" "http://natural.nodevoid.my.id:19133/api/v1/players/all?page=1&pageSize=50"
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/all?page=1&pageSize=10
 ```
-**Status:** `200` | **Latency:** `N/A`
+**Status:** `200` | **Latency:** `59ms`
 **Response:**
 ```json
 {
-  "success": true,
-  "timestamp": 1780742345465,
   "data": {
+    "pagination": {
+      "total": 19,
+      "totalPages": 2,
+      "pageSize": 10,
+      "page": 1
+    },
     "players": [
       {
-        "uuid": "eea40d5a-6e98-3de2-9a0d-631505df935f",
-        "username": "AdityaOkeGas4",
-        "displayName": "AdityaOkeGas4",
-        "online": true,
-        "vanished": false,
-        "afk": true,
         "staffMode": false,
-        "lastSeen": 1780742345465
+        "vanished": false,
+        "lastSeen": 1780837329868,
+        "displayName": "AdityaOkeGas4",
+        "afk": false,
+        "online": true,
+        "uuid": "eea40d5a-6e98-3de2-9a0d-631505df935f",
+        "username": "AdityaOkeGas4"
       },
       {
-        "uuid": "75ed88b3-eb5c-3e45-a763-c3413042883d",
-        "username": "AdityaOkeGas3",
-        "displayName": "AdityaOkeGas3",
-        "online": false,
-        "vanished": false,
-        "afk": false,
         "staffMode": false,
-        "lastSeen": 1780656400000
+        "vanished": false,
+        "lastSeen": 1780837329848,
+        "displayName": "AdityaOkeGas3",
+        "afk": false,
+        "online": true,
+        "uuid": "75ed88b3-eb5c-3e45-a763-c3413042883d",
+        "username": "AdityaOkeGas3"
+      },
+      {
+        "staffMode": false,
+        "vanished": false,
+        "lastSeen": 1780837329826,
+        "displayName": "AdityaOkeGas2",
+        "afk": false,
+        "online": true,
+        "uuid": "de11f3ca-003f-3713-b771-62bc481dbfca",
+        "username": "AdityaOkeGas2"
+      },
+      {
+        "staffMode": false,
+        "vanished": false,
+        "lastSeen": 1781159395128,
+        "displayName": "AdityaOkeGas",
+        "afk": false,
+        "online": false,
+        "uuid": "f32a30cb-1902-35b0-b9e7-a04ed64d13dd",
+        "username": "AdityaOkeGas"
+      },
+      {
+        "staffMode": false,
+        "vanished": false,
+        "lastSeen": 1781114008924,
+        "displayName": "Joselyz",
+        "afk": false,
+        "online": false,
+        "uuid": "e9467b23-b4d2-4d3f-8522-3b341bb7bb53",
+        "username": "Joselyz"
+      },
+      {
+        "staffMode": false,
+        "vanished": false,
+        "lastSeen": 1780995278136,
+        "displayName": "AnakTentara",
+        "afk": false,
+        "online": false,
+        "uuid": "a91a4636-cf4e-3ea0-ae3d-cf0ec0ded240",
+        "username": "AnakTentara"
+      },
+      {
+        "staffMode": false,
+        "vanished": false,
+        "lastSeen": 1780989364246,
+        "displayName": "Daichi_keii",
+        "afk": false,
+        "online": false,
+        "uuid": "9c045595-a5da-4284-9d9e-c3603f86432b",
+        "username": "Daichi_keii"
+      },
+      {
+        "staffMode": false,
+        "vanished": false,
+        "lastSeen": 1780886497580,
+        "displayName": ".reknah8402",
+        "afk": false,
+        "online": false,
+        "uuid": "00000000-0000-0000-0009-01f90c772e5e",
+        "username": ".reknah8402"
+      },
+      {
+        "staffMode": false,
+        "vanished": false,
+        "lastSeen": 1780837329887,
+        "displayName": "AdityaOkeGas5",
+        "afk": false,
+        "online": false,
+        "uuid": "f1d3d44a-9488-3fee-84c9-522c62336d23",
+        "username": "AdityaOkeGas5"
+      },
+      {
+        "staffMode": false,
+        "vanished": false,
+        "lastSeen": 1780746518153,
+        "displayName": ".ItzJope",
+        "afk": false,
+        "online": false,
+        "uuid": "00000000-0000-0000-0009-01f145b763cd",
+        "username": ".ItzJope"
+      }
+    ]
+  },
+  "success": true,
+  "timestamp": 1781162083599
+}
+```
+
+---
+
+## Get Player Details
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca`
+**Curl Example:**
+```bash
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca
+```
+**Status:** `200` | **Latency:** `52ms`
+**Response:**
+```json
+{
+  "data": {
+    "country": "Singapore",
+    "city": "Singapore",
+    "displayName": "AdityaOkeGas2",
+    "ping": 4,
+    "isp": "Oracle Corporation",
+    "totalPlaytimeMs": 24225600,
+    "locale": "en",
+    "uuid": "de11f3ca-003f-3713-b771-62bc481dbfca",
+    "gamemode": "SURVIVAL",
+    "saturation": 4.0,
+    "firstJoin": 1780588217858,
+    "school": {
+      "academicClass": 0,
+      "academicStage": "NONE",
+      "currentSemester": "GANJIL",
+      "isStaff": false,
+      "nis": null,
+      "rank": {
+        "displayName": "<gray>Belum Terdaftar</gray>",
+        "id": "NONE",
+        "priority": 0,
+        "type": "NONE"
+      },
+      "isManagement": false
+    },
+    "expLevel": 0,
+    "maxHealth": 20.0,
+    "vault": {
+      "balance": 1000.0,
+      "prefix": "",
+      "permissionPlugin": "LuckPerms",
+      "economyPlugin": "Money",
+      "groups": [
+        "default"
+      ],
+      "currency": "Money",
+      "suffix": "",
+      "group": "default"
+    },
+    "ipHistory": [
+      {
+        "country": "Singapore",
+        "lastSeen": 1781162028019,
+        "city": "Singapore",
+        "firstSeen": 1781019787927,
+        "isp": "Oracle Corporation",
+        "ipAddress": "140.245.116.11",
+        "region": "South East",
+        "asn": "AS31898 Oracle Corporation"
       }
     ],
-    "pagination": {
-      "page": 1,
-      "pageSize": 50,
-      "total": 2,
-      "totalPages": 1
-    }
-  }
-}
-```
-
-## 9. WebSocket Endpoints (Real-time Data)
-
-Base WebSocket URL: `ws://<server-ip>:7890`
-
-Semua koneksi WebSocket memerlukan autentikasi via query parameter `token`.
-Format: `ws://<server-ip>:7890/ws/server?token=<keyId.rawSecret>`
-
-**Config Master Switch:** `features.websocket.enabled` (default: `true`)
-**Config Per-Endpoint:** `features.websocket.endpoints.<name>` (default: `true`)
-
----
-
-### `ws://<server-ip>:7890/ws/server` — Real-time Server Stats
-
-**Scope:** `read:server` | **Config:** `features.websocket.endpoints.server-stats`
-
-Mengirimkan full server status setiap 1 detik.
-
-**Subscribe:**
-```javascript
-const ws = new WebSocket('ws://localhost:7890/ws/server?token=napi_xxx');
-ws.onmessage = (e) => {
-  const msg = JSON.parse(e.data);
-  console.log('TPS:', msg.data.tps.now, 'Players:', msg.data.players.online);
-};
-```
-
-**Message (setiap ~1 detik):**
-```json
-{
-  "type": "stats",
-  "timestamp": 1780742286966,
-  "data": {
-    "online": true,
-    "version": "1.21.11",
-    "platform": "Paper",
-    "motd": "A Minecraft Server",
-    "tps": { "now": 20.0, "1m": 20.0, "5m": 19.95, "15m": 19.98 },
-    "players": { "online": 2, "visible": 2, "vanished": 0, "max": 70 },
-    "mspt": 6.82,
-    "uptime": 1464,
-    "ram": { "usedMB": 2043, "freeMB": 6148, "maxMB": 8192 },
-    "javaVersion": "25.0.3",
-    "osName": "Linux",
-    "worlds": ["world", "world_nether", "world_the_end", "flat", "schoolmap"]
-  }
-}
-```
-
----
-
-### `ws://<server-ip>:7890/ws/players` — Player Join/Leave Events
-
-**Scope:** `read:players` | **Config:** `features.websocket.endpoints.player-events`
-
-Mendapatkan event real-time saat player join dan leave.
-
-**Player Join:**
-```json
-{
-  "type": "join",
-  "timestamp": 1780742286966,
-  "data": {
-    "uuid": "eea40d5a-6e98-3de2-9a0d-631505df935f",
-    "username": "AdityaOkeGas4",
-    "displayName": "AdityaOkeGas4",
-    "online": true,
     "vanished": false,
     "afk": false,
-    "staffMode": false
-  }
-}
-```
-
-**Player Leave:**
-```json
-{
-  "type": "leave",
-  "timestamp": 1780742286966,
-  "data": {
-    "uuid": "eea40d5a-6e98-3de2-9a0d-631505df935f",
-    "username": "AdityaOkeGas4"
-  }
-}
-```
-
----
-
-### `ws://<server-ip>:7890/ws/chat` — Real-time Chat Messages
-
-**Scope:** `read:server` | **Config:** `features.websocket.endpoints.chat`
-
-Mendapatkan semua chat message dari server secara real-time.
-
-**Message:**
-```json
-{
-  "type": "message",
-  "timestamp": 1780742286966,
-  "data": {
-    "uuid": "eea40d5a-6e98-3de2-9a0d-631505df935f",
-    "username": "AdityaOkeGas4",
-    "displayName": "AdityaOkeGas4",
-    "message": "Halo semuanya!",
-    "format": "<AdityaOkeGas4> Halo semuanya!"
-  }
-}
-```
-
----
-
-### `ws://<server-ip>:7890/ws/player/{uuid}` — Individual Player Detail
-
-**Scope:** `read:players` | **Config:** `features.websocket.endpoints.player-detail`
-
-Mengirimkan full player snapshot saat connect. Client bisa kirim `ping` untuk keep-alive.
-
-**Initial snapshot (diterima saat connect):**
-```json
-{
-  "type": "snapshot",
-  "timestamp": 1780742286966,
-  "data": {
-    "uuid": "eea40d5a-6e98-3de2-9a0d-631505df935f",
-    "username": "AdityaOkeGas4",
-    "displayName": "AdityaOkeGas4",
-    "online": true,
-    "location": { "world": "world", "x": 3525.6, "y": 68.0, "z": 4069.1, "yaw": 0.0, "pitch": 0.0 },
-    "health": 20.0, "maxHealth": 20.0, "foodLevel": 20, "saturation": 5.0,
-    "expLevel": 0, "expProgress": 0.0, "totalExp": 0,
-    "gamemode": "SURVIVAL", "ping": 3
-  }
-}
-```
-
----
-
-### WebSocket Error Codes
-
-| Close Code | Deskripsi |
-|---|---|
-| `4001` | Token tidak ditemukan (missing `token` query parameter) |
-| `4003` | Token invalid atau scope tidak mencukupi |
-| `1001` | Server shutting down |
-
-## 3. Player Endpoints
-
-Tested using active player: **AdityaOkeGas4** (`eea40d5a-6e98-3de2-9a0d-631505df935f`)
-
-### `GET /players/eea40d5a-6e98-3de2-9a0d-631505df935f` (Full player data by UUID)
-**Curl Example:**
-```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f
-```
-**Status:** `200` | **Latency:** `5103ms`
-**Response:**
-```json
-{
-  "data": {
-    "country": "Singapore",
-    "city": "Singapore",
-    "displayName": "AdityaOkeGas4",
-    "ping": 3,
-    "isp": "Oracle Corporation",
-    "totalPlaytimeMs": 11371950,
-    "locale": "en",
-    "uuid": "eea40d5a-6e98-3de2-9a0d-631505df935f",
-    "gamemode": "SURVIVAL",
-    "saturation": 5.0,
-    "firstJoin": 1780588599806,
-    "school": {
-      "academicClass": 0,
-      "academicStage": "NONE",
-      "currentSemester": "GANJIL",
-      "isStaff": false,
-      "nis": null,
-      "rank": {
-        "displayName": "<gray>Belum Terdaftar</gray>",
-        "id": "NONE",
-        "priority": 0,
-        "type": "NONE"
-      },
-      "isManagement": false
-    },
-    "expLevel": 0,
-    "maxHealth": 20.0,
-    "vault": {
-      "balance": 1000.0,
-      "prefix": "",
-      "permissionPlugin": "LuckPerms",
-      "economyPlugin": "Money",
-      "groups": [
-        "default"
-      ],
-      "currency": "Money",
-      "suffix": "",
-      "group": "default"
-    },
-    "ipHistory": [
-      {
-        "country": "Singapore",
-        "lastSeen": 1780741132632,
-        "city": "Singapore",
-        "firstSeen": 1780741132632,
-        "isp": "Oracle Corporation",
-        "ipAddress": "140.245.116.11",
-        "region": "South East",
-        "asn": "AS31898 Oracle Corporation"
-      }
-    ],
-    "vanished": false,
-    "afk": true,
     "ipAddress": "140.245.116.11",
     "health": 20.0,
     "expProgress": 0.0,
     "totalExp": 0,
     "staffMode": false,
     "clientBrand": "vanilla",
-    "lastSeen": 1780656473635,
+    "lastSeen": 1780837329826,
     "luckperms": {
       "inheritedGroups": [
         "default"
@@ -697,171 +840,82 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     "online": true,
     "location": {
       "world": "world",
-      "x": 3525.6085005501955,
-      "y": 68.0,
-      "z": 4069.1164896734786,
+      "x": -3272.5,
+      "y": 101.5,
+      "z": 3167.5,
       "pitch": 0.0,
       "yaw": 0.0
     },
     "foodLevel": 20,
     "region": "South East",
     "asn": "AS31898 Oracle Corporation",
-    "username": "AdityaOkeGas4"
+    "username": "AdityaOkeGas2"
   },
   "success": true,
-  "timestamp": 1780742354669
+  "timestamp": 1781162084152
 }
 ```
 
-### `GET /players/name/AdityaOkeGas4` (Full player data by Username)
-**Curl Example:**
-```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/name/AdityaOkeGas4
-```
-**Status:** `200` | **Latency:** `5099ms`
-**Response:**
-```json
-{
-  "data": {
-    "country": "Singapore",
-    "city": "Singapore",
-    "displayName": "AdityaOkeGas4",
-    "ping": 3,
-    "isp": "Oracle Corporation",
-    "totalPlaytimeMs": 11377250,
-    "locale": "en",
-    "uuid": "eea40d5a-6e98-3de2-9a0d-631505df935f",
-    "gamemode": "SURVIVAL",
-    "saturation": 5.0,
-    "firstJoin": 1780588599806,
-    "school": {
-      "academicClass": 0,
-      "academicStage": "NONE",
-      "currentSemester": "GANJIL",
-      "isStaff": false,
-      "nis": null,
-      "rank": {
-        "displayName": "<gray>Belum Terdaftar</gray>",
-        "id": "NONE",
-        "priority": 0,
-        "type": "NONE"
-      },
-      "isManagement": false
-    },
-    "expLevel": 0,
-    "maxHealth": 20.0,
-    "vault": {
-      "balance": 1000.0,
-      "prefix": "",
-      "permissionPlugin": "LuckPerms",
-      "economyPlugin": "Money",
-      "groups": [
-        "default"
-      ],
-      "currency": "Money",
-      "suffix": "",
-      "group": "default"
-    },
-    "ipHistory": [
-      {
-        "country": "Singapore",
-        "lastSeen": 1780741132632,
-        "city": "Singapore",
-        "firstSeen": 1780741132632,
-        "isp": "Oracle Corporation",
-        "ipAddress": "140.245.116.11",
-        "region": "South East",
-        "asn": "AS31898 Oracle Corporation"
-      }
-    ],
-    "vanished": false,
-    "afk": true,
-    "ipAddress": "140.245.116.11",
-    "health": 20.0,
-    "expProgress": 0.0,
-    "totalExp": 0,
-    "staffMode": false,
-    "clientBrand": "vanilla",
-    "lastSeen": 1780656473635,
-    "luckperms": {
-      "inheritedGroups": [
-        "default"
-      ],
-      "permissionNodes": [
-        {
-          "node": "group.default",
-          "value": true
-        }
-      ],
-      "primaryGroup": "default"
-    },
-    "online": true,
-    "location": {
-      "world": "world",
-      "x": 3525.6085005501955,
-      "y": 68.0,
-      "z": 4069.1164896734786,
-      "pitch": 0.0,
-      "yaw": 0.0
-    },
-    "foodLevel": 20,
-    "region": "South East",
-    "asn": "AS31898 Oracle Corporation",
-    "username": "AdityaOkeGas4"
-  },
-  "success": true,
-  "timestamp": 1780742359969
-}
-```
+---
 
-### `GET /players/eea40d5a-6e98-3de2-9a0d-631505df935f/location` (Player Location)
+## Get Player Location
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca/location`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/location
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/location
 ```
-**Status:** `200` | **Latency:** `5095ms`
+**Status:** `200` | **Latency:** `36ms`
 **Response:**
 ```json
 {
   "data": {
     "world": "world",
-    "x": 3525.6085005501955,
-    "y": 68.0,
-    "z": 4069.1164896734786,
+    "x": -3272.5,
+    "y": 101.5,
+    "z": 3167.5,
     "pitch": 0.0,
     "yaw": 0.0
   },
   "success": true,
-  "timestamp": 1780742365265
+  "timestamp": 1781162084690
 }
 ```
 
-### `GET /players/eea40d5a-6e98-3de2-9a0d-631505df935f/health` (Player Health & Food)
+---
+
+## Get Player Health
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca/health`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/health
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/health
 ```
-**Status:** `200` | **Latency:** `5099ms`
+**Status:** `200` | **Latency:** `49ms`
 **Response:**
 ```json
 {
   "data": {
-    "saturation": 5.0,
+    "saturation": 4.0,
     "health": 20.0,
     "maxHealth": 20.0,
     "foodLevel": 20
   },
   "success": true,
-  "timestamp": 1780742370565
+  "timestamp": 1781162085240
 }
 ```
 
-### `GET /players/eea40d5a-6e98-3de2-9a0d-631505df935f/experience` (Player Experience)
+---
+
+## Get Player Experience
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca/experience`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/experience
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/experience
 ```
-**Status:** `200` | **Latency:** `5098ms`
+**Status:** `200` | **Latency:** `49ms`
 **Response:**
 ```json
 {
@@ -871,61 +925,77 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     "totalExp": 0
   },
   "success": true,
-  "timestamp": 1780742375865
+  "timestamp": 1781162085790
 }
 ```
 
-### `GET /players/eea40d5a-6e98-3de2-9a0d-631505df935f/gamemode` (Player Gamemode)
+---
+
+## Get Player Gamemode
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca/gamemode`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/gamemode
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/gamemode
 ```
-**Status:** `200` | **Latency:** `5099ms`
+**Status:** `200` | **Latency:** `48ms`
 **Response:**
 ```json
 {
   "data": "SURVIVAL",
   "success": true,
-  "timestamp": 1780742381165
+  "timestamp": 1781162086340
 }
 ```
 
-### `GET /players/eea40d5a-6e98-3de2-9a0d-631505df935f/inventory` (Full Inventory)
+---
+
+## Get Player Inventory
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca/inventory`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/inventory
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/inventory
 ```
-**Status:** `200` | **Latency:** `5104ms`
+**Status:** `200` | **Latency:** `50ms`
 **Response:**
 ```json
 {
   "data": [],
   "success": true,
-  "timestamp": 1780742386465
+  "timestamp": 1781162086891
 }
 ```
 
-### `GET /players/eea40d5a-6e98-3de2-9a0d-631505df935f/inventory/hotbar` (Hotbar Inventory (slots 0-8))
+---
+
+## Get Player Hotbar
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca/inventory/hotbar`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/inventory/hotbar
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/inventory/hotbar
 ```
-**Status:** `200` | **Latency:** `5094ms`
+**Status:** `200` | **Latency:** `49ms`
 **Response:**
 ```json
 {
   "data": [],
   "success": true,
-  "timestamp": 1780742391765
+  "timestamp": 1781162087440
 }
 ```
 
-### `GET /players/eea40d5a-6e98-3de2-9a0d-631505df935f/inventory/armor` (Armor Slots)
+---
+
+## Get Player Armor
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca/inventory/armor`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/inventory/armor
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/inventory/armor
 ```
-**Status:** `200` | **Latency:** `5099ms`
+**Status:** `200` | **Latency:** `48ms`
 **Response:**
 ```json
 {
@@ -936,44 +1006,43 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     "leggings": null
   },
   "success": true,
-  "timestamp": 1780742397065
+  "timestamp": 1781162087990
 }
 ```
 
-### `GET /players/eea40d5a-6e98-3de2-9a0d-631505df935f/inventory/offhand` (Offhand Item)
+---
+
+## Get Player Offhand
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca/inventory/offhand`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/inventory/offhand
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/inventory/offhand
 ```
-**Status:** `200` | **Latency:** `5099ms`
+**Status:** `200` | **Latency:** `50ms`
 **Response:**
 ```json
 {
   "data": null,
   "success": true,
-  "timestamp": 1780742402365
+  "timestamp": 1781162088540
 }
 ```
 
-### `GET /players/eea40d5a-6e98-3de2-9a0d-631505df935f/effects` (Active Potion Effects)
+---
+
+## Get Player Effects
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca/effects`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/effects
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/effects
 ```
-**Status:** `200` | **Latency:** `5248ms`
+**Status:** `200` | **Latency:** `48ms`
 **Response:**
 ```json
 {
   "data": [
-    {
-      "durationTicks": -1,
-      "durationSeconds": -0.05,
-      "icon": false,
-      "amplifier": 255,
-      "ambient": false,
-      "type": "REGENERATION",
-      "particles": false
-    },
     {
       "durationTicks": -1,
       "durationSeconds": -0.05,
@@ -982,49 +1051,73 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
       "ambient": false,
       "type": "DAMAGE_RESISTANCE",
       "particles": false
+    },
+    {
+      "durationTicks": -1,
+      "durationSeconds": -0.05,
+      "icon": false,
+      "amplifier": 255,
+      "ambient": false,
+      "type": "REGENERATION",
+      "particles": false
     }
   ],
   "success": true,
-  "timestamp": 1780742407715
+  "timestamp": 1781162089090
 }
 ```
 
-### `GET /players/eea40d5a-6e98-3de2-9a0d-631505df935f/skin` (Player Skin texture metadata)
+---
+
+## Get Player Skin
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca/skin`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/skin
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/skin
 ```
-**Status:** `200` | **Latency:** `5396ms`
+**Status:** `404` | **Latency:** `346ms`
 **Response:**
 ```json
 {
-  "data": {},
-  "success": true,
-  "timestamp": 1780742413374
+  "success": false,
+  "error": {
+    "code": "PLAYER_NOT_FOUND",
+    "message": "Player or skin not found.",
+    "timestamp": 1781162089937
+  }
 }
 ```
 
-### `GET /players/eea40d5a-6e98-3de2-9a0d-631505df935f/ping` (Player Connection Ping)
+---
+
+## Get Player Ping
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca/ping`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/ping
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/ping
 ```
-**Status:** `200` | **Latency:** `5104ms`
+**Status:** `200` | **Latency:** `52ms`
 **Response:**
 ```json
 {
-  "data": 3,
+  "data": 6,
   "success": true,
-  "timestamp": 1780742418715
+  "timestamp": 1781162090490
 }
 ```
 
-### `GET /players/eea40d5a-6e98-3de2-9a0d-631505df935f/network` (Detailed Network, IP, & Geolocation History)
+---
+
+## Get Player Network Details
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca/network`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/network
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/network
 ```
-**Status:** `200` | **Latency:** `5444ms`
+**Status:** `200` | **Latency:** `17ms`
 **Response:**
 ```json
 {
@@ -1033,9 +1126,9 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     "ipHistory": [
       {
         "country": "Singapore",
-        "lastSeen": 1780741132632,
+        "lastSeen": 1781162028019,
         "city": "Singapore",
-        "firstSeen": 1780741132632,
+        "firstSeen": 1781019787927,
         "isp": "Oracle Corporation",
         "ipAddress": "140.245.116.11",
         "region": "South East",
@@ -1044,7 +1137,7 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     ],
     "country": "Singapore",
     "city": "Singapore",
-    "ping": 3,
+    "ping": null,
     "isp": "Oracle Corporation",
     "ipAddress": "140.245.116.11",
     "locale": "en",
@@ -1052,74 +1145,145 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     "asn": "AS31898 Oracle Corporation"
   },
   "success": true,
-  "timestamp": 1780742424219
+  "timestamp": 1781162091009
 }
 ```
 
-### `GET /players/eea40d5a-6e98-3de2-9a0d-631505df935f/stats` (Player Playtime & Seen Statistics)
+---
+
+## Get Player Stats
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca/stats`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/stats
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/stats
 ```
-**Status:** `200` | **Latency:** `5216ms`
+**Status:** `200` | **Latency:** `31ms`
 **Response:**
 ```json
 {
   "data": {
-    "firstJoin": 1780588599806,
-    "lastSeen": 1780656473635,
-    "totalPlaytimeMs": 11446950
+    "firstJoin": 1780588217858,
+    "lastSeen": 1780837329826,
+    "totalPlaytimeMs": 24233000
   },
   "success": true,
-  "timestamp": 1780742429665
+  "timestamp": 1781162091540
 }
 ```
 
-### `GET /players/eea40d5a-6e98-3de2-9a0d-631505df935f/vault` (Vault Integration Data)
+---
+
+## Get Player Permissions
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca/permissions`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/vault
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/permissions
 ```
-**Status:** `404` | **Latency:** `5088ms`
+**Status:** `200` | **Latency:** `49ms`
 **Response:**
 ```json
-Endpoint GET /api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/vault not found
+{
+  "data": [
+    "group.default"
+  ],
+  "success": true,
+  "timestamp": 1781162092091
+}
 ```
 
-### `GET /players/eea40d5a-6e98-3de2-9a0d-631505df935f/luckperms` (LuckPerms Integration Data)
+---
+
+## Check Player Permission node
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca/permission/naturalapi.use`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/luckperms
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/permission/naturalapi.use
 ```
-**Status:** `404` | **Latency:** `5078ms`
+**Status:** `200` | **Latency:** `48ms`
 **Response:**
 ```json
-Endpoint GET /api/v1/players/eea40d5a-6e98-3de2-9a0d-631505df935f/luckperms not found
+{
+  "data": {
+    "hasPermission": true,
+    "permission": "naturalapi.use"
+  },
+  "success": true,
+  "timestamp": 1781162092640
+}
 ```
 
-## 4. Offline/Database Player Endpoints
+---
 
-### `GET /players/offline/eea40d5a-6e98-3de2-9a0d-631505df935f` (Offline Player Database Snapshot by UUID)
+## Get Player Snapshot
+
+### `GET /players/de11f3ca-003f-3713-b771-62bc481dbfca/snapshot`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/offline/eea40d5a-6e98-3de2-9a0d-631505df935f
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/snapshot
 ```
-**Status:** `200` | **Latency:** `5120ms`
+**Status:** `404` | **Latency:** `55ms`
+**Response:**
+```json
+{
+  "success": false,
+  "error": {
+    "code": "PLAYER_NOT_FOUND",
+    "message": "Player snapshot not found.",
+    "timestamp": 1781162093197
+  }
+}
+```
+
+---
+
+## Create Player Snapshot
+
+### `POST /players/de11f3ca-003f-3713-b771-62bc481dbfca/snapshot`
+**Curl Example:**
+```bash
+curl -X POST -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/snapshot
+```
+**Status:** `200` | **Latency:** `48ms`
+**Response:**
+```json
+{
+  "data": {
+    "player": "AdityaOkeGas2",
+    "message": "Snapshot triggered successfully."
+  },
+  "success": true,
+  "timestamp": 1781162093747
+}
+```
+
+---
+
+## Get Offline Player Snapshot
+
+### `GET /players/offline/de11f3ca-003f-3713-b771-62bc481dbfca`
+**Curl Example:**
+```bash
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/offline/de11f3ca-003f-3713-b771-62bc481dbfca
+```
+**Status:** `200` | **Latency:** `48ms`
 **Response:**
 ```json
 {
   "data": {
     "country": "Singapore",
     "city": "Singapore",
-    "displayName": "AdityaOkeGas4",
-    "ping": 3,
+    "displayName": "AdityaOkeGas2",
+    "ping": 13,
     "isp": "Oracle Corporation",
-    "totalPlaytimeMs": 11462950,
+    "totalPlaytimeMs": 24235750,
     "locale": "en",
-    "uuid": "eea40d5a-6e98-3de2-9a0d-631505df935f",
+    "uuid": "de11f3ca-003f-3713-b771-62bc481dbfca",
     "gamemode": "SURVIVAL",
-    "saturation": 5.0,
-    "firstJoin": 1780588599806,
+    "saturation": 4.0,
+    "firstJoin": 1780588217858,
     "school": {
       "academicClass": 0,
       "academicStage": "NONE",
@@ -1151,9 +1315,9 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     "ipHistory": [
       {
         "country": "Singapore",
-        "lastSeen": 1780741132632,
+        "lastSeen": 1781162028019,
         "city": "Singapore",
-        "firstSeen": 1780741132632,
+        "firstSeen": 1781019787927,
         "isp": "Oracle Corporation",
         "ipAddress": "140.245.116.11",
         "region": "South East",
@@ -1161,14 +1325,14 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
       }
     ],
     "vanished": false,
-    "afk": true,
+    "afk": false,
     "ipAddress": "140.245.116.11",
     "health": 20.0,
     "expProgress": 0.0,
     "totalExp": 0,
     "staffMode": false,
     "clientBrand": "vanilla",
-    "lastSeen": 1780656473635,
+    "lastSeen": 1780837329826,
     "luckperms": {
       "inheritedGroups": [
         "default"
@@ -1184,131 +1348,32 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     "online": true,
     "location": {
       "world": "world",
-      "x": 3525.6085005501955,
-      "y": 68.0,
-      "z": 4069.1164896734786,
+      "x": -3272.5,
+      "y": 101.5,
+      "z": 3167.5,
       "pitch": 0.0,
       "yaw": 0.0
     },
     "foodLevel": 20,
     "region": "South East",
     "asn": "AS31898 Oracle Corporation",
-    "username": "AdityaOkeGas4"
+    "username": "AdityaOkeGas2"
   },
   "success": true,
-  "timestamp": 1780742445669
+  "timestamp": 1781162094295
 }
 ```
 
-### `GET /players/offline/name/AdityaOkeGas4` (Offline Player Database Snapshot by Username)
-**Curl Example:**
-```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/players/offline/name/AdityaOkeGas4
-```
-**Status:** `200` | **Latency:** `5100ms`
-**Response:**
-```json
-{
-  "data": {
-    "country": "Singapore",
-    "city": "Singapore",
-    "displayName": "AdityaOkeGas4",
-    "ping": 3,
-    "isp": "Oracle Corporation",
-    "totalPlaytimeMs": 11468250,
-    "locale": "en",
-    "uuid": "eea40d5a-6e98-3de2-9a0d-631505df935f",
-    "gamemode": "SURVIVAL",
-    "saturation": 5.0,
-    "firstJoin": 1780588599806,
-    "school": {
-      "academicClass": 0,
-      "academicStage": "NONE",
-      "currentSemester": "GANJIL",
-      "isStaff": false,
-      "nis": null,
-      "rank": {
-        "displayName": "<gray>Belum Terdaftar</gray>",
-        "id": "NONE",
-        "priority": 0,
-        "type": "NONE"
-      },
-      "isManagement": false
-    },
-    "expLevel": 0,
-    "maxHealth": 20.0,
-    "vault": {
-      "balance": 1000.0,
-      "prefix": "",
-      "permissionPlugin": "LuckPerms",
-      "economyPlugin": "Money",
-      "groups": [
-        "default"
-      ],
-      "currency": "Money",
-      "suffix": "",
-      "group": "default"
-    },
-    "ipHistory": [
-      {
-        "country": "Singapore",
-        "lastSeen": 1780741132632,
-        "city": "Singapore",
-        "firstSeen": 1780741132632,
-        "isp": "Oracle Corporation",
-        "ipAddress": "140.245.116.11",
-        "region": "South East",
-        "asn": "AS31898 Oracle Corporation"
-      }
-    ],
-    "vanished": false,
-    "afk": true,
-    "ipAddress": "140.245.116.11",
-    "health": 20.0,
-    "expProgress": 0.0,
-    "totalExp": 0,
-    "staffMode": false,
-    "clientBrand": "vanilla",
-    "lastSeen": 1780656473635,
-    "luckperms": {
-      "inheritedGroups": [
-        "default"
-      ],
-      "permissionNodes": [
-        {
-          "node": "group.default",
-          "value": true
-        }
-      ],
-      "primaryGroup": "default"
-    },
-    "online": true,
-    "location": {
-      "world": "world",
-      "x": 3525.6085005501955,
-      "y": 68.0,
-      "z": 4069.1164896734786,
-      "pitch": 0.0,
-      "yaw": 0.0
-    },
-    "foodLevel": 20,
-    "region": "South East",
-    "asn": "AS31898 Oracle Corporation",
-    "username": "AdityaOkeGas4"
-  },
-  "success": true,
-  "timestamp": 1780742450969
-}
-```
+---
 
-## 5. World Endpoints
+## Get Worlds List
 
-### `GET /worlds` (List loaded worlds)
+### `GET /worlds`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/worlds
 ```
-**Status:** `200` | **Latency:** `5094ms`
+**Status:** `200` | **Latency:** `45ms`
 **Response:**
 ```json
 {
@@ -1317,14 +1382,14 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
       "difficulty": "EASY",
       "environment": "NORMAL",
       "seed": 6641214828919989498,
-      "entityCount": 344,
-      "playerCount": 2,
+      "entityCount": 415,
+      "playerCount": 3,
       "name": "world",
-      "weather": "THUNDER",
-      "fullTime": 14222105,
-      "time": 14105,
+      "weather": "CLEAR",
+      "fullTime": 21655002,
+      "time": 7002,
       "pvp": true,
-      "loadedChunks": 1250
+      "loadedChunks": 1875
     },
     {
       "difficulty": "EASY",
@@ -1334,8 +1399,8 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
       "playerCount": 0,
       "name": "world_nether",
       "weather": "CLEAR",
-      "fullTime": 15630536,
-      "time": 6536,
+      "fullTime": 23056968,
+      "time": 16968,
       "pvp": true,
       "loadedChunks": 0
     },
@@ -1347,8 +1412,8 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
       "playerCount": 0,
       "name": "world_the_end",
       "weather": "CLEAR",
-      "fullTime": 15630536,
-      "time": 6536,
+      "fullTime": 23056968,
+      "time": 16968,
       "pvp": true,
       "loadedChunks": 0
     },
@@ -1359,9 +1424,9 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
       "entityCount": 0,
       "playerCount": 0,
       "name": "flat",
-      "weather": "THUNDER",
-      "fullTime": 7023409,
-      "time": 15409,
+      "weather": "RAIN",
+      "fullTime": 14449841,
+      "time": 1841,
       "pvp": true,
       "loadedChunks": 0
     },
@@ -1380,16 +1445,20 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     }
   ],
   "success": true,
-  "timestamp": 1780742456266
+  "timestamp": 1781162094841
 }
 ```
 
-### `GET /worlds/world` (World Overview)
+---
+
+## Get World Details
+
+### `GET /worlds/world`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/worlds/world
 ```
-**Status:** `200` | **Latency:** `5100ms`
+**Status:** `200` | **Latency:** `48ms`
 **Response:**
 ```json
 {
@@ -1397,60 +1466,72 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     "difficulty": "EASY",
     "environment": "NORMAL",
     "seed": 6641214828919989498,
-    "entityCount": 344,
-    "playerCount": 2,
+    "entityCount": 412,
+    "playerCount": 3,
     "name": "world",
-    "weather": "THUNDER",
-    "fullTime": 14222207,
-    "time": 14207,
+    "weather": "CLEAR",
+    "fullTime": 21655013,
+    "time": 7013,
     "pvp": true,
-    "loadedChunks": 1250
+    "loadedChunks": 1875
   },
   "success": true,
-  "timestamp": 1780742461366
+  "timestamp": 1781162095391
 }
 ```
 
-### `GET /worlds/world/time` (World In-game Time)
+---
+
+## Get World Time
+
+### `GET /worlds/world/time`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/worlds/world/time
 ```
-**Status:** `200` | **Latency:** `5098ms`
+**Status:** `200` | **Latency:** `48ms`
 **Response:**
 ```json
 {
   "data": {
-    "dayCount": 592,
-    "fullTime": 14222313,
-    "time": 14313
+    "dayCount": 902,
+    "fullTime": 21655024,
+    "time": 7024
   },
   "success": true,
-  "timestamp": 1780742466665
+  "timestamp": 1781162095940
 }
 ```
 
-### `GET /worlds/world/weather` (World Weather)
+---
+
+## Get World Weather
+
+### `GET /worlds/world/weather`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/worlds/world/weather
 ```
-**Status:** `200` | **Latency:** `2699ms`
+**Status:** `200` | **Latency:** `50ms`
 **Response:**
 ```json
 {
   "data": "CLEAR",
   "success": true,
-  "timestamp": 1780742469565
+  "timestamp": 1781162096490
 }
 ```
 
-### `GET /worlds/world/players` (Players in World)
+---
+
+## Get World Players
+
+### `GET /worlds/world/players`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/worlds/world/players
 ```
-**Status:** `200` | **Latency:** `5099ms`
+**Status:** `200` | **Latency:** `49ms`
 **Response:**
 ```json
 {
@@ -1458,91 +1539,120 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     {
       "staffMode": false,
       "vanished": false,
-      "displayName": "AdityaOkeGas4",
-      "afk": true,
+      "displayName": "AdityaOkeGas2",
+      "afk": false,
       "online": true,
-      "uuid": "eea40d5a-6e98-3de2-9a0d-631505df935f",
-      "username": "AdityaOkeGas4"
+      "uuid": "de11f3ca-003f-3713-b771-62bc481dbfca",
+      "username": "AdityaOkeGas2"
     },
     {
       "staffMode": false,
       "vanished": false,
       "displayName": "AdityaOkeGas3",
-      "afk": true,
+      "afk": false,
       "online": true,
       "uuid": "75ed88b3-eb5c-3e45-a763-c3413042883d",
       "username": "AdityaOkeGas3"
+    },
+    {
+      "staffMode": false,
+      "vanished": false,
+      "displayName": "AdityaOkeGas4",
+      "afk": false,
+      "online": true,
+      "uuid": "eea40d5a-6e98-3de2-9a0d-631505df935f",
+      "username": "AdityaOkeGas4"
     }
   ],
   "success": true,
-  "timestamp": 1780742474866
+  "timestamp": 1781162097040
 }
 ```
 
-### `GET /worlds/world/entities` (Entity Type Counters)
+---
+
+## Get World Entities
+
+### `GET /worlds/world/entities`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/worlds/world/entities
 ```
-**Status:** `200` | **Latency:** `5149ms`
+**Status:** `200` | **Latency:** `50ms`
 **Response:**
 ```json
 {
   "data": {
-    "ENDERMAN": 2,
-    "CHEST_MINECART": 15,
-    "FROG": 26,
-    "SHEEP": 24,
-    "SPIDER": 6,
-    "SKELETON": 5,
-    "VILLAGER": 18,
-    "POLAR_BEAR": 5,
-    "CREEPER": 5,
-    "CHICKEN": 50,
-    "GLOW_SQUID": 10,
-    "BEE": 3,
-    "SQUID": 5,
-    "HORSE": 13,
-    "FALLING_BLOCK": 16,
-    "COW": 23,
+    "ENDERMAN": 5,
+    "CHEST_MINECART": 12,
+    "FROG": 1,
+    "LLAMA": 4,
+    "SHEEP": 47,
+    "WITCH": 1,
+    "TROPICAL_FISH": 6,
+    "SPIDER": 1,
+    "ARMADILLO": 9,
+    "SKELETON": 13,
+    "CREEPER": 13,
+    "CHICKEN": 79,
+    "TRADER_LLAMA": 2,
+    "SLIME": 1,
+    "GLOW_SQUID": 16,
+    "DROWNED": 1,
+    "BEE": 6,
+    "PHANTOM": 4,
+    "SQUID": 15,
+    "HORSE": 4,
+    "FALLING_BLOCK": 11,
+    "COW": 51,
+    "WANDERING_TRADER": 1,
     "FOX": 6,
-    "PIG": 28,
-    "PLAYER": 2,
-    "TEXT_DISPLAY": 2,
-    "BAT": 2,
-    "SALMON": 5,
-    "ZOMBIE": 14,
-    "CAT": 7,
-    "RABBIT": 36,
-    "WOLF": 13,
-    "IRON_GOLEM": 2
+    "PIG": 53,
+    "AXOLOTL": 10,
+    "PLAYER": 3,
+    "ITEM": 7,
+    "BAT": 3,
+    "ZOMBIE": 12,
+    "SALMON": 7,
+    "CAT": 1,
+    "WOLF": 3,
+    "RABBIT": 3,
+    "DONKEY": 1
   },
   "success": true,
-  "timestamp": 1780742480216
+  "timestamp": 1781162097591
 }
 ```
 
-### `GET /worlds/world/chunks` (Loaded Chunks Count)
+---
+
+## Get World Chunks
+
+### `GET /worlds/world/chunks`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/worlds/world/chunks
 ```
-**Status:** `200` | **Latency:** `5098ms`
+**Status:** `200` | **Latency:** `48ms`
 **Response:**
 ```json
 {
-  "data": 1250,
+  "data": 1875,
   "success": true,
-  "timestamp": 1780742485516
+  "timestamp": 1781162098141
 }
 ```
 
-### `GET /worlds/world/border` (World Border status)
+---
+
+## Get World Border
+
+### `GET /worlds/world/border`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/worlds/world/border
 ```
-**Status:** `200` | **Latency:** `5100ms`
+**Status:** `200` | **Latency:** `50ms`
 **Response:**
 ```json
 {
@@ -1550,22 +1660,26 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     "damageBuffer": 5.0,
     "size": 59999968.0,
     "center": {
-      "x": 0.0,
-      "z": 0.0
+      "z": 0.0,
+      "x": 0.0
     },
     "damageAmount": 0.2
   },
   "success": true,
-  "timestamp": 1780742490815
+  "timestamp": 1781162098690
 }
 ```
 
-### `GET /worlds/world/gamerules` (World Gamerules Map)
+---
+
+## Get World Gamerules
+
+### `GET /worlds/world/gamerules`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/worlds/world/gamerules
 ```
-**Status:** `200` | **Latency:** `5102ms`
+**Status:** `200` | **Latency:** `49ms`
 **Response:**
 ```json
 {
@@ -1587,8 +1701,8 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     "spread_vines": true,
     "block_explosion_drop_decay": true,
     "global_sound_events": true,
-    "max_block_modifications": 32768,
     "locator_bar": false,
+    "max_block_modifications": 32768,
     "pvp": true,
     "spawn_wandering_traders": true,
     "players_nether_portal_creative_delay": 0,
@@ -1617,8 +1731,8 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     "tnt_explodes": true,
     "spectators_generate_chunks": true,
     "block_drops": true,
-    "command_blocks_work": true,
     "spawn_monsters": true,
+    "command_blocks_work": true,
     "advance_time": true,
     "universal_anger": false,
     "entity_drops": true,
@@ -1630,173 +1744,345 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     "max_command_sequence_length": 65536
   },
   "success": true,
-  "timestamp": 1780742496117
+  "timestamp": 1781162099242
 }
 ```
 
-## 6. Leaderboard Endpoints
+---
 
-### `GET /leaderboard/playtime` (Default limit)
+## Get Vault Player Data
+
+### `GET /vault/player/de11f3ca-003f-3713-b771-62bc481dbfca`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/leaderboard/playtime
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/vault/player/de11f3ca-003f-3713-b771-62bc481dbfca
 ```
-**Status:** `404` | **Latency:** `5118ms`
-**Response:**
-```json
-Endpoint GET /api/v1/leaderboard/playtime not found
-```
-
-### `GET /leaderboard/playtime?limit=1` (Query param limit=1)
-**Curl Example:**
-```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/leaderboard/playtime?limit=1
-```
-**Status:** `404` | **Latency:** `5067ms`
-**Response:**
-```json
-Endpoint GET /api/v1/leaderboard/playtime not found
-```
-
-### `GET /leaderboard/balance` (Default limit)
-**Curl Example:**
-```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/leaderboard/balance
-```
-**Status:** `404` | **Latency:** `5066ms`
-**Response:**
-```json
-Endpoint GET /api/v1/leaderboard/balance not found
-```
-
-### `GET /leaderboard/balance?limit=1` (Query param limit=1)
-**Curl Example:**
-```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/leaderboard/balance?limit=1
-```
-**Status:** `404` | **Latency:** `5070ms`
-**Response:**
-```json
-Endpoint GET /api/v1/leaderboard/balance not found
-```
-
-### `GET /leaderboard/kills` (Default limit)
-**Curl Example:**
-```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/leaderboard/kills
-```
-**Status:** `404` | **Latency:** `5068ms`
-**Response:**
-```json
-Endpoint GET /api/v1/leaderboard/kills not found
-```
-
-### `GET /leaderboard/kills?limit=1` (Query param limit=1)
-**Curl Example:**
-```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/leaderboard/kills?limit=1
-```
-**Status:** `404` | **Latency:** `5062ms`
-**Response:**
-```json
-Endpoint GET /api/v1/leaderboard/kills not found
-```
-
-### `GET /leaderboard/deaths` (Default limit)
-**Curl Example:**
-```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/leaderboard/deaths
-```
-**Status:** `404` | **Latency:** `5092ms`
-**Response:**
-```json
-Endpoint GET /api/v1/leaderboard/deaths not found
-```
-
-### `GET /leaderboard/deaths?limit=1` (Query param limit=1)
-**Curl Example:**
-```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/leaderboard/deaths?limit=1
-```
-**Status:** `404` | **Latency:** `5068ms`
-**Response:**
-```json
-Endpoint GET /api/v1/leaderboard/deaths not found
-```
-
-### `GET /leaderboard/votes` (Default limit)
-**Curl Example:**
-```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/leaderboard/votes
-```
-**Status:** `404` | **Latency:** `5063ms`
-**Response:**
-```json
-Endpoint GET /api/v1/leaderboard/votes not found
-```
-
-### `GET /leaderboard/votes?limit=1` (Query param limit=1)
-**Curl Example:**
-```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/leaderboard/votes?limit=1
-```
-**Status:** `404` | **Latency:** `5066ms`
-**Response:**
-```json
-Endpoint GET /api/v1/leaderboard/votes not found
-```
-
-### `GET /leaderboard/exp` (Default limit)
-**Curl Example:**
-```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/leaderboard/exp
-```
-**Status:** `404` | **Latency:** `5106ms`
-**Response:**
-```json
-Endpoint GET /api/v1/leaderboard/exp not found
-```
-
-### `GET /leaderboard/exp?limit=1` (Query param limit=1)
-**Curl Example:**
-```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/leaderboard/exp?limit=1
-```
-**Status:** `404` | **Latency:** `5067ms`
-**Response:**
-```json
-Endpoint GET /api/v1/leaderboard/exp not found
-```
-
-## 7. PlaceholderAPI Evaluation Endpoint
-
-### `POST /papi/evaluate` (Evaluate list of PAPI placeholders)
-**Curl Example:**
-```bash
-curl -X POST -H "Authorization: Bearer <masked>" -d '{"player": "AdityaOkeGas4", "placeholders": ["%player_name%", "%player_health%", "%vault_group%"]}' http://natural.nodevoid.my.id:19133/api/v1/papi/evaluate
-```
-**Status:** `200` | **Latency:** `5117ms`
+**Status:** `200` | **Latency:** `47ms`
 **Response:**
 ```json
 {
   "data": {
-    "%player_name%": "AdityaOkeGas4",
-    "%vault_group%": "default",
-    "%player_health%": "20.0"
+    "balance": 1000.0,
+    "prefix": "",
+    "permissionPlugin": "LuckPerms",
+    "economyPlugin": "Money",
+    "groups": [
+      "default"
+    ],
+    "currency": "Money",
+    "suffix": "",
+    "group": "default"
   },
   "success": true,
-  "timestamp": 1780742563566
+  "timestamp": 1781162099790
 }
 ```
 
-## 8. Admin Endpoints
+---
 
-### `GET /admin/health` (Health Check)
+## Get Vault Groups
+
+### `GET /vault/groups`
 **Curl Example:**
 ```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/admin/health
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/vault/groups
 ```
-**Status:** `200` | **Latency:** `5066ms`
+**Status:** `200` | **Latency:** `50ms`
+**Response:**
+```json
+{
+  "data": [
+    "owner",
+    "default",
+    "dev"
+  ],
+  "success": true,
+  "timestamp": 1781162100341
+}
+```
+
+---
+
+## Get Vault Group Details
+
+### `GET /vault/groups/default`
+**Curl Example:**
+```bash
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/vault/groups/default
+```
+**Status:** `200` | **Latency:** `54ms`
+**Response:**
+```json
+{
+  "data": {
+    "prefix": "",
+    "name": "default",
+    "suffix": ""
+  },
+  "success": true,
+  "timestamp": 1781162100897
+}
+```
+
+---
+
+## Get Vault Economy Status
+
+### `GET /vault/economy/status`
+**Curl Example:**
+```bash
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/vault/economy/status
+```
+**Status:** `200` | **Latency:** `43ms`
+**Response:**
+```json
+{
+  "data": {
+    "currencySingular": "Money",
+    "name": "Money",
+    "currencyPlural": "Money",
+    "enabled": true
+  },
+  "success": true,
+  "timestamp": 1781162101440
+}
+```
+
+---
+
+## Get LuckPerms Player Data
+
+### `GET /luckperms/player/de11f3ca-003f-3713-b771-62bc481dbfca`
+**Curl Example:**
+```bash
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/luckperms/player/de11f3ca-003f-3713-b771-62bc481dbfca
+```
+**Status:** `200` | **Latency:** `50ms`
+**Response:**
+```json
+{
+  "data": {
+    "inheritedGroups": [
+      "default"
+    ],
+    "permissionNodes": [
+      {
+        "node": "group.default",
+        "value": true
+      }
+    ],
+    "primaryGroup": "default"
+  },
+  "success": true,
+  "timestamp": 1781162101990
+}
+```
+
+---
+
+## Get LuckPerms Groups
+
+### `GET /luckperms/groups`
+**Curl Example:**
+```bash
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/luckperms/groups
+```
+**Status:** `200` | **Latency:** `49ms`
+**Response:**
+```json
+{
+  "data": [
+    "owner",
+    "default",
+    "dev"
+  ],
+  "success": true,
+  "timestamp": 1781162102541
+}
+```
+
+---
+
+## Get LuckPerms Group Details
+
+### `GET /luckperms/groups/default`
+**Curl Example:**
+```bash
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/luckperms/groups/default
+```
+**Status:** `200` | **Latency:** `47ms`
+**Response:**
+```json
+{
+  "data": {
+    "displayName": null,
+    "name": "default",
+    "weight": 0
+  },
+  "success": true,
+  "timestamp": 1781162103090
+}
+```
+
+---
+
+## Get LuckPerms Group Members
+
+### `GET /luckperms/groups/default/members`
+**Curl Example:**
+```bash
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/luckperms/groups/default/members
+```
+**Status:** `500` | **Latency:** `94ms`
+**Response:**
+```json
+{
+  "success": false,
+  "error": {
+    "code": "INTERNAL_ERROR",
+    "message": "Error fetching LuckPerms group members: No serializer found for class net.luckperms.api.node.SimpleNodeType and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: java.util.HashMap[\"data\"]->java.util.ArrayList[0]->java.util.HashMap[\"username\"]->com.google.common.collect.SingletonImmutableList[0]->me.lucko.luckperms.common.node.types.Inheritance[\"type\"])",
+    "timestamp": 1781162103685
+  }
+}
+```
+
+---
+
+## Get LuckPerms Group Permissions
+
+### `GET /luckperms/groups/default/permissions`
+**Curl Example:**
+```bash
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/luckperms/groups/default/permissions
+```
+**Status:** `200` | **Latency:** `55ms`
+**Response:**
+```json
+{
+  "data": [],
+  "success": true,
+  "timestamp": 1781162104240
+}
+```
+
+---
+
+## Evaluate PlaceholderAPI
+
+### `POST /papi/evaluate`
+**Curl Example:**
+```bash
+curl -X POST -H "Authorization: Bearer <masked>" -d '{"player": "de11f3ca-003f-3713-b771-62bc481dbfca", "placeholders": ["%player_name%", "%server_tps%"]}' http://natural.nodevoid.my.id:19133/api/v1/papi/evaluate
+```
+**Status:** `200` | **Latency:** `51ms`
+**Response:**
+```json
+{
+  "data": {
+    "%server_tps%": "\u00a7a*20.0\u00a77, \u00a7a*20.0\u00a77, \u00a7a*20.0",
+    "%player_name%": "AdityaOkeGas2"
+  },
+  "success": true,
+  "timestamp": 1781162104793
+}
+```
+
+---
+
+## Get Registered PAPI expansions
+
+### `GET /papi/plugins`
+**Curl Example:**
+```bash
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/papi/plugins
+```
+**Status:** `200` | **Latency:** `44ms`
+**Response:**
+```json
+{
+  "data": [
+    "excellenteconomy",
+    "localtime",
+    "server",
+    "img",
+    "naturalschool",
+    "servertime",
+    "iaplayerstat",
+    "naturalcore",
+    "multiverse-core",
+    "plan",
+    "vault",
+    "player"
+  ],
+  "success": true,
+  "timestamp": 1781162105340
+}
+```
+
+---
+
+## Get NaturalSchool Player Data
+
+### `GET /naturalschool/player/de11f3ca-003f-3713-b771-62bc481dbfca`
+**Curl Example:**
+```bash
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/naturalschool/player/de11f3ca-003f-3713-b771-62bc481dbfca
+```
+**Status:** `200` | **Latency:** `49ms`
+**Response:**
+```json
+{
+  "data": {
+    "academicClass": 0,
+    "academicStage": "NONE",
+    "currentSemester": "GANJIL",
+    "isStaff": false,
+    "nis": null,
+    "rank": {
+      "displayName": "<gray>Belum Terdaftar</gray>",
+      "id": "NONE",
+      "priority": 0,
+      "type": "NONE"
+    },
+    "isManagement": false
+  },
+  "success": true,
+  "timestamp": 1781162105890
+}
+```
+
+---
+
+## Refresh NaturalSchool Integration
+
+### `POST /naturalschool/refresh`
+**Curl Example:**
+```bash
+curl -X POST -H "Authorization: Bearer <masked>" -d '{"uuid": "de11f3ca-003f-3713-b771-62bc481dbfca"}' http://natural.nodevoid.my.id:19133/api/v1/naturalschool/refresh
+```
+**Status:** `200` | **Latency:** `53ms`
+**Response:**
+```json
+{
+  "data": {
+    "message": "Player snapshot update triggered successfully.",
+    "uuid": "de11f3ca-003f-3713-b771-62bc481dbfca"
+  },
+  "success": true,
+  "timestamp": 1781162106447
+}
+```
+
+---
+
+## Get Admin Health Check
+
+### `GET /admin/health`
+**Curl Example:**
+```bash
+curl -X GET  http://natural.nodevoid.my.id:19133/api/v1/admin/health
+```
+**Status:** `200` | **Latency:** `7ms`
 **Response:**
 ```json
 {
@@ -1804,50 +2090,117 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     "status": "ok"
   },
   "success": true,
-  "timestamp": 1780742568633
+  "timestamp": 1781162106954
 }
 ```
 
-### `GET /admin/keys` (List API Keys)
+---
+
+## Get OpenAPI Specs YAML
+
+### `GET /admin/openapi.yaml`
+**Curl Example:**
+```bash
+curl -X GET  http://natural.nodevoid.my.id:19133/api/v1/admin/openapi.yaml
+```
+**Status:** `0` | **Latency:** `17ms`
+**Response:**
+```json
+'utf-8' codec can't decode byte 0xa7 in position 3754: invalid start byte
+```
+
+---
+
+## Get OpenAPI Specs JSON
+
+### `GET /admin/openapi.json`
+**Curl Example:**
+```bash
+curl -X GET  http://natural.nodevoid.my.id:19133/api/v1/admin/openapi.json
+```
+**Status:** `501` | **Latency:** `7ms`
+**Response:**
+```json
+{
+  "success": false,
+  "error": {
+    "code": "NOT_IMPLEMENTED",
+    "message": "Please use /admin/openapi.yaml for the OpenAPI spec.",
+    "timestamp": 1781162107981
+  }
+}
+```
+
+---
+
+## Get API Keys List
+
+### `GET /admin/keys`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/admin/keys
 ```
-**Status:** `200` | **Latency:** `5078ms`
+**Status:** `200` | **Latency:** `20ms`
 **Response:**
 ```json
 {
   "data": [
     {
       "expires_at": null,
-      "last_used": 1780721828768,
-      "name": "swagger",
-      "created_at": 1780664051503,
-      "id": "713f6c25-a166-43e9-b4c6-a528e3b56427",
+      "last_used": 1781162106440,
+      "name": "test",
+      "created_at": 1781161852460,
+      "id": "2f27591d-d0ba-4ef9-a796-cf8a9f35c175",
       "scopes": "*",
       "enabled": true
     },
     {
       "expires_at": null,
-      "last_used": 1780742563565,
-      "name": "swagger",
-      "created_at": 1780723316823,
-      "id": "9bdfa38f-171c-4351-84f4-dd0d55cdcba2",
+      "last_used": 1781162091890,
+      "name": "web",
+      "created_at": 1781015698653,
+      "id": "38fd1267-b237-45a0-ae36-8c86a9304908",
       "scopes": "*",
       "enabled": true
     }
   ],
   "success": true,
-  "timestamp": 1780742573912
+  "timestamp": 1781162108498
 }
 ```
 
-### `GET /admin/config` (Plugin Configuration)
+---
+
+## Generate API Key
+
+### `POST /admin/keys`
+**Curl Example:**
+```bash
+curl -X POST -H "Authorization: Bearer <masked>" -d '{"name": "test_script_key", "scopes": "*", "expiresAt": null}' http://natural.nodevoid.my.id:19133/api/v1/admin/keys
+```
+**Status:** `500` | **Latency:** `23ms`
+**Response:**
+```json
+{
+  "success": false,
+  "error": {
+    "code": "INTERNAL_ERROR",
+    "message": "An unexpected error occurred: null",
+    "timestamp": 1781162109026
+  }
+}
+```
+
+---
+
+## Get Active Configuration
+
+### `GET /admin/config`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/admin/config
 ```
-**Status:** `200` | **Latency:** `5073ms`
+**Status:** `200` | **Latency:** `11ms`
 **Response:**
 ```json
 {
@@ -1880,6 +2233,16 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
       "luckperms": {
         "enabled": true
       },
+      "websocket": {
+        "server-stats-interval": 40,
+        "endpoints": {
+          "chat": true,
+          "player-detail": true,
+          "server-stats": true,
+          "player-events": true
+        },
+        "enabled": true
+      },
       "skin": {
         "cache-ttl-hours": 6
       },
@@ -1888,7 +2251,7 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
         "show-vanished-in-list": false
       },
       "snapshot": {
-        "interval-minutes": 1,
+        "interval-minutes": 10,
         "retention-days": 30,
         "auto-save": true
       },
@@ -1945,7 +2308,7 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
         "ips": [],
         "enabled": false
       },
-      "swagger-auth-required": false
+      "swagger-auth-required": true
     },
     "logging": {
       "log-requests": true,
@@ -1954,34 +2317,20 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
     }
   },
   "success": true,
-  "timestamp": 1780742579185
+  "timestamp": 1781162109538
 }
 ```
 
-### `GET /admin/rate-limits` (Rate Limit Statistics)
-**Curl Example:**
-```bash
-curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/admin/rate-limits
-```
-**Status:** `501` | **Latency:** `5082ms`
-**Response:**
-```json
-{
-  "success": false,
-  "error": {
-    "code": "NOT_IMPLEMENTED",
-    "message": "Rate limit viewing not implemented yet.",
-    "timestamp": 1780742584467
-  }
-}
-```
+---
 
-### `GET /admin/snapshot/history` (Snapshot Execution History)
+## Get Snapshot History
+
+### `GET /admin/snapshot/history`
 **Curl Example:**
 ```bash
 curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/admin/snapshot/history
 ```
-**Status:** `501` | **Latency:** `4876ms`
+**Status:** `501` | **Latency:** `10ms`
 **Response:**
 ```json
 {
@@ -1989,7 +2338,95 @@ curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19
   "error": {
     "code": "NOT_IMPLEMENTED",
     "message": "Snapshot history not implemented yet.",
-    "timestamp": 1780742589546
+    "timestamp": 1781162110049
   }
 }
 ```
+
+---
+
+## Purge Snapshots
+
+### `DELETE /admin/snapshot/purge`
+**Curl Example:**
+```bash
+curl -X DELETE -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/admin/snapshot/purge
+```
+**Status:** `200` | **Latency:** `13ms`
+**Response:**
+```json
+{
+  "data": {
+    "purged": true
+  },
+  "success": true,
+  "timestamp": 1781162110562
+}
+```
+
+---
+
+## Get Rate Limits Status
+
+### `GET /admin/rate-limits`
+**Curl Example:**
+```bash
+curl -X GET -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/admin/rate-limits
+```
+**Status:** `501` | **Latency:** `10ms`
+**Response:**
+```json
+{
+  "success": false,
+  "error": {
+    "code": "NOT_IMPLEMENTED",
+    "message": "Rate limit viewing not implemented yet.",
+    "timestamp": 1781162111074
+  }
+}
+```
+
+---
+
+## Reset Rate Limits
+
+### `DELETE /admin/rate-limits/127.0.0.1`
+**Curl Example:**
+```bash
+curl -X DELETE -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/admin/rate-limits/127.0.0.1
+```
+**Status:** `200` | **Latency:** `13ms`
+**Response:**
+```json
+{
+  "data": {
+    "reset": true
+  },
+  "success": true,
+  "timestamp": 1781162111588
+}
+```
+
+---
+
+## Trigger Plugin Reload
+
+### `POST /admin/reload`
+**Curl Example:**
+```bash
+curl -X POST -H "Authorization: Bearer <masked>" http://natural.nodevoid.my.id:19133/api/v1/admin/reload
+```
+**Status:** `200` | **Latency:** `12ms`
+**Response:**
+```json
+{
+  "data": {
+    "status": "reloading"
+  },
+  "success": true,
+  "timestamp": 1781162112100
+}
+```
+
+---
+
