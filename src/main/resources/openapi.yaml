@@ -521,6 +521,12 @@ components:
             totalPlaytimeMs:
               type: integer
               format: int64
+            kills:
+              type: integer
+            deaths:
+              type: integer
+            mobKills:
+              type: integer
 
     WorldInfo:
       type: object

@@ -54,6 +54,7 @@ public class SnapshotService {
         double balance;
         int kills;
         int deaths;
+        int mobKills;
         int votes;
     }
 
@@ -86,6 +87,7 @@ public class SnapshotService {
 
         raw.kills = player.getStatistic(org.bukkit.Statistic.PLAYER_KILLS);
         raw.deaths = player.getStatistic(org.bukkit.Statistic.DEATHS);
+        raw.mobKills = player.getStatistic(org.bukkit.Statistic.MOB_KILLS);
 
         int votes = 0;
         if (plugin.getIntegrationManager().getPapiIntegration() != null && plugin.getIntegrationManager().getPapiIntegration().isEnabled()) {
@@ -194,6 +196,7 @@ public class SnapshotService {
                                     raw.balance,
                                     raw.kills,
                                     raw.deaths,
+                                    raw.mobKills,
                                     raw.votes,
                                     ipAddress,
                                     country,

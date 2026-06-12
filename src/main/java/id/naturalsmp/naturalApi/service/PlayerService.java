@@ -227,6 +227,9 @@ public class PlayerService {
         data.put("firstJoin", player.getFirstPlayed());
         data.put("lastSeen", player.getLastPlayed());
         data.put("totalPlaytimeMs", player.getStatistic(org.bukkit.Statistic.PLAY_ONE_MINUTE) * 50L);
+        data.put("kills", player.getStatistic(org.bukkit.Statistic.PLAYER_KILLS));
+        data.put("deaths", player.getStatistic(org.bukkit.Statistic.DEATHS));
+        data.put("mobKills", player.getStatistic(org.bukkit.Statistic.MOB_KILLS));
         
         id.naturalsmp.naturalApi.integration.IntegrationManager im = plugin.getIntegrationManager();
         if (im != null) {
@@ -488,11 +491,23 @@ public class PlayerService {
             }
         }
 
-        data.put("firstPlayed", firstPlayed);
+        data.put("firstJoin", firstPlayed);
         data.put("lastSeen", lastSeen);
         data.put("isOp", isOp);
         data.put("isBanned", isBanned);
         data.put("isWhitelisted", isWhitelisted);
+
+        Number playtimeVal = (Number) getCaseInsensitive(dbMap, "playtime");
+        data.put("totalPlaytimeMs", playtimeVal != null ? playtimeVal.longValue() : 0L);
+
+        Number killsVal = (Number) getCaseInsensitive(dbMap, "kills");
+        data.put("kills", killsVal != null ? killsVal.intValue() : 0);
+
+        Number deathsVal = (Number) getCaseInsensitive(dbMap, "deaths");
+        data.put("deaths", deathsVal != null ? deathsVal.intValue() : 0);
+
+        Number mobKillsVal = (Number) getCaseInsensitive(dbMap, "mob_kills");
+        data.put("mobKills", mobKillsVal != null ? mobKillsVal.intValue() : 0);
 
         // Location
         Map<String, Object> location = new HashMap<>();

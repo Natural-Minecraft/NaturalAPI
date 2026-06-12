@@ -1423,20 +1423,24 @@ curl -X GET "http://localhost:7890/api/v1/players/069a79f4-44e9-4726-a5be-fca90e
   "success": true,
   "timestamp": 1717600000000,
   "data": {
-    "firstPlayed": 1609459200000,
+    "firstJoin": 1609459200000,
     "lastSeen": 1717600000000,
     "totalPlaytimeMs": 8640000000,
-    "totalPlaytimeFormatted": "100d 0h 0m"
+    "kills": 42,
+    "deaths": 10,
+    "mobKills": 150
   }
 }
 ```
 
 | Field                    | Type    | Description                                                                  |
 |--------------------------|---------|------------------------------------------------------------------------------|
-| `firstPlayed`            | long    | Unix epoch timestamp (ms) of the player's first join.                        |
+| `firstJoin`              | long    | Unix epoch timestamp (ms) of the player's first join.                        |
 | `lastSeen`               | long    | Unix epoch timestamp (ms) of the player's last activity.                     |
 | `totalPlaytimeMs`        | long    | Total playtime in milliseconds across all sessions.                          |
-| `totalPlaytimeFormatted` | string  | Human-readable playtime string (e.g. `"100d 0h 0m"`).                       |
+| `kills`                  | integer | Total player kills.                                                          |
+| `deaths`                 | integer | Total deaths.                                                                |
+| `mobKills`               | integer | Total mob kills.                                                             |
 
 #### Error Responses
 
@@ -1650,10 +1654,12 @@ curl -X GET "http://localhost:7890/api/v1/players/offline/069a79f4-44e9-4726-a5b
     "uuid": "069a79f4-44e9-4726-a5be-fca90e38aaf5",
     "username": "Notch",
     "online": false,
-    "firstPlayed": 1609459200000,
+    "firstJoin": 1609459200000,
     "lastSeen": 1717500000000,
     "totalPlaytimeMs": 8640000000,
-    "totalPlaytimeFormatted": "100d 0h 0m",
+    "kills": 42,
+    "deaths": 10,
+    "mobKills": 150,
     "lastKnownLocation": {
       "world": "world",
       "x": 128.5,
@@ -1678,10 +1684,12 @@ curl -X GET "http://localhost:7890/api/v1/players/offline/069a79f4-44e9-4726-a5b
 | `uuid`                  | string       | Player's Mojang UUID.                                            |
 | `username`              | string       | Last known username.                                             |
 | `online`                | boolean      | Always `false` for offline player endpoints.                     |
-| `firstPlayed`           | long         | Unix epoch timestamp (ms) of first join.                         |
+| `firstJoin`             | long         | Unix epoch timestamp (ms) of first join.                         |
 | `lastSeen`              | long         | Unix epoch timestamp (ms) of last disconnect.                    |
 | `totalPlaytimeMs`       | long         | Total accumulated playtime in milliseconds.                      |
-| `totalPlaytimeFormatted`| string       | Human-readable playtime string.                                  |
+| `kills`                 | integer      | Total player kills.                                              |
+| `deaths`                | integer      | Total deaths.                                                    |
+| `mobKills`              | integer      | Total mob kills.                                                 |
 | `lastKnownLocation`     | object\|null | Last saved location. `null` if never recorded.                   |
 | `lastKnownHealth`       | double       | Health at last disconnect.                                       |
 | `lastKnownFoodLevel`    | integer      | Food level at last disconnect.                                   |

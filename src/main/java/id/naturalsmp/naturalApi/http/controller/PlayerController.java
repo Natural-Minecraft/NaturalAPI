@@ -313,14 +313,20 @@ public class PlayerController {
             data.put("firstJoin", player.getFirstPlayed());
             data.put("lastSeen", player.getLastPlayed());
             data.put("totalPlaytimeMs", player.getStatistic(org.bukkit.Statistic.PLAY_ONE_MINUTE) * 50L);
+            data.put("kills", player.getStatistic(org.bukkit.Statistic.PLAYER_KILLS));
+            data.put("deaths", player.getStatistic(org.bukkit.Statistic.DEATHS));
+            data.put("mobKills", player.getStatistic(org.bukkit.Statistic.MOB_KILLS));
             ctx.json(ResponseBuilder.success(data));
         } else {
             Map<String, Object> offlineData = playerService.getOfflinePlayer(identifier);
             if (offlineData != null) {
                 Map<String, Object> data = new HashMap<>();
-                data.put("firstJoin", offlineData.get("firstPlayed"));
+                data.put("firstJoin", offlineData.get("firstJoin"));
                 data.put("lastSeen", offlineData.get("lastSeen"));
-                data.put("totalPlaytimeMs", null);
+                data.put("totalPlaytimeMs", offlineData.get("totalPlaytimeMs"));
+                data.put("kills", offlineData.get("kills"));
+                data.put("deaths", offlineData.get("deaths"));
+                data.put("mobKills", offlineData.get("mobKills"));
                 ctx.json(ResponseBuilder.success(data));
             } else {
                 ctx.status(404).json(ResponseBuilder.error("PLAYER_NOT_FOUND", "Player not found."));
