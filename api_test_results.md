@@ -1,29 +1,42 @@
-# NaturalAPI Endpoint Test Results
-Generated on: 2026-06-12 13:34:47
-Target API: `https://napi.aikeigroup.net/api/v1`
+# NaturalAPI Full Endpoint Test Report
+Generated on: 2026-06-12 13:37:16
+Target API base URL: `https://napi.aikeigroup.net/api/v1`
 
-## Summary Table
+This document contains test results for **every registered endpoint** of the NaturalAPI plugin.
 
-| Endpoint Name | Method | Path | Status | Result |
+## Table of Contents
+- [Server](#server)
+- [Online Player Details](#online-player-details)
+- [Offline Player Details](#offline-player-details)
+- [Worlds](#worlds)
+- [Integrations](#integrations)
+- [Admin](#admin)
+
+## Server
+
+| Endpoint Name | Method | Path | Status | Details |
 |---|---|---|---|---|
-| Server Status | `GET` | `/server` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [Go to Details](#server-status) |
-| Server Plugins | `GET` | `/server/plugins` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [Go to Details](#server-plugins) |
-| Online Players Summary | `GET` | `/players` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [Go to Details](#online-players-summary) |
-| All Players (Paged) | `GET` | `/players/all` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [Go to Details](#all-players-paged) |
-| Online Player Details (UUID) | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [Go to Details](#online-player-details-uuid) |
-| Offline Player Details (UUID) | `GET` | `/players/9c045595-a5da-4284-9d9e-c3603f86432b` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [Go to Details](#offline-player-details-uuid) |
-| Online Player Stats | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/stats` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [Go to Details](#online-player-stats) |
-| Offline Player Stats | `GET` | `/players/9c045595-a5da-4284-9d9e-c3603f86432b/stats` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [Go to Details](#offline-player-stats) |
-| Offline Player Snapshot | `GET` | `/players/offline/9c045595-a5da-4284-9d9e-c3603f86432b` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [Go to Details](#offline-player-snapshot) |
+| Server General Status | `GET` | `/server` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#server-general-status) |
+| Server Detail Status | `GET` | `/server/status` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#server-detail-status) |
+| Server TPS | `GET` | `/server/tps` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#server-tps) |
+| Server MSPT | `GET` | `/server/mspt` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#server-mspt) |
+| Server RAM | `GET` | `/server/ram` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#server-ram) |
+| Server Uptime | `GET` | `/server/uptime` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#server-uptime) |
+| Server Version | `GET` | `/server/version` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#server-version) |
+| Server Players Count | `GET` | `/server/players/count` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#server-players-count) |
+| Server Plugins | `GET` | `/server/plugins` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#server-plugins) |
+| Server Whitelist | `GET` | `/server/whitelist` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#server-whitelist) |
+| Server Banlist | `GET` | `/server/banlist` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#server-banlist) |
+| Server Playtime Leaderboard | `GET` | `/server/leaderboard?type=playtime&limit=5` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#server-playtime-leaderboard) |
 
----
-
-### Server Status
+### Server General Status
 - **Method:** `GET`
-- **URL:** `https://napi.aikeigroup.net/api/v1/server`
-- **Status Code:** `200`
+- **Path:** `/server`
+- **HTTP Status:** `200`
 
-Response:
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
 ```json
 {
   "data": {
@@ -45,53 +58,270 @@ Response:
     "osName": "Linux",
     "version": "1.21.11",
     "platform": "Paper",
-    "uptime": 63,
+    "uptime": 212,
     "system": {
       "availableProcessors": 6,
-      "systemLoadAverage": 0.6,
-      "processCpuLoad": 1.0,
-      "systemCpuLoad": 1.12,
+      "systemLoadAverage": 0.12,
+      "processCpuLoad": 0.67,
+      "systemCpuLoad": 0.9,
       "storage": {
         "totalBytes": 126716452864,
-        "usableBytes": 59105251328,
-        "freeBytes": 64337862656
+        "usableBytes": 59105222656,
+        "freeBytes": 64337833984
       },
       "network": {
-        "rxBytesPerSec": 2638,
-        "txBytesTotal": 435628,
-        "txBytesPerSec": 21261,
-        "rxBytesTotal": 36406066
+        "rxBytesPerSec": 1874,
+        "txBytesTotal": 560193,
+        "txBytesPerSec": 1161,
+        "rxBytesTotal": 36569996
       }
     },
     "tps": {
-      "now": 20.0,
+      "now": 19.999997927272943,
       "5m": 20.0,
       "15m": 20.0,
       "1m": 20.0
     },
     "online": true,
-    "mspt": 0.34253849504950495,
+    "mspt": 0.24286745544554456,
     "ram": {
       "maxMB": 8192,
-      "freeMB": 6581,
-      "usedMB": 1610
+      "freeMB": 6455,
+      "usedMB": 1736
     }
   },
   "success": true,
-  "timestamp": 1781246087716
+  "timestamp": 1781246236166
 }
 ```
+</details>
 
-[Back to Summary](#summary-table)
+[Back to Server Summary](#server)
+
+---
+
+### Server Detail Status
+- **Method:** `GET`
+- **Path:** `/server/status`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "motd": "A Minecraft Server",
+    "worlds": [
+      "world",
+      "world_nether",
+      "world_the_end",
+      "flat",
+      "schoolmap"
+    ],
+    "players": {
+      "visible": 0,
+      "vanished": 0,
+      "max": 70,
+      "online": 0
+    },
+    "javaVersion": "25.0.3",
+    "osName": "Linux",
+    "version": "1.21.11",
+    "platform": "Paper",
+    "uptime": 212,
+    "system": {
+      "availableProcessors": 6,
+      "systemLoadAverage": 0.12,
+      "processCpuLoad": 1.67,
+      "systemCpuLoad": 2.11,
+      "storage": {
+        "totalBytes": 126716452864,
+        "usableBytes": 59105222656,
+        "freeBytes": 64337833984
+      },
+      "network": {
+        "rxBytesPerSec": 20230,
+        "txBytesTotal": 562160,
+        "txBytesPerSec": 19670,
+        "rxBytesTotal": 36572019
+      }
+    },
+    "tps": {
+      "now": 19.999859746438105,
+      "5m": 20.0,
+      "15m": 20.0,
+      "1m": 19.99999924396339
+    },
+    "online": true,
+    "mspt": 0.26301902970297025,
+    "ram": {
+      "maxMB": 8192,
+      "freeMB": 6455,
+      "usedMB": 1736
+    }
+  },
+  "success": true,
+  "timestamp": 1781246236266
+}
+```
+</details>
+
+[Back to Server Summary](#server)
+
+---
+
+### Server TPS
+- **Method:** `GET`
+- **Path:** `/server/tps`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "now": 19.99290032318572,
+    "5m": 20.0,
+    "15m": 20.0,
+    "1m": 19.99999699283975
+  },
+  "success": true,
+  "timestamp": 1781246236315
+}
+```
+</details>
+
+[Back to Server Summary](#server)
+
+---
+
+### Server MSPT
+- **Method:** `GET`
+- **Path:** `/server/mspt`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": 0.29082928712871287,
+  "success": true,
+  "timestamp": 1781246236415
+}
+```
+</details>
+
+[Back to Server Summary](#server)
+
+---
+
+### Server RAM
+- **Method:** `GET`
+- **Path:** `/server/ram`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "max": 8589934592,
+    "used": 1820448408,
+    "free": 6769486184
+  },
+  "success": true,
+  "timestamp": 1781246236515
+}
+```
+</details>
+
+[Back to Server Summary](#server)
+
+---
+
+### Server Uptime
+- **Method:** `GET`
+- **Path:** `/server/uptime`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": 212,
+  "success": true,
+  "timestamp": 1781246236565
+}
+```
+</details>
+
+[Back to Server Summary](#server)
+
+---
+
+### Server Version
+- **Method:** `GET`
+- **Path:** `/server/version`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "version": "1.21.11",
+    "platform": "Paper"
+  },
+  "success": true,
+  "timestamp": 1781246236615
+}
+```
+</details>
+
+[Back to Server Summary](#server)
+
+---
+
+### Server Players Count
+- **Method:** `GET`
+- **Path:** `/server/players/count`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "visible": 0,
+    "vanished": 0,
+    "max": 70,
+    "online": 0
+  },
+  "success": true,
+  "timestamp": 1781246236715
+}
+```
+</details>
+
+[Back to Server Summary](#server)
 
 ---
 
 ### Server Plugins
 - **Method:** `GET`
-- **URL:** `https://napi.aikeigroup.net/api/v1/server/plugins`
-- **Status Code:** `200`
+- **Path:** `/server/plugins`
+- **HTTP Status:** `200`
 
-Response:
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
 ```json
 {
   "data": [
@@ -193,38 +423,165 @@ Response:
     }
   ],
   "success": true,
-  "timestamp": 1781246087815
+  "timestamp": 1781246236815
 }
 ```
+</details>
 
-[Back to Summary](#summary-table)
+[Back to Server Summary](#server)
 
 ---
 
-### Online Players Summary
+### Server Whitelist
 - **Method:** `GET`
-- **URL:** `https://napi.aikeigroup.net/api/v1/players`
-- **Status Code:** `200`
+- **Path:** `/server/whitelist`
+- **HTTP Status:** `200`
 
-Response:
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
 ```json
 {
   "data": [],
   "success": true,
-  "timestamp": 1781246093118
+  "timestamp": 1781246236865
 }
 ```
+</details>
 
-[Back to Summary](#summary-table)
+[Back to Server Summary](#server)
+
+---
+
+### Server Banlist
+- **Method:** `GET`
+- **Path:** `/server/banlist`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": [],
+  "success": true,
+  "timestamp": 1781246238815
+}
+```
+</details>
+
+[Back to Server Summary](#server)
+
+---
+
+### Server Playtime Leaderboard
+- **Method:** `GET`
+- **Path:** `/server/leaderboard?type=playtime&limit=5`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "metadata": {
+    "last_sync_timestamp": 1781245756722,
+    "provider": "NaturalAPI Snapshots Database",
+    "sync_interval_minutes": 10,
+    "next_sync_timestamp": 1781246356722
+  },
+  "data": [
+    {
+      "uuid": "f32a30cb-1902-35b0-b9e7-a04ed64d13dd",
+      "username": "AdityaOkeGas",
+      "value": 275169250
+    },
+    {
+      "uuid": "75ed88b3-eb5c-3e45-a763-c3413042883d",
+      "username": "AdityaOkeGas3",
+      "value": 142127750
+    },
+    {
+      "uuid": "e9467b23-b4d2-4d3f-8522-3b341bb7bb53",
+      "username": "Joselyz",
+      "value": 74986850
+    },
+    {
+      "uuid": "eea40d5a-6e98-3de2-9a0d-631505df935f",
+      "username": "AdityaOkeGas4",
+      "value": 69937100
+    },
+    {
+      "uuid": "de11f3ca-003f-3713-b771-62bc481dbfca",
+      "username": "AdityaOkeGas2",
+      "value": 61362050
+    }
+  ],
+  "success": true,
+  "timestamp": 1781246238879
+}
+```
+</details>
+
+[Back to Server Summary](#server)
+
+---
+
+## Online Player Details
+
+| Endpoint Name | Method | Path | Status | Details |
+|---|---|---|---|---|
+| Online Players Summary | `GET` | `/players` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#online-players-summary) |
+| All Players (Paged) | `GET` | `/players/all` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#all-players-paged) |
+| Player Details (UUID) | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-details-uuid) |
+| Player Details (Name) | `GET` | `/players/name/AdityaOkeGas2` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-details-name) |
+| Player Location | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/location` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-location) |
+| Player Health | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/health` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-health) |
+| Player Experience | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/experience` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-experience) |
+| Player Gamemode | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/gamemode` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-gamemode) |
+| Player Inventory | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/inventory` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-inventory) |
+| Player Inventory Hotbar | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/inventory/hotbar` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-inventory-hotbar) |
+| Player Inventory Armor | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/inventory/armor` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-inventory-armor) |
+| Player Inventory Offhand | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/inventory/offhand` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-inventory-offhand) |
+| Player Active Effects | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/effects` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-active-effects) |
+| Player Skin | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/skin` | ![Status 404](https://img.shields.io/badge/Status-404-red) | [View Details](#player-skin) |
+| Player Ping | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/ping` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-ping) |
+| Player Network Data | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/network` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-network-data) |
+| Player Stats | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/stats` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-stats) |
+| Player Permissions | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/permissions` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-permissions) |
+| Player Permission Check (essentials.fly) | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/permission/essentials.fly` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-permission-check-essentials.fly) |
+| Player Snapshot details | `GET` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/snapshot` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#player-snapshot-details) |
+| Trigger Player Snapshot | `POST` | `/players/de11f3ca-003f-3713-b771-62bc481dbfca/snapshot` | ![Status 404](https://img.shields.io/badge/Status-404-red) | [View Details](#trigger-player-snapshot) |
+
+### Online Players Summary
+- **Method:** `GET`
+- **Path:** `/players`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": [],
+  "success": true,
+  "timestamp": 1781246241515
+}
+```
+</details>
+
+[Back to Online Player Details Summary](#online-player-details)
 
 ---
 
 ### All Players (Paged)
 - **Method:** `GET`
-- **URL:** `https://napi.aikeigroup.net/api/v1/players/all`
-- **Status Code:** `200`
+- **Path:** `/players/all`
+- **HTTP Status:** `200`
 
-Response:
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
 ```json
 {
   "data": {
@@ -428,20 +785,23 @@ Response:
     ]
   },
   "success": true,
-  "timestamp": 1781246093174
+  "timestamp": 1781246241620
 }
 ```
+</details>
 
-[Back to Summary](#summary-table)
+[Back to Online Player Details Summary](#online-player-details)
 
 ---
 
-### Online Player Details (UUID)
+### Player Details (UUID)
 - **Method:** `GET`
-- **URL:** `https://napi.aikeigroup.net/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca`
-- **Status Code:** `200`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca`
+- **HTTP Status:** `200`
 
-Response:
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
 ```json
 {
   "data": {
@@ -542,176 +902,54 @@ Response:
     "username": "AdityaOkeGas2"
   },
   "success": true,
-  "timestamp": 1781246093273
+  "timestamp": 1781246241721
 }
 ```
+</details>
 
-[Back to Summary](#summary-table)
+[Back to Online Player Details Summary](#online-player-details)
 
 ---
 
-### Offline Player Details (UUID)
+### Player Details (Name)
 - **Method:** `GET`
-- **URL:** `https://napi.aikeigroup.net/api/v1/players/9c045595-a5da-4284-9d9e-c3603f86432b`
-- **Status Code:** `200`
+- **Path:** `/players/name/AdityaOkeGas2`
+- **HTTP Status:** `200`
 
-Response:
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
 ```json
 {
   "data": {
-    "country": "Indonesia",
-    "city": "Ungaran",
-    "displayName": "Daichi_keii",
-    "ping": 35,
-    "isp": "PT Lintas Data Prima",
+    "country": "Singapore",
+    "city": "Singapore",
+    "displayName": "AdityaOkeGas2",
+    "ping": 3,
+    "isp": "Oracle Corporation",
     "locale": "en",
     "inventory": [
       {
         "damage": 0,
         "customModelData": 0,
         "amount": 1,
-        "material": "ELYTRA",
+        "material": "DIAMOND",
         "lore": [],
         "displayName": null,
         "nbtJson": "{}",
         "slot": 0,
         "enchantments": {}
-      },
-      {
-        "damage": 0,
-        "customModelData": 0,
-        "amount": 1,
-        "material": "NETHERITE_SWORD",
-        "lore": [],
-        "displayName": null,
-        "nbtJson": "{}",
-        "slot": 1,
-        "enchantments": {
-          "SHARPNESS": 5
-        }
-      },
-      {
-        "damage": 0,
-        "customModelData": 0,
-        "amount": 1,
-        "material": "COPPER_HELMET",
-        "lore": [],
-        "displayName": null,
-        "nbtJson": "{}",
-        "slot": 2,
-        "enchantments": {}
-      },
-      {
-        "damage": 0,
-        "customModelData": 0,
-        "amount": 1,
-        "material": "CHICKEN",
-        "lore": [],
-        "displayName": null,
-        "nbtJson": "{}",
-        "slot": 3,
-        "enchantments": {}
-      },
-      {
-        "damage": 0,
-        "customModelData": 0,
-        "amount": 1,
-        "material": "COPPER_LEGGINGS",
-        "lore": [],
-        "displayName": null,
-        "nbtJson": "{}",
-        "slot": 4,
-        "enchantments": {}
-      },
-      {
-        "damage": 0,
-        "customModelData": 0,
-        "amount": 62,
-        "material": "FIREWORK_ROCKET",
-        "lore": [],
-        "displayName": null,
-        "nbtJson": "{}",
-        "slot": 7,
-        "enchantments": {}
-      },
-      {
-        "damage": 0,
-        "customModelData": 0,
-        "amount": 1,
-        "material": "ELYTRA",
-        "lore": [],
-        "displayName": null,
-        "nbtJson": "{}",
-        "slot": 8,
-        "enchantments": {}
-      },
-      {
-        "damage": 0,
-        "customModelData": 0,
-        "amount": 1,
-        "material": "COPPER_BOOTS",
-        "lore": [
-          "aduh"
-        ],
-        "displayName": "\u00a7aaduh bahh",
-        "nbtJson": "{}",
-        "slot": 9,
-        "enchantments": {}
-      },
-      {
-        "damage": 0,
-        "customModelData": 0,
-        "amount": 1,
-        "material": "COPPER_BOOTS",
-        "lore": [],
-        "displayName": null,
-        "nbtJson": "{}",
-        "slot": 36,
-        "enchantments": {}
-      },
-      {
-        "damage": 0,
-        "customModelData": 0,
-        "amount": 1,
-        "material": "COPPER_LEGGINGS",
-        "lore": [],
-        "displayName": null,
-        "nbtJson": "{}",
-        "slot": 37,
-        "enchantments": {}
-      },
-      {
-        "damage": 0,
-        "customModelData": 0,
-        "amount": 1,
-        "material": "COPPER_CHESTPLATE",
-        "lore": [],
-        "displayName": null,
-        "nbtJson": "{}",
-        "slot": 38,
-        "enchantments": {}
-      },
-      {
-        "damage": 0,
-        "customModelData": 0,
-        "amount": 1,
-        "material": "COPPER_HELMET",
-        "lore": [],
-        "displayName": null,
-        "nbtJson": "{}",
-        "slot": 39,
-        "enchantments": {}
       }
     ],
-    "uuid": "9c045595-a5da-4284-9d9e-c3603f86432b",
+    "uuid": "de11f3ca-003f-3713-b771-62bc481dbfca",
     "isWhitelisted": false,
-    "gamemode": "SPECTATOR",
-    "saturation": 0.0,
+    "gamemode": "SURVIVAL",
+    "saturation": 4.0,
     "school": null,
-    "isOp": true,
+    "isOp": false,
     "isBanned": false,
     "maxHealth": 20.0,
-    "exp": 0.111111,
+    "exp": 0.0,
     "vault": {
       "prefix": "",
       "suffix": "",
@@ -719,103 +957,437 @@ Response:
     },
     "ipHistory": [
       {
-        "country": "Indonesia",
-        "lastSeen": 1781193119075,
-        "city": "Ungaran",
-        "firstSeen": 1781167779708,
-        "isp": "PT Lintas Data Prima",
-        "ipAddress": "103.28.112.172",
-        "region": "Central Java",
-        "asn": "AS45305 Lintas Data Prima, PT"
+        "country": "Singapore",
+        "lastSeen": 1781245667513,
+        "city": "Singapore",
+        "firstSeen": 1781019787927,
+        "isp": "Oracle Corporation",
+        "ipAddress": "140.245.116.11",
+        "region": "South East",
+        "asn": "AS31898 Oracle Corporation"
       }
     ],
     "vanished": false,
-    "level": 1,
-    "ipAddress": "103.28.112.172",
-    "health": 12.5,
-    "clientBrand": "fabric",
-    "effects": [],
-    "lastSeen": 1781194551166,
-    "armor": {
-      "chestplate": {
-        "damage": 0,
-        "customModelData": 0,
-        "amount": 1,
-        "material": "COPPER_CHESTPLATE",
-        "lore": [],
-        "displayName": null,
-        "nbtJson": "{}",
-        "slot": 38,
-        "enchantments": {}
+    "level": 0,
+    "ipAddress": "140.245.116.11",
+    "health": 20.0,
+    "clientBrand": "vanilla",
+    "effects": [
+      {
+        "durationTicks": -1,
+        "durationSeconds": -0.05,
+        "icon": false,
+        "amplifier": 255,
+        "ambient": false,
+        "type": "REGENERATION",
+        "particles": false
       },
-      "helmet": {
-        "damage": 0,
-        "customModelData": 0,
-        "amount": 1,
-        "material": "COPPER_HELMET",
-        "lore": [],
-        "displayName": null,
-        "nbtJson": "{}",
-        "slot": 39,
-        "enchantments": {}
-      },
-      "boots": {
-        "damage": 0,
-        "customModelData": 0,
-        "amount": 1,
-        "material": "COPPER_BOOTS",
-        "lore": [],
-        "displayName": null,
-        "nbtJson": "{}",
-        "slot": 36,
-        "enchantments": {}
-      },
-      "leggings": {
-        "damage": 0,
-        "customModelData": 0,
-        "amount": 1,
-        "material": "COPPER_LEGGINGS",
-        "lore": [],
-        "displayName": null,
-        "nbtJson": "{}",
-        "slot": 37,
-        "enchantments": {}
+      {
+        "durationTicks": -1,
+        "durationSeconds": -0.05,
+        "icon": false,
+        "amplifier": 255,
+        "ambient": false,
+        "type": "DAMAGE_RESISTANCE",
+        "particles": false
       }
+    ],
+    "lastSeen": 1781245988658,
+    "armor": {
+      "chestplate": null,
+      "helmet": null,
+      "boots": null,
+      "leggings": null
     },
     "luckperms": {
       "primaryGroup": "default"
     },
-    "firstPlayed": 1780386089704,
-    "totalExperience": 8,
+    "firstPlayed": 1780588217858,
+    "totalExperience": 0,
     "online": false,
     "location": {
       "world": "world",
-      "x": -1655.0305918899621,
-      "y": 168.05145766118883,
-      "z": -560.4397616822695,
-      "pitch": -46.1753,
-      "yaw": -77.2872
+      "x": -3272.5,
+      "y": 101.3447679954834,
+      "z": 3167.5,
+      "pitch": 0.0,
+      "yaw": 0.0
     },
-    "foodLevel": 15,
-    "region": "Central Java",
-    "asn": "AS45305 Lintas Data Prima, PT",
-    "username": "Daichi_keii"
+    "foodLevel": 20,
+    "region": "South East",
+    "asn": "AS31898 Oracle Corporation",
+    "username": "AdityaOkeGas2"
   },
   "success": true,
-  "timestamp": 1781246093373
+  "timestamp": 1781246241823
 }
 ```
+</details>
 
-[Back to Summary](#summary-table)
+[Back to Online Player Details Summary](#online-player-details)
 
 ---
 
-### Online Player Stats
+### Player Location
 - **Method:** `GET`
-- **URL:** `https://napi.aikeigroup.net/api/v1/players/de11f3ca-003f-3713-b771-62bc481dbfca/stats`
-- **Status Code:** `200`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/location`
+- **HTTP Status:** `200`
 
-Response:
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "world": "world",
+    "x": -3272.5,
+    "y": 101.3447679954834,
+    "z": 3167.5,
+    "pitch": 0.0,
+    "yaw": 0.0
+  },
+  "success": true,
+  "timestamp": 1781246241921
+}
+```
+</details>
+
+[Back to Online Player Details Summary](#online-player-details)
+
+---
+
+### Player Health
+- **Method:** `GET`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/health`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "saturation": 4.0,
+    "health": 20.0,
+    "maxHealth": 20.0,
+    "foodLevel": 20
+  },
+  "success": true,
+  "timestamp": 1781246242071
+}
+```
+</details>
+
+[Back to Online Player Details Summary](#online-player-details)
+
+---
+
+### Player Experience
+- **Method:** `GET`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/experience`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "expLevel": 0,
+    "expProgress": 0.0,
+    "totalExp": 0
+  },
+  "success": true,
+  "timestamp": 1781246246823
+}
+```
+</details>
+
+[Back to Online Player Details Summary](#online-player-details)
+
+---
+
+### Player Gamemode
+- **Method:** `GET`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/gamemode`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": "SURVIVAL",
+  "success": true,
+  "timestamp": 1781246246920
+}
+```
+</details>
+
+[Back to Online Player Details Summary](#online-player-details)
+
+---
+
+### Player Inventory
+- **Method:** `GET`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/inventory`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "armor": {
+      "chestplate": null,
+      "helmet": null,
+      "boots": null,
+      "leggings": null
+    },
+    "inventory": [
+      {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "DIAMOND",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 0,
+        "enchantments": {}
+      }
+    ],
+    "uuid": "de11f3ca-003f-3713-b771-62bc481dbfca",
+    "offhand": null,
+    "username": "AdityaOkeGas2"
+  },
+  "success": true,
+  "timestamp": 1781246247026
+}
+```
+</details>
+
+[Back to Online Player Details Summary](#online-player-details)
+
+---
+
+### Player Inventory Hotbar
+- **Method:** `GET`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/inventory/hotbar`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": [
+    {
+      "damage": 0,
+      "customModelData": 0,
+      "amount": 1,
+      "material": "DIAMOND",
+      "lore": [],
+      "displayName": null,
+      "nbtJson": "{}",
+      "slot": 0,
+      "enchantments": {}
+    }
+  ],
+  "success": true,
+  "timestamp": 1781246247121
+}
+```
+</details>
+
+[Back to Online Player Details Summary](#online-player-details)
+
+---
+
+### Player Inventory Armor
+- **Method:** `GET`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/inventory/armor`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "chestplate": null,
+    "helmet": null,
+    "boots": null,
+    "leggings": null
+  },
+  "success": true,
+  "timestamp": 1781246247171
+}
+```
+</details>
+
+[Back to Online Player Details Summary](#online-player-details)
+
+---
+
+### Player Inventory Offhand
+- **Method:** `GET`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/inventory/offhand`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": null,
+  "success": true,
+  "timestamp": 1781246247321
+}
+```
+</details>
+
+[Back to Online Player Details Summary](#online-player-details)
+
+---
+
+### Player Active Effects
+- **Method:** `GET`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/effects`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": [
+    {
+      "durationTicks": -1,
+      "durationSeconds": -0.05,
+      "icon": false,
+      "amplifier": 255,
+      "ambient": false,
+      "type": "REGENERATION",
+      "particles": false
+    },
+    {
+      "durationTicks": -1,
+      "durationSeconds": -0.05,
+      "icon": false,
+      "amplifier": 255,
+      "ambient": false,
+      "type": "DAMAGE_RESISTANCE",
+      "particles": false
+    }
+  ],
+  "success": true,
+  "timestamp": 1781246247421
+}
+```
+</details>
+
+[Back to Online Player Details Summary](#online-player-details)
+
+---
+
+### Player Skin
+- **Method:** `GET`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/skin`
+- **HTTP Status:** `404`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "PLAYER_NOT_FOUND",
+    "message": "Player or skin not found.",
+    "timestamp": 1781246247785
+  }
+}
+```
+</details>
+
+[Back to Online Player Details Summary](#online-player-details)
+
+---
+
+### Player Ping
+- **Method:** `GET`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/ping`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": null,
+  "success": true,
+  "timestamp": 1781246247871
+}
+```
+</details>
+
+[Back to Online Player Details Summary](#online-player-details)
+
+---
+
+### Player Network Data
+- **Method:** `GET`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/network`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "clientBrand": "vanilla",
+    "ipHistory": [
+      {
+        "country": "Singapore",
+        "lastSeen": 1781245667513,
+        "city": "Singapore",
+        "firstSeen": 1781019787927,
+        "isp": "Oracle Corporation",
+        "ipAddress": "140.245.116.11",
+        "region": "South East",
+        "asn": "AS31898 Oracle Corporation"
+      }
+    ],
+    "country": "Singapore",
+    "city": "Singapore",
+    "ping": null,
+    "isp": "Oracle Corporation",
+    "ipAddress": "140.245.116.11",
+    "locale": "en",
+    "region": "South East",
+    "asn": "AS31898 Oracle Corporation"
+  },
+  "success": true,
+  "timestamp": 1781246247921
+}
+```
+</details>
+
+[Back to Online Player Details Summary](#online-player-details)
+
+---
+
+### Player Stats
+- **Method:** `GET`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/stats`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
 ```json
 {
   "data": {
@@ -824,42 +1396,217 @@ Response:
     "totalPlaytimeMs": null
   },
   "success": true,
-  "timestamp": 1781246093472
+  "timestamp": 1781246248021
 }
 ```
+</details>
 
-[Back to Summary](#summary-table)
+[Back to Online Player Details Summary](#online-player-details)
 
 ---
 
-### Offline Player Stats
+### Player Permissions
 - **Method:** `GET`
-- **URL:** `https://napi.aikeigroup.net/api/v1/players/9c045595-a5da-4284-9d9e-c3603f86432b/stats`
-- **Status Code:** `200`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/permissions`
+- **HTTP Status:** `200`
 
-Response:
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": [],
+  "success": true,
+  "timestamp": 1781246248121
+}
+```
+</details>
+
+[Back to Online Player Details Summary](#online-player-details)
+
+---
+
+### Player Permission Check (essentials.fly)
+- **Method:** `GET`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/permission/essentials.fly`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
 ```json
 {
   "data": {
-    "firstJoin": 1780386089704,
-    "lastSeen": 1781194551166,
-    "totalPlaytimeMs": null
+    "permission": "essentials.fly",
+    "hasPermission": false
   },
   "success": true,
-  "timestamp": 1781246093572
+  "timestamp": 1781246248220
 }
 ```
+</details>
 
-[Back to Summary](#summary-table)
+[Back to Online Player Details Summary](#online-player-details)
 
 ---
 
-### Offline Player Snapshot
+### Player Snapshot details
 - **Method:** `GET`
-- **URL:** `https://napi.aikeigroup.net/api/v1/players/offline/9c045595-a5da-4284-9d9e-c3603f86432b`
-- **Status Code:** `200`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/snapshot`
+- **HTTP Status:** `200`
 
-Response:
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "country": "Singapore",
+    "city": "Singapore",
+    "displayName": "AdityaOkeGas2",
+    "ping": 3,
+    "isp": "Oracle Corporation",
+    "locale": "en",
+    "inventory": [
+      {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "DIAMOND",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 0,
+        "enchantments": {}
+      }
+    ],
+    "uuid": "de11f3ca-003f-3713-b771-62bc481dbfca",
+    "isWhitelisted": false,
+    "gamemode": "SURVIVAL",
+    "saturation": 4.0,
+    "school": null,
+    "isOp": false,
+    "isBanned": false,
+    "maxHealth": 20.0,
+    "exp": 0.0,
+    "vault": {
+      "prefix": "",
+      "suffix": "",
+      "group": "default"
+    },
+    "ipHistory": [
+      {
+        "country": "Singapore",
+        "lastSeen": 1781245667513,
+        "city": "Singapore",
+        "firstSeen": 1781019787927,
+        "isp": "Oracle Corporation",
+        "ipAddress": "140.245.116.11",
+        "region": "South East",
+        "asn": "AS31898 Oracle Corporation"
+      }
+    ],
+    "vanished": false,
+    "level": 0,
+    "ipAddress": "140.245.116.11",
+    "health": 20.0,
+    "clientBrand": "vanilla",
+    "effects": [
+      {
+        "durationTicks": -1,
+        "durationSeconds": -0.05,
+        "icon": false,
+        "amplifier": 255,
+        "ambient": false,
+        "type": "REGENERATION",
+        "particles": false
+      },
+      {
+        "durationTicks": -1,
+        "durationSeconds": -0.05,
+        "icon": false,
+        "amplifier": 255,
+        "ambient": false,
+        "type": "DAMAGE_RESISTANCE",
+        "particles": false
+      }
+    ],
+    "lastSeen": 1781245988658,
+    "armor": {
+      "chestplate": null,
+      "helmet": null,
+      "boots": null,
+      "leggings": null
+    },
+    "luckperms": {
+      "primaryGroup": "default"
+    },
+    "firstPlayed": 1780588217858,
+    "totalExperience": 0,
+    "online": false,
+    "location": {
+      "world": "world",
+      "x": -3272.5,
+      "y": 101.3447679954834,
+      "z": 3167.5,
+      "pitch": 0.0,
+      "yaw": 0.0
+    },
+    "foodLevel": 20,
+    "region": "South East",
+    "asn": "AS31898 Oracle Corporation",
+    "username": "AdityaOkeGas2"
+  },
+  "success": true,
+  "timestamp": 1781246248571
+}
+```
+</details>
+
+[Back to Online Player Details Summary](#online-player-details)
+
+---
+
+### Trigger Player Snapshot
+- **Method:** `POST`
+- **Path:** `/players/de11f3ca-003f-3713-b771-62bc481dbfca/snapshot`
+- **HTTP Status:** `404`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "PLAYER_NOT_FOUND",
+    "message": "Player not found or offline.",
+    "timestamp": 1781246248665
+  }
+}
+```
+</details>
+
+[Back to Online Player Details Summary](#online-player-details)
+
+---
+
+## Offline Player Details
+
+| Endpoint Name | Method | Path | Status | Details |
+|---|---|---|---|---|
+| Offline Player Details (UUID) | `GET` | `/players/offline/9c045595-a5da-4284-9d9e-c3603f86432b` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#offline-player-details-uuid) |
+| Offline Player Details (Name) | `GET` | `/players/offline/name/Daichi_keii` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#offline-player-details-name) |
+| Offline Player Stats | `GET` | `/players/9c045595-a5da-4284-9d9e-c3603f86432b/stats` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#offline-player-stats) |
+
+### Offline Player Details (UUID)
+- **Method:** `GET`
+- **Path:** `/players/offline/9c045595-a5da-4284-9d9e-c3603f86432b`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
 ```json
 {
   "data": {
@@ -1106,10 +1853,1290 @@ Response:
     "username": "Daichi_keii"
   },
   "success": true,
-  "timestamp": 1781246093672
+  "timestamp": 1781246248771
 }
 ```
+</details>
 
-[Back to Summary](#summary-table)
+[Back to Offline Player Details Summary](#offline-player-details)
+
+---
+
+### Offline Player Details (Name)
+- **Method:** `GET`
+- **Path:** `/players/offline/name/Daichi_keii`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "country": "Indonesia",
+    "city": "Ungaran",
+    "displayName": "Daichi_keii",
+    "ping": 35,
+    "isp": "PT Lintas Data Prima",
+    "locale": "en",
+    "inventory": [
+      {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "ELYTRA",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 0,
+        "enchantments": {}
+      },
+      {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "NETHERITE_SWORD",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 1,
+        "enchantments": {
+          "SHARPNESS": 5
+        }
+      },
+      {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "COPPER_HELMET",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 2,
+        "enchantments": {}
+      },
+      {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "CHICKEN",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 3,
+        "enchantments": {}
+      },
+      {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "COPPER_LEGGINGS",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 4,
+        "enchantments": {}
+      },
+      {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 62,
+        "material": "FIREWORK_ROCKET",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 7,
+        "enchantments": {}
+      },
+      {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "ELYTRA",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 8,
+        "enchantments": {}
+      },
+      {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "COPPER_BOOTS",
+        "lore": [
+          "aduh"
+        ],
+        "displayName": "\u00a7aaduh bahh",
+        "nbtJson": "{}",
+        "slot": 9,
+        "enchantments": {}
+      },
+      {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "COPPER_BOOTS",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 36,
+        "enchantments": {}
+      },
+      {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "COPPER_LEGGINGS",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 37,
+        "enchantments": {}
+      },
+      {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "COPPER_CHESTPLATE",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 38,
+        "enchantments": {}
+      },
+      {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "COPPER_HELMET",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 39,
+        "enchantments": {}
+      }
+    ],
+    "uuid": "9c045595-a5da-4284-9d9e-c3603f86432b",
+    "isWhitelisted": false,
+    "gamemode": "SPECTATOR",
+    "saturation": 0.0,
+    "school": null,
+    "isOp": true,
+    "isBanned": false,
+    "maxHealth": 20.0,
+    "exp": 0.111111,
+    "vault": {
+      "prefix": "",
+      "suffix": "",
+      "group": "default"
+    },
+    "ipHistory": [
+      {
+        "country": "Indonesia",
+        "lastSeen": 1781193119075,
+        "city": "Ungaran",
+        "firstSeen": 1781167779708,
+        "isp": "PT Lintas Data Prima",
+        "ipAddress": "103.28.112.172",
+        "region": "Central Java",
+        "asn": "AS45305 Lintas Data Prima, PT"
+      }
+    ],
+    "vanished": false,
+    "level": 1,
+    "ipAddress": "103.28.112.172",
+    "health": 12.5,
+    "clientBrand": "fabric",
+    "effects": [],
+    "lastSeen": 1781194551166,
+    "armor": {
+      "chestplate": {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "COPPER_CHESTPLATE",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 38,
+        "enchantments": {}
+      },
+      "helmet": {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "COPPER_HELMET",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 39,
+        "enchantments": {}
+      },
+      "boots": {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "COPPER_BOOTS",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 36,
+        "enchantments": {}
+      },
+      "leggings": {
+        "damage": 0,
+        "customModelData": 0,
+        "amount": 1,
+        "material": "COPPER_LEGGINGS",
+        "lore": [],
+        "displayName": null,
+        "nbtJson": "{}",
+        "slot": 37,
+        "enchantments": {}
+      }
+    },
+    "luckperms": {
+      "primaryGroup": "default"
+    },
+    "firstPlayed": 1780386089704,
+    "totalExperience": 8,
+    "online": false,
+    "location": {
+      "world": "world",
+      "x": -1655.0305918899621,
+      "y": 168.05145766118883,
+      "z": -560.4397616822695,
+      "pitch": -46.1753,
+      "yaw": -77.2872
+    },
+    "foodLevel": 15,
+    "region": "Central Java",
+    "asn": "AS45305 Lintas Data Prima, PT",
+    "username": "Daichi_keii"
+  },
+  "success": true,
+  "timestamp": 1781246248972
+}
+```
+</details>
+
+[Back to Offline Player Details Summary](#offline-player-details)
+
+---
+
+### Offline Player Stats
+- **Method:** `GET`
+- **Path:** `/players/9c045595-a5da-4284-9d9e-c3603f86432b/stats`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "firstJoin": 1780386089704,
+    "lastSeen": 1781194551166,
+    "totalPlaytimeMs": null
+  },
+  "success": true,
+  "timestamp": 1781246250473
+}
+```
+</details>
+
+[Back to Offline Player Details Summary](#offline-player-details)
+
+---
+
+## Worlds
+
+| Endpoint Name | Method | Path | Status | Details |
+|---|---|---|---|---|
+| Worlds List | `GET` | `/worlds` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#worlds-list) |
+| World Detail | `GET` | `/worlds/world` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#world-detail) |
+| World Time | `GET` | `/worlds/world/time` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#world-time) |
+| World Weather | `GET` | `/worlds/world/weather` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#world-weather) |
+| World Players | `GET` | `/worlds/world/players` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#world-players) |
+| World Entities | `GET` | `/worlds/world/entities` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#world-entities) |
+| World Loaded Chunks | `GET` | `/worlds/world/chunks` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#world-loaded-chunks) |
+| World Border | `GET` | `/worlds/world/border` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#world-border) |
+| World Gamerules | `GET` | `/worlds/world/gamerules` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#world-gamerules) |
+
+### Worlds List
+- **Method:** `GET`
+- **Path:** `/worlds`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": [
+    {
+      "difficulty": "EASY",
+      "environment": "NORMAL",
+      "seed": 6641214828919989498,
+      "entityCount": 0,
+      "playerCount": 0,
+      "name": "world",
+      "weather": "THUNDER",
+      "fullTime": 1038196,
+      "time": 6196,
+      "pvp": true,
+      "loadedChunks": 0
+    },
+    {
+      "difficulty": "EASY",
+      "environment": "NETHER",
+      "seed": 6641214828919989498,
+      "entityCount": 0,
+      "playerCount": 0,
+      "name": "world_nether",
+      "weather": "CLEAR",
+      "fullTime": 24737966,
+      "time": 17966,
+      "pvp": true,
+      "loadedChunks": 0
+    },
+    {
+      "difficulty": "EASY",
+      "environment": "THE_END",
+      "seed": 6641214828919989498,
+      "entityCount": 0,
+      "playerCount": 0,
+      "name": "world_the_end",
+      "weather": "CLEAR",
+      "fullTime": 24737966,
+      "time": 17966,
+      "pvp": true,
+      "loadedChunks": 0
+    },
+    {
+      "difficulty": "EASY",
+      "environment": "NORMAL",
+      "seed": -2633167103675812141,
+      "entityCount": 0,
+      "playerCount": 0,
+      "name": "flat",
+      "weather": "RAIN",
+      "fullTime": 16130839,
+      "time": 2839,
+      "pvp": true,
+      "loadedChunks": 0
+    },
+    {
+      "difficulty": "HARD",
+      "environment": "NORMAL",
+      "seed": -1064462851042033081,
+      "entityCount": 0,
+      "playerCount": 0,
+      "name": "schoolmap",
+      "weather": "CLEAR",
+      "fullTime": 600,
+      "time": 600,
+      "pvp": true,
+      "loadedChunks": 0
+    }
+  ],
+  "success": true,
+  "timestamp": 1781246250566
+}
+```
+</details>
+
+[Back to Worlds Summary](#worlds)
+
+---
+
+### World Detail
+- **Method:** `GET`
+- **Path:** `/worlds/world`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "difficulty": "EASY",
+    "environment": "NORMAL",
+    "seed": 6641214828919989498,
+    "entityCount": 0,
+    "playerCount": 0,
+    "name": "world",
+    "weather": "THUNDER",
+    "fullTime": 1038197,
+    "time": 6197,
+    "pvp": true,
+    "loadedChunks": 0
+  },
+  "success": true,
+  "timestamp": 1781246250615
+}
+```
+</details>
+
+[Back to Worlds Summary](#worlds)
+
+---
+
+### World Time
+- **Method:** `GET`
+- **Path:** `/worlds/world/time`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "dayCount": 43,
+    "fullTime": 1038198,
+    "time": 6198
+  },
+  "success": true,
+  "timestamp": 1781246250665
+}
+```
+</details>
+
+[Back to Worlds Summary](#worlds)
+
+---
+
+### World Weather
+- **Method:** `GET`
+- **Path:** `/worlds/world/weather`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": "THUNDER",
+  "success": true,
+  "timestamp": 1781246250715
+}
+```
+</details>
+
+[Back to Worlds Summary](#worlds)
+
+---
+
+### World Players
+- **Method:** `GET`
+- **Path:** `/worlds/world/players`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": [],
+  "success": true,
+  "timestamp": 1781246250765
+}
+```
+</details>
+
+[Back to Worlds Summary](#worlds)
+
+---
+
+### World Entities
+- **Method:** `GET`
+- **Path:** `/worlds/world/entities`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {},
+  "success": true,
+  "timestamp": 1781246251015
+}
+```
+</details>
+
+[Back to Worlds Summary](#worlds)
+
+---
+
+### World Loaded Chunks
+- **Method:** `GET`
+- **Path:** `/worlds/world/chunks`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": 0,
+  "success": true,
+  "timestamp": 1781246251065
+}
+```
+</details>
+
+[Back to Worlds Summary](#worlds)
+
+---
+
+### World Border
+- **Method:** `GET`
+- **Path:** `/worlds/world/border`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "damageBuffer": 5.0,
+    "size": 59999968.0,
+    "center": {
+      "z": 0.0,
+      "x": 0.0
+    },
+    "damageAmount": 0.2
+  },
+  "success": true,
+  "timestamp": 1781246251115
+}
+```
+</details>
+
+[Back to Worlds Summary](#worlds)
+
+---
+
+### World Gamerules
+- **Method:** `GET`
+- **Path:** `/worlds/world/gamerules`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "freeze_damage": true,
+    "natural_health_regeneration": true,
+    "forgive_dead_players": true,
+    "tnt_explosion_drop_decay": false,
+    "allow_entering_nether_using_portals": true,
+    "max_entity_cramming": 24,
+    "max_snow_accumulation_height": 1,
+    "advance_weather": true,
+    "spawn_phantoms": true,
+    "fire_spread_radius_around_player": 128,
+    "player_movement_check": true,
+    "spawner_blocks_work": true,
+    "show_death_messages": true,
+    "send_command_feedback": true,
+    "spread_vines": true,
+    "block_explosion_drop_decay": true,
+    "global_sound_events": true,
+    "max_block_modifications": 32768,
+    "locator_bar": false,
+    "pvp": true,
+    "spawn_wandering_traders": true,
+    "players_nether_portal_creative_delay": 0,
+    "fire_damage": true,
+    "lava_source_conversion": false,
+    "mob_griefing": true,
+    "respawn_radius": 10,
+    "players_nether_portal_default_delay": 80,
+    "immediate_respawn": false,
+    "limited_crafting": false,
+    "show_advancement_messages": true,
+    "mob_explosion_drop_decay": true,
+    "players_sleeping_percentage": 100,
+    "drowning_damage": true,
+    "max_command_forks": 65536,
+    "command_block_output": true,
+    "elytra_movement_check": true,
+    "spawn_patrols": true,
+    "log_admin_commands": true,
+    "random_tick_speed": 3,
+    "ender_pearls_vanish_on_death": true,
+    "fall_damage": true,
+    "raids": true,
+    "mob_drops": true,
+    "spawn_mobs": true,
+    "tnt_explodes": true,
+    "spectators_generate_chunks": true,
+    "block_drops": true,
+    "command_blocks_work": true,
+    "spawn_monsters": true,
+    "advance_time": true,
+    "universal_anger": false,
+    "entity_drops": true,
+    "projectiles_can_break_blocks": true,
+    "spawn_wardens": true,
+    "water_source_conversion": true,
+    "keep_inventory": false,
+    "reduced_debug_info": false,
+    "max_command_sequence_length": 65536
+  },
+  "success": true,
+  "timestamp": 1781246251166
+}
+```
+</details>
+
+[Back to Worlds Summary](#worlds)
+
+---
+
+## Integrations
+
+| Endpoint Name | Method | Path | Status | Details |
+|---|---|---|---|---|
+| Vault Player Data | `GET` | `/vault/player/de11f3ca-003f-3713-b771-62bc481dbfca` | ![Status 404](https://img.shields.io/badge/Status-404-red) | [View Details](#vault-player-data) |
+| Vault Groups | `GET` | `/vault/groups` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#vault-groups) |
+| Vault Group Details | `GET` | `/vault/groups/default` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#vault-group-details) |
+| Vault Economy Status | `GET` | `/vault/economy/status` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#vault-economy-status) |
+| LuckPerms Player Data | `GET` | `/luckperms/player/de11f3ca-003f-3713-b771-62bc481dbfca` | ![Status 404](https://img.shields.io/badge/Status-404-red) | [View Details](#luckperms-player-data) |
+| LuckPerms Groups | `GET` | `/luckperms/groups` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#luckperms-groups) |
+| LuckPerms Group Details | `GET` | `/luckperms/groups/default` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#luckperms-group-details) |
+| LuckPerms Group Members | `GET` | `/luckperms/groups/default/members` | ![Status 500](https://img.shields.io/badge/Status-500-red) | [View Details](#luckperms-group-members) |
+| LuckPerms Group Permissions | `GET` | `/luckperms/groups/default/permissions` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#luckperms-group-permissions) |
+| PAPI Plugins | `GET` | `/papi/plugins` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#papi-plugins) |
+| PAPI Evaluate Placeholders | `POST` | `/papi/evaluate` | ![Status 400](https://img.shields.io/badge/Status-400-red) | [View Details](#papi-evaluate-placeholders) |
+| NaturalSchool Player Data | `GET` | `/naturalschool/player/de11f3ca-003f-3713-b771-62bc481dbfca` | ![Status 404](https://img.shields.io/badge/Status-404-red) | [View Details](#naturalschool-player-data) |
+| NaturalSchool Refresh | `POST` | `/naturalschool/refresh` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#naturalschool-refresh) |
+
+### Vault Player Data
+- **Method:** `GET`
+- **Path:** `/vault/player/de11f3ca-003f-3713-b771-62bc481dbfca`
+- **HTTP Status:** `404`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "PLAYER_NOT_FOUND",
+    "message": "Player not found",
+    "timestamp": 1781246251215
+  }
+}
+```
+</details>
+
+[Back to Integrations Summary](#integrations)
+
+---
+
+### Vault Groups
+- **Method:** `GET`
+- **Path:** `/vault/groups`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": [
+    "owner",
+    "default",
+    "dev"
+  ],
+  "success": true,
+  "timestamp": 1781246251870
+}
+```
+</details>
+
+[Back to Integrations Summary](#integrations)
+
+---
+
+### Vault Group Details
+- **Method:** `GET`
+- **Path:** `/vault/groups/default`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "prefix": "",
+    "name": "default",
+    "suffix": ""
+  },
+  "success": true,
+  "timestamp": 1781246252332
+}
+```
+</details>
+
+[Back to Integrations Summary](#integrations)
+
+---
+
+### Vault Economy Status
+- **Method:** `GET`
+- **Path:** `/vault/economy/status`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "currencySingular": "Money",
+    "name": "Money",
+    "currencyPlural": "Money",
+    "enabled": true
+  },
+  "success": true,
+  "timestamp": 1781246252415
+}
+```
+</details>
+
+[Back to Integrations Summary](#integrations)
+
+---
+
+### LuckPerms Player Data
+- **Method:** `GET`
+- **Path:** `/luckperms/player/de11f3ca-003f-3713-b771-62bc481dbfca`
+- **HTTP Status:** `404`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "PLAYER_NOT_FOUND",
+    "message": "Player not found",
+    "timestamp": 1781246255465
+  }
+}
+```
+</details>
+
+[Back to Integrations Summary](#integrations)
+
+---
+
+### LuckPerms Groups
+- **Method:** `GET`
+- **Path:** `/luckperms/groups`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": [
+    "owner",
+    "default",
+    "dev"
+  ],
+  "success": true,
+  "timestamp": 1781246255516
+}
+```
+</details>
+
+[Back to Integrations Summary](#integrations)
+
+---
+
+### LuckPerms Group Details
+- **Method:** `GET`
+- **Path:** `/luckperms/groups/default`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "displayName": null,
+    "name": "default",
+    "weight": 0
+  },
+  "success": true,
+  "timestamp": 1781246255565
+}
+```
+</details>
+
+[Back to Integrations Summary](#integrations)
+
+---
+
+### LuckPerms Group Members
+- **Method:** `GET`
+- **Path:** `/luckperms/groups/default/members`
+- **HTTP Status:** `500`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "INTERNAL_ERROR",
+    "message": "Error fetching LuckPerms group members: No serializer found for class net.luckperms.api.node.SimpleNodeType and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: java.util.HashMap[\"data\"]->java.util.ArrayList[0]->java.util.HashMap[\"username\"]->com.google.common.collect.SingletonImmutableList[0]->me.lucko.luckperms.common.node.types.Inheritance[\"type\"])",
+    "timestamp": 1781246255725
+  }
+}
+```
+</details>
+
+[Back to Integrations Summary](#integrations)
+
+---
+
+### LuckPerms Group Permissions
+- **Method:** `GET`
+- **Path:** `/luckperms/groups/default/permissions`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": [],
+  "success": true,
+  "timestamp": 1781246255815
+}
+```
+</details>
+
+[Back to Integrations Summary](#integrations)
+
+---
+
+### PAPI Plugins
+- **Method:** `GET`
+- **Path:** `/papi/plugins`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": [
+    "excellenteconomy",
+    "localtime",
+    "server",
+    "img",
+    "naturalschool",
+    "servertime",
+    "iaplayerstat",
+    "naturalcore",
+    "multiverse-core",
+    "plan",
+    "vault",
+    "player"
+  ],
+  "success": true,
+  "timestamp": 1781246255865
+}
+```
+</details>
+
+[Back to Integrations Summary](#integrations)
+
+---
+
+### PAPI Evaluate Placeholders
+- **Method:** `POST`
+- **Path:** `/papi/evaluate`
+- **HTTP Status:** `400`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "INVALID_REQUEST",
+    "message": "Invalid body format",
+    "timestamp": 1781246255967
+  }
+}
+```
+</details>
+
+[Back to Integrations Summary](#integrations)
+
+---
+
+### NaturalSchool Player Data
+- **Method:** `GET`
+- **Path:** `/naturalschool/player/de11f3ca-003f-3713-b771-62bc481dbfca`
+- **HTTP Status:** `404`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "PLAYER_NOT_FOUND",
+    "message": "Player not found",
+    "timestamp": 1781246256015
+  }
+}
+```
+</details>
+
+[Back to Integrations Summary](#integrations)
+
+---
+
+### NaturalSchool Refresh
+- **Method:** `POST`
+- **Path:** `/naturalschool/refresh`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "message": "NaturalSchool integration reloaded.",
+    "success": true
+  },
+  "success": true,
+  "timestamp": 1781246256116
+}
+```
+</details>
+
+[Back to Integrations Summary](#integrations)
+
+---
+
+## Admin
+
+| Endpoint Name | Method | Path | Status | Details |
+|---|---|---|---|---|
+| Admin Health | `GET` | `/admin/health` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#admin-health) |
+| Admin OpenAPI (JSON) | `GET` | `/admin/openapi.json` | ![Status 501](https://img.shields.io/badge/Status-501-red) | [View Details](#admin-openapi-json) |
+| Admin API Keys | `GET` | `/admin/keys` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#admin-api-keys) |
+| Admin Config | `GET` | `/admin/config` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#admin-config) |
+| Admin Rate Limits | `GET` | `/admin/rate-limits` | ![Status 501](https://img.shields.io/badge/Status-501-red) | [View Details](#admin-rate-limits) |
+| Admin Snapshot History | `GET` | `/admin/snapshot/history` | ![Status 501](https://img.shields.io/badge/Status-501-red) | [View Details](#admin-snapshot-history) |
+
+### Admin Health
+- **Method:** `GET`
+- **Path:** `/admin/health`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "status": "ok"
+  },
+  "success": true,
+  "timestamp": 1781246256152
+}
+```
+</details>
+
+[Back to Admin Summary](#admin)
+
+---
+
+### Admin OpenAPI (JSON)
+- **Method:** `GET`
+- **Path:** `/admin/openapi.json`
+- **HTTP Status:** `501`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "NOT_IMPLEMENTED",
+    "message": "Please use /admin/openapi.yaml for the OpenAPI spec.",
+    "timestamp": 1781246256197
+  }
+}
+```
+</details>
+
+[Back to Admin Summary](#admin)
+
+---
+
+### Admin API Keys
+- **Method:** `GET`
+- **Path:** `/admin/keys`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": [
+    {
+      "expires_at": null,
+      "last_used": 1781246256115,
+      "name": "test",
+      "created_at": 1781161852460,
+      "id": "2f27591d-d0ba-4ef9-a796-cf8a9f35c175",
+      "scopes": "*",
+      "enabled": true
+    },
+    {
+      "expires_at": null,
+      "last_used": 1781245377654,
+      "name": "web",
+      "created_at": 1781015698653,
+      "id": "38fd1267-b237-45a0-ae36-8c86a9304908",
+      "scopes": "*",
+      "enabled": true
+    },
+    {
+      "expires_at": null,
+      "last_used": 1781172728754,
+      "name": "a",
+      "created_at": 1781172706865,
+      "id": "bd2d5561-7a15-4a78-b4b9-5762bffe33b1",
+      "scopes": "*",
+      "enabled": true
+    },
+    {
+      "expires_at": null,
+      "last_used": null,
+      "name": "test_script_key",
+      "created_at": 1781162109015,
+      "id": "fa44f143-ca63-48fd-a348-41003fdb5e55",
+      "scopes": "*",
+      "enabled": true
+    }
+  ],
+  "success": true,
+  "timestamp": 1781246256255
+}
+```
+</details>
+
+[Back to Admin Summary](#admin)
+
+---
+
+### Admin Config
+- **Method:** `GET`
+- **Path:** `/admin/config`
+- **HTTP Status:** `200`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "data": {
+    "server": {
+      "bind-address": "0.0.0.0",
+      "port": 19133,
+      "swagger-path": "/swagger",
+      "base-path": "/api/v1",
+      "public-url": "http://natural.nodevoid.my.id:19133",
+      "swagger-enabled": true
+    },
+    "features": {
+      "leaderboard": {
+        "providers": {
+          "kills": "database",
+          "balance": "database",
+          "votes": "database",
+          "playtime": "database",
+          "exp": "database",
+          "deaths": "database"
+        }
+      },
+      "endpoints": {
+        "server": true,
+        "worlds": true,
+        "offline-players": true,
+        "players": true
+      },
+      "luckperms": {
+        "enabled": true
+      },
+      "websocket": {
+        "server-stats-interval": 40,
+        "endpoints": {
+          "chat": true,
+          "player-detail": true,
+          "server-stats": true,
+          "player-events": true
+        },
+        "enabled": true
+      },
+      "skin": {
+        "cache-ttl-hours": 6
+      },
+      "vanish": {
+        "show-vanished-in-count": false,
+        "show-vanished-in-list": false
+      },
+      "snapshot": {
+        "interval-minutes": 10,
+        "retention-days": 30,
+        "auto-save": true
+      },
+      "papi": {
+        "enabled": true
+      },
+      "vault": {
+        "enabled": true
+      }
+    },
+    "database": {
+      "mariadb": {
+        "pool-size": 10,
+        "database": "pl_dev",
+        "port": 3306,
+        "host": "oc.keidev.my.id",
+        "username": "pl_dev"
+      },
+      "sqlite": {
+        "file": "data.db"
+      },
+      "provider": "mariadb",
+      "mysql": {
+        "pool-size": 10,
+        "connection-timeout": 30000,
+        "database": "naturalapi",
+        "port": 3306,
+        "host": "localhost",
+        "username": "root"
+      }
+    },
+    "security": {
+      "rate-limit": {
+        "burst": 30,
+        "requests-per-minute": 120,
+        "enabled": true
+      },
+      "cors": {
+        "allowed-methods": [
+          "GET",
+          "POST",
+          "DELETE"
+        ],
+        "allowed-headers": [
+          "Authorization",
+          "Content-Type"
+        ],
+        "allowed-origins": [
+          "*"
+        ],
+        "enabled": true
+      },
+      "ip-allowlist": {
+        "ips": [],
+        "enabled": false
+      },
+      "swagger-auth-required": true
+    },
+    "logging": {
+      "log-requests": true,
+      "log-level": "INFO",
+      "log-auth-failures": true
+    }
+  },
+  "success": true,
+  "timestamp": 1781246256297
+}
+```
+</details>
+
+[Back to Admin Summary](#admin)
+
+---
+
+### Admin Rate Limits
+- **Method:** `GET`
+- **Path:** `/admin/rate-limits`
+- **HTTP Status:** `501`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "NOT_IMPLEMENTED",
+    "message": "Rate limit viewing not implemented yet.",
+    "timestamp": 1781246256337
+  }
+}
+```
+</details>
+
+[Back to Admin Summary](#admin)
+
+---
+
+### Admin Snapshot History
+- **Method:** `GET`
+- **Path:** `/admin/snapshot/history`
+- **HTTP Status:** `501`
+
+<details>
+<summary>🔍 Click to expand/collapse full JSON Response</summary>
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "NOT_IMPLEMENTED",
+    "message": "Snapshot history not implemented yet.",
+    "timestamp": 1781246256379
+  }
+}
+```
+</details>
+
+[Back to Admin Summary](#admin)
 
 ---
