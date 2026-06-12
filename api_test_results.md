@@ -1,5 +1,5 @@
 # NaturalAPI Full Endpoint Test Report
-Generated on: 2026-06-12 13:37:16
+Generated on: 2026-06-12 13:46:14
 Target API base URL: `https://napi.aikeigroup.net/api/v1`
 
 This document contains test results for **every registered endpoint** of the NaturalAPI plugin.
@@ -58,40 +58,40 @@ This document contains test results for **every registered endpoint** of the Nat
     "osName": "Linux",
     "version": "1.21.11",
     "platform": "Paper",
-    "uptime": 212,
+    "uptime": 27,
     "system": {
       "availableProcessors": 6,
-      "systemLoadAverage": 0.12,
-      "processCpuLoad": 0.67,
-      "systemCpuLoad": 0.9,
+      "systemLoadAverage": 1.32,
+      "processCpuLoad": 13.33,
+      "systemCpuLoad": 13.21,
       "storage": {
         "totalBytes": 126716452864,
-        "usableBytes": 59105222656,
-        "freeBytes": 64337833984
+        "usableBytes": 59139444736,
+        "freeBytes": 64372056064
       },
       "network": {
-        "rxBytesPerSec": 1874,
-        "txBytesTotal": 560193,
-        "txBytesPerSec": 1161,
-        "rxBytesTotal": 36569996
+        "rxBytesPerSec": 2719,
+        "txBytesTotal": 244376,
+        "txBytesPerSec": 1308,
+        "rxBytesTotal": 1282770
       }
     },
     "tps": {
-      "now": 19.999997927272943,
+      "now": 19.999507155579426,
       "5m": 20.0,
       "15m": 20.0,
       "1m": 20.0
     },
     "online": true,
-    "mspt": 0.24286745544554456,
+    "mspt": 0.4626442772277227,
     "ram": {
       "maxMB": 8192,
-      "freeMB": 6455,
-      "usedMB": 1736
+      "freeMB": 6877,
+      "usedMB": 1314
     }
   },
   "success": true,
-  "timestamp": 1781246236166
+  "timestamp": 1781246774870
 }
 ```
 </details>
@@ -129,40 +129,40 @@ This document contains test results for **every registered endpoint** of the Nat
     "osName": "Linux",
     "version": "1.21.11",
     "platform": "Paper",
-    "uptime": 212,
+    "uptime": 27,
     "system": {
       "availableProcessors": 6,
-      "systemLoadAverage": 0.12,
-      "processCpuLoad": 1.67,
-      "systemCpuLoad": 2.11,
+      "systemLoadAverage": 1.32,
+      "processCpuLoad": 45.0,
+      "systemCpuLoad": 46.28,
       "storage": {
         "totalBytes": 126716452864,
-        "usableBytes": 59105222656,
-        "freeBytes": 64337833984
+        "usableBytes": 59139444736,
+        "freeBytes": 64372056064
       },
       "network": {
-        "rxBytesPerSec": 20230,
-        "txBytesTotal": 562160,
-        "txBytesPerSec": 19670,
-        "rxBytesTotal": 36572019
+        "rxBytesPerSec": 12967,
+        "txBytesTotal": 246140,
+        "txBytesPerSec": 11760,
+        "rxBytesTotal": 1284715
       }
     },
     "tps": {
-      "now": 19.999859746438105,
+      "now": 20.0,
       "5m": 20.0,
       "15m": 20.0,
-      "1m": 19.99999924396339
+      "1m": 20.0
     },
     "online": true,
-    "mspt": 0.26301902970297025,
+    "mspt": 1.1122424653465346,
     "ram": {
       "maxMB": 8192,
-      "freeMB": 6455,
-      "usedMB": 1736
+      "freeMB": 6839,
+      "usedMB": 1352
     }
   },
   "success": true,
-  "timestamp": 1781246236266
+  "timestamp": 1781246775020
 }
 ```
 </details>
@@ -182,13 +182,13 @@ This document contains test results for **every registered endpoint** of the Nat
 ```json
 {
   "data": {
-    "now": 19.99290032318572,
+    "now": 19.99999495353663,
     "5m": 20.0,
     "15m": 20.0,
-    "1m": 19.99999699283975
+    "1m": 20.0
   },
   "success": true,
-  "timestamp": 1781246236315
+  "timestamp": 1781246775818
 }
 ```
 </details>
@@ -207,9 +207,9 @@ This document contains test results for **every registered endpoint** of the Nat
 
 ```json
 {
-  "data": 0.29082928712871287,
+  "data": 1.1336733465346536,
   "success": true,
-  "timestamp": 1781246236415
+  "timestamp": 1781246775918
 }
 ```
 </details>
@@ -230,11 +230,11 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "data": {
     "max": 8589934592,
-    "used": 1820448408,
-    "free": 6769486184
+    "used": 1418686624,
+    "free": 7171247968
   },
   "success": true,
-  "timestamp": 1781246236515
+  "timestamp": 1781246776018
 }
 ```
 </details>
@@ -253,9 +253,9 @@ This document contains test results for **every registered endpoint** of the Nat
 
 ```json
 {
-  "data": 212,
+  "data": 30,
   "success": true,
-  "timestamp": 1781246236565
+  "timestamp": 1781246778368
 }
 ```
 </details>
@@ -279,7 +279,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "platform": "Paper"
   },
   "success": true,
-  "timestamp": 1781246236615
+  "timestamp": 1781246778468
 }
 ```
 </details>
@@ -305,7 +305,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "online": 0
   },
   "success": true,
-  "timestamp": 1781246236715
+  "timestamp": 1781246778568
 }
 ```
 </details>
@@ -403,7 +403,7 @@ This document contains test results for **every registered endpoint** of the Nat
     },
     {
       "name": "NaturalAPI",
-      "version": "1.0.5"
+      "version": "1.0.6"
     },
     {
       "name": "SkQuery",
@@ -423,7 +423,7 @@ This document contains test results for **every registered endpoint** of the Nat
     }
   ],
   "success": true,
-  "timestamp": 1781246236815
+  "timestamp": 1781246778618
 }
 ```
 </details>
@@ -444,7 +444,7 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "data": [],
   "success": true,
-  "timestamp": 1781246236865
+  "timestamp": 1781246779119
 }
 ```
 </details>
@@ -465,7 +465,7 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "data": [],
   "success": true,
-  "timestamp": 1781246238815
+  "timestamp": 1781246779169
 }
 ```
 </details>
@@ -518,7 +518,7 @@ This document contains test results for **every registered endpoint** of the Nat
     }
   ],
   "success": true,
-  "timestamp": 1781246238879
+  "timestamp": 1781246779294
 }
 ```
 </details>
@@ -565,7 +565,7 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "data": [],
   "success": true,
-  "timestamp": 1781246241515
+  "timestamp": 1781246779368
 }
 ```
 </details>
@@ -785,7 +785,7 @@ This document contains test results for **every registered endpoint** of the Nat
     ]
   },
   "success": true,
-  "timestamp": 1781246241620
+  "timestamp": 1781246779426
 }
 ```
 </details>
@@ -805,11 +805,13 @@ This document contains test results for **every registered endpoint** of the Nat
 ```json
 {
   "data": {
+    "kills": 0,
     "country": "Singapore",
     "city": "Singapore",
     "displayName": "AdityaOkeGas2",
     "ping": 3,
     "isp": "Oracle Corporation",
+    "totalPlaytimeMs": 61362050,
     "locale": "en",
     "inventory": [
       {
@@ -828,11 +830,13 @@ This document contains test results for **every registered endpoint** of the Nat
     "isWhitelisted": false,
     "gamemode": "SURVIVAL",
     "saturation": 4.0,
+    "firstJoin": 1780588217858,
     "school": null,
     "isOp": false,
     "isBanned": false,
     "maxHealth": 20.0,
     "exp": 0.0,
+    "deaths": 0,
     "vault": {
       "prefix": "",
       "suffix": "",
@@ -885,7 +889,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "luckperms": {
       "primaryGroup": "default"
     },
-    "firstPlayed": 1780588217858,
+    "mobKills": 0,
     "totalExperience": 0,
     "online": false,
     "location": {
@@ -902,7 +906,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "username": "AdityaOkeGas2"
   },
   "success": true,
-  "timestamp": 1781246241721
+  "timestamp": 1781246779485
 }
 ```
 </details>
@@ -922,11 +926,13 @@ This document contains test results for **every registered endpoint** of the Nat
 ```json
 {
   "data": {
+    "kills": 0,
     "country": "Singapore",
     "city": "Singapore",
     "displayName": "AdityaOkeGas2",
     "ping": 3,
     "isp": "Oracle Corporation",
+    "totalPlaytimeMs": 61362050,
     "locale": "en",
     "inventory": [
       {
@@ -945,11 +951,13 @@ This document contains test results for **every registered endpoint** of the Nat
     "isWhitelisted": false,
     "gamemode": "SURVIVAL",
     "saturation": 4.0,
+    "firstJoin": 1780588217858,
     "school": null,
     "isOp": false,
     "isBanned": false,
     "maxHealth": 20.0,
     "exp": 0.0,
+    "deaths": 0,
     "vault": {
       "prefix": "",
       "suffix": "",
@@ -1002,7 +1010,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "luckperms": {
       "primaryGroup": "default"
     },
-    "firstPlayed": 1780588217858,
+    "mobKills": 0,
     "totalExperience": 0,
     "online": false,
     "location": {
@@ -1019,7 +1027,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "username": "AdityaOkeGas2"
   },
   "success": true,
-  "timestamp": 1781246241823
+  "timestamp": 1781246779579
 }
 ```
 </details>
@@ -1047,7 +1055,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "yaw": 0.0
   },
   "success": true,
-  "timestamp": 1781246241921
+  "timestamp": 1781246779678
 }
 ```
 </details>
@@ -1073,7 +1081,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "foodLevel": 20
   },
   "success": true,
-  "timestamp": 1781246242071
+  "timestamp": 1781246779726
 }
 ```
 </details>
@@ -1098,7 +1106,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "totalExp": 0
   },
   "success": true,
-  "timestamp": 1781246246823
+  "timestamp": 1781246780027
 }
 ```
 </details>
@@ -1119,7 +1127,7 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "data": "SURVIVAL",
   "success": true,
-  "timestamp": 1781246246920
+  "timestamp": 1781246780126
 }
 ```
 </details>
@@ -1163,7 +1171,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "username": "AdityaOkeGas2"
   },
   "success": true,
-  "timestamp": 1781246247026
+  "timestamp": 1781246780176
 }
 ```
 </details>
@@ -1196,7 +1204,7 @@ This document contains test results for **every registered endpoint** of the Nat
     }
   ],
   "success": true,
-  "timestamp": 1781246247121
+  "timestamp": 1781246780276
 }
 ```
 </details>
@@ -1222,7 +1230,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "leggings": null
   },
   "success": true,
-  "timestamp": 1781246247171
+  "timestamp": 1781246780326
 }
 ```
 </details>
@@ -1243,7 +1251,7 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "data": null,
   "success": true,
-  "timestamp": 1781246247321
+  "timestamp": 1781246780426
 }
 ```
 </details>
@@ -1283,7 +1291,7 @@ This document contains test results for **every registered endpoint** of the Nat
     }
   ],
   "success": true,
-  "timestamp": 1781246247421
+  "timestamp": 1781246780526
 }
 ```
 </details>
@@ -1306,7 +1314,7 @@ This document contains test results for **every registered endpoint** of the Nat
   "error": {
     "code": "PLAYER_NOT_FOUND",
     "message": "Player or skin not found.",
-    "timestamp": 1781246247785
+    "timestamp": 1781246781457
   }
 }
 ```
@@ -1328,7 +1336,7 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "data": null,
   "success": true,
-  "timestamp": 1781246247871
+  "timestamp": 1781246781529
 }
 ```
 </details>
@@ -1371,7 +1379,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "asn": "AS31898 Oracle Corporation"
   },
   "success": true,
-  "timestamp": 1781246247921
+  "timestamp": 1781246781583
 }
 ```
 </details>
@@ -1391,12 +1399,15 @@ This document contains test results for **every registered endpoint** of the Nat
 ```json
 {
   "data": {
+    "kills": 0,
     "firstJoin": 1780588217858,
     "lastSeen": 1781245988658,
-    "totalPlaytimeMs": null
+    "mobKills": 0,
+    "totalPlaytimeMs": 61362050,
+    "deaths": 0
   },
   "success": true,
-  "timestamp": 1781246248021
+  "timestamp": 1781246781676
 }
 ```
 </details>
@@ -1417,7 +1428,7 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "data": [],
   "success": true,
-  "timestamp": 1781246248121
+  "timestamp": 1781246781825
 }
 ```
 </details>
@@ -1441,7 +1452,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "hasPermission": false
   },
   "success": true,
-  "timestamp": 1781246248220
+  "timestamp": 1781246781875
 }
 ```
 </details>
@@ -1461,11 +1472,13 @@ This document contains test results for **every registered endpoint** of the Nat
 ```json
 {
   "data": {
+    "kills": 0,
     "country": "Singapore",
     "city": "Singapore",
     "displayName": "AdityaOkeGas2",
     "ping": 3,
     "isp": "Oracle Corporation",
+    "totalPlaytimeMs": 61362050,
     "locale": "en",
     "inventory": [
       {
@@ -1484,11 +1497,13 @@ This document contains test results for **every registered endpoint** of the Nat
     "isWhitelisted": false,
     "gamemode": "SURVIVAL",
     "saturation": 4.0,
+    "firstJoin": 1780588217858,
     "school": null,
     "isOp": false,
     "isBanned": false,
     "maxHealth": 20.0,
     "exp": 0.0,
+    "deaths": 0,
     "vault": {
       "prefix": "",
       "suffix": "",
@@ -1541,7 +1556,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "luckperms": {
       "primaryGroup": "default"
     },
-    "firstPlayed": 1780588217858,
+    "mobKills": 0,
     "totalExperience": 0,
     "online": false,
     "location": {
@@ -1558,7 +1573,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "username": "AdityaOkeGas2"
   },
   "success": true,
-  "timestamp": 1781246248571
+  "timestamp": 1781246781925
 }
 ```
 </details>
@@ -1581,7 +1596,7 @@ This document contains test results for **every registered endpoint** of the Nat
   "error": {
     "code": "PLAYER_NOT_FOUND",
     "message": "Player not found or offline.",
-    "timestamp": 1781246248665
+    "timestamp": 1781246783268
   }
 }
 ```
@@ -1610,11 +1625,13 @@ This document contains test results for **every registered endpoint** of the Nat
 ```json
 {
   "data": {
+    "kills": 0,
     "country": "Indonesia",
     "city": "Ungaran",
     "displayName": "Daichi_keii",
     "ping": 35,
     "isp": "PT Lintas Data Prima",
+    "totalPlaytimeMs": 25647950,
     "locale": "en",
     "inventory": [
       {
@@ -1758,11 +1775,13 @@ This document contains test results for **every registered endpoint** of the Nat
     "isWhitelisted": false,
     "gamemode": "SPECTATOR",
     "saturation": 0.0,
+    "firstJoin": 1780386089704,
     "school": null,
     "isOp": true,
     "isBanned": false,
     "maxHealth": 20.0,
     "exp": 0.111111,
+    "deaths": 2,
     "vault": {
       "prefix": "",
       "suffix": "",
@@ -1836,7 +1855,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "luckperms": {
       "primaryGroup": "default"
     },
-    "firstPlayed": 1780386089704,
+    "mobKills": 0,
     "totalExperience": 8,
     "online": false,
     "location": {
@@ -1853,7 +1872,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "username": "Daichi_keii"
   },
   "success": true,
-  "timestamp": 1781246248771
+  "timestamp": 1781246783379
 }
 ```
 </details>
@@ -1873,11 +1892,13 @@ This document contains test results for **every registered endpoint** of the Nat
 ```json
 {
   "data": {
+    "kills": 0,
     "country": "Indonesia",
     "city": "Ungaran",
     "displayName": "Daichi_keii",
     "ping": 35,
     "isp": "PT Lintas Data Prima",
+    "totalPlaytimeMs": 25647950,
     "locale": "en",
     "inventory": [
       {
@@ -2021,11 +2042,13 @@ This document contains test results for **every registered endpoint** of the Nat
     "isWhitelisted": false,
     "gamemode": "SPECTATOR",
     "saturation": 0.0,
+    "firstJoin": 1780386089704,
     "school": null,
     "isOp": true,
     "isBanned": false,
     "maxHealth": 20.0,
     "exp": 0.111111,
+    "deaths": 2,
     "vault": {
       "prefix": "",
       "suffix": "",
@@ -2099,7 +2122,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "luckperms": {
       "primaryGroup": "default"
     },
-    "firstPlayed": 1780386089704,
+    "mobKills": 0,
     "totalExperience": 8,
     "online": false,
     "location": {
@@ -2116,7 +2139,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "username": "Daichi_keii"
   },
   "success": true,
-  "timestamp": 1781246248972
+  "timestamp": 1781246783477
 }
 ```
 </details>
@@ -2136,12 +2159,15 @@ This document contains test results for **every registered endpoint** of the Nat
 ```json
 {
   "data": {
+    "kills": 0,
     "firstJoin": 1780386089704,
     "lastSeen": 1781194551166,
-    "totalPlaytimeMs": null
+    "mobKills": 0,
+    "totalPlaytimeMs": 25647950,
+    "deaths": 2
   },
   "success": true,
-  "timestamp": 1781246250473
+  "timestamp": 1781246783576
 }
 ```
 </details>
@@ -2182,9 +2208,9 @@ This document contains test results for **every registered endpoint** of the Nat
       "entityCount": 0,
       "playerCount": 0,
       "name": "world",
-      "weather": "THUNDER",
-      "fullTime": 1038196,
-      "time": 6196,
+      "weather": "CLEAR",
+      "fullTime": 1048114,
+      "time": 16114,
       "pvp": true,
       "loadedChunks": 0
     },
@@ -2196,8 +2222,8 @@ This document contains test results for **every registered endpoint** of the Nat
       "playerCount": 0,
       "name": "world_nether",
       "weather": "CLEAR",
-      "fullTime": 24737966,
-      "time": 17966,
+      "fullTime": 24747884,
+      "time": 3884,
       "pvp": true,
       "loadedChunks": 0
     },
@@ -2209,8 +2235,8 @@ This document contains test results for **every registered endpoint** of the Nat
       "playerCount": 0,
       "name": "world_the_end",
       "weather": "CLEAR",
-      "fullTime": 24737966,
-      "time": 17966,
+      "fullTime": 24747884,
+      "time": 3884,
       "pvp": true,
       "loadedChunks": 0
     },
@@ -2221,9 +2247,9 @@ This document contains test results for **every registered endpoint** of the Nat
       "entityCount": 0,
       "playerCount": 0,
       "name": "flat",
-      "weather": "RAIN",
-      "fullTime": 16130839,
-      "time": 2839,
+      "weather": "CLEAR",
+      "fullTime": 16140757,
+      "time": 12757,
       "pvp": true,
       "loadedChunks": 0
     },
@@ -2242,7 +2268,7 @@ This document contains test results for **every registered endpoint** of the Nat
     }
   ],
   "success": true,
-  "timestamp": 1781246250566
+  "timestamp": 1781246783619
 }
 ```
 </details>
@@ -2268,14 +2294,14 @@ This document contains test results for **every registered endpoint** of the Nat
     "entityCount": 0,
     "playerCount": 0,
     "name": "world",
-    "weather": "THUNDER",
-    "fullTime": 1038197,
-    "time": 6197,
+    "weather": "CLEAR",
+    "fullTime": 1048115,
+    "time": 16115,
     "pvp": true,
     "loadedChunks": 0
   },
   "success": true,
-  "timestamp": 1781246250615
+  "timestamp": 1781246783668
 }
 ```
 </details>
@@ -2296,11 +2322,11 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "data": {
     "dayCount": 43,
-    "fullTime": 1038198,
-    "time": 6198
+    "fullTime": 1048116,
+    "time": 16116
   },
   "success": true,
-  "timestamp": 1781246250665
+  "timestamp": 1781246783718
 }
 ```
 </details>
@@ -2319,9 +2345,9 @@ This document contains test results for **every registered endpoint** of the Nat
 
 ```json
 {
-  "data": "THUNDER",
+  "data": "CLEAR",
   "success": true,
-  "timestamp": 1781246250715
+  "timestamp": 1781246783818
 }
 ```
 </details>
@@ -2342,7 +2368,7 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "data": [],
   "success": true,
-  "timestamp": 1781246250765
+  "timestamp": 1781246783869
 }
 ```
 </details>
@@ -2363,7 +2389,7 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "data": {},
   "success": true,
-  "timestamp": 1781246251015
+  "timestamp": 1781246783918
 }
 ```
 </details>
@@ -2384,7 +2410,7 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "data": 0,
   "success": true,
-  "timestamp": 1781246251065
+  "timestamp": 1781246784668
 }
 ```
 </details>
@@ -2407,13 +2433,13 @@ This document contains test results for **every registered endpoint** of the Nat
     "damageBuffer": 5.0,
     "size": 59999968.0,
     "center": {
-      "z": 0.0,
-      "x": 0.0
+      "x": 0.0,
+      "z": 0.0
     },
     "damageAmount": 0.2
   },
   "success": true,
-  "timestamp": 1781246251115
+  "timestamp": 1781246784768
 }
 ```
 </details>
@@ -2450,8 +2476,8 @@ This document contains test results for **every registered endpoint** of the Nat
     "spread_vines": true,
     "block_explosion_drop_decay": true,
     "global_sound_events": true,
-    "max_block_modifications": 32768,
     "locator_bar": false,
+    "max_block_modifications": 32768,
     "pvp": true,
     "spawn_wandering_traders": true,
     "players_nether_portal_creative_delay": 0,
@@ -2470,8 +2496,8 @@ This document contains test results for **every registered endpoint** of the Nat
     "command_block_output": true,
     "elytra_movement_check": true,
     "spawn_patrols": true,
-    "log_admin_commands": true,
     "random_tick_speed": 3,
+    "log_admin_commands": true,
     "ender_pearls_vanish_on_death": true,
     "fall_damage": true,
     "raids": true,
@@ -2493,7 +2519,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "max_command_sequence_length": 65536
   },
   "success": true,
-  "timestamp": 1781246251166
+  "timestamp": 1781246784870
 }
 ```
 </details>
@@ -2509,15 +2535,15 @@ This document contains test results for **every registered endpoint** of the Nat
 | Vault Player Data | `GET` | `/vault/player/de11f3ca-003f-3713-b771-62bc481dbfca` | ![Status 404](https://img.shields.io/badge/Status-404-red) | [View Details](#vault-player-data) |
 | Vault Groups | `GET` | `/vault/groups` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#vault-groups) |
 | Vault Group Details | `GET` | `/vault/groups/default` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#vault-group-details) |
-| Vault Economy Status | `GET` | `/vault/economy/status` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#vault-economy-status) |
+| Vault Economy Status | `GET` | `/vault/economy/status` | ![Status 429](https://img.shields.io/badge/Status-429-red) | [View Details](#vault-economy-status) |
 | LuckPerms Player Data | `GET` | `/luckperms/player/de11f3ca-003f-3713-b771-62bc481dbfca` | ![Status 404](https://img.shields.io/badge/Status-404-red) | [View Details](#luckperms-player-data) |
-| LuckPerms Groups | `GET` | `/luckperms/groups` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#luckperms-groups) |
-| LuckPerms Group Details | `GET` | `/luckperms/groups/default` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#luckperms-group-details) |
-| LuckPerms Group Members | `GET` | `/luckperms/groups/default/members` | ![Status 500](https://img.shields.io/badge/Status-500-red) | [View Details](#luckperms-group-members) |
-| LuckPerms Group Permissions | `GET` | `/luckperms/groups/default/permissions` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#luckperms-group-permissions) |
+| LuckPerms Groups | `GET` | `/luckperms/groups` | ![Status 429](https://img.shields.io/badge/Status-429-red) | [View Details](#luckperms-groups) |
+| LuckPerms Group Details | `GET` | `/luckperms/groups/default` | ![Status 429](https://img.shields.io/badge/Status-429-red) | [View Details](#luckperms-group-details) |
+| LuckPerms Group Members | `GET` | `/luckperms/groups/default/members` | ![Status 429](https://img.shields.io/badge/Status-429-red) | [View Details](#luckperms-group-members) |
+| LuckPerms Group Permissions | `GET` | `/luckperms/groups/default/permissions` | ![Status 429](https://img.shields.io/badge/Status-429-red) | [View Details](#luckperms-group-permissions) |
 | PAPI Plugins | `GET` | `/papi/plugins` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#papi-plugins) |
 | PAPI Evaluate Placeholders | `POST` | `/papi/evaluate` | ![Status 400](https://img.shields.io/badge/Status-400-red) | [View Details](#papi-evaluate-placeholders) |
-| NaturalSchool Player Data | `GET` | `/naturalschool/player/de11f3ca-003f-3713-b771-62bc481dbfca` | ![Status 404](https://img.shields.io/badge/Status-404-red) | [View Details](#naturalschool-player-data) |
+| NaturalSchool Player Data | `GET` | `/naturalschool/player/de11f3ca-003f-3713-b771-62bc481dbfca` | ![Status 429](https://img.shields.io/badge/Status-429-red) | [View Details](#naturalschool-player-data) |
 | NaturalSchool Refresh | `POST` | `/naturalschool/refresh` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#naturalschool-refresh) |
 
 ### Vault Player Data
@@ -2534,7 +2560,7 @@ This document contains test results for **every registered endpoint** of the Nat
   "error": {
     "code": "PLAYER_NOT_FOUND",
     "message": "Player not found",
-    "timestamp": 1781246251215
+    "timestamp": 1781246784918
   }
 }
 ```
@@ -2560,7 +2586,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "dev"
   ],
   "success": true,
-  "timestamp": 1781246251870
+  "timestamp": 1781246785024
 }
 ```
 </details>
@@ -2585,7 +2611,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "suffix": ""
   },
   "success": true,
-  "timestamp": 1781246252332
+  "timestamp": 1781246785136
 }
 ```
 </details>
@@ -2597,21 +2623,19 @@ This document contains test results for **every registered endpoint** of the Nat
 ### Vault Economy Status
 - **Method:** `GET`
 - **Path:** `/vault/economy/status`
-- **HTTP Status:** `200`
+- **HTTP Status:** `429`
 
 <details>
 <summary>🔍 Click to expand/collapse full JSON Response</summary>
 
 ```json
 {
-  "data": {
-    "currencySingular": "Money",
-    "name": "Money",
-    "currencyPlural": "Money",
-    "enabled": true
-  },
-  "success": true,
-  "timestamp": 1781246252415
+  "success": false,
+  "error": {
+    "code": "RATE_LIMITED",
+    "message": "Too many requests.",
+    "timestamp": 1781246785169
+  }
 }
 ```
 </details>
@@ -2634,7 +2658,7 @@ This document contains test results for **every registered endpoint** of the Nat
   "error": {
     "code": "PLAYER_NOT_FOUND",
     "message": "Player not found",
-    "timestamp": 1781246255465
+    "timestamp": 1781246785568
   }
 }
 ```
@@ -2647,20 +2671,19 @@ This document contains test results for **every registered endpoint** of the Nat
 ### LuckPerms Groups
 - **Method:** `GET`
 - **Path:** `/luckperms/groups`
-- **HTTP Status:** `200`
+- **HTTP Status:** `429`
 
 <details>
 <summary>🔍 Click to expand/collapse full JSON Response</summary>
 
 ```json
 {
-  "data": [
-    "owner",
-    "default",
-    "dev"
-  ],
-  "success": true,
-  "timestamp": 1781246255516
+  "success": false,
+  "error": {
+    "code": "RATE_LIMITED",
+    "message": "Too many requests.",
+    "timestamp": 1781246785623
+  }
 }
 ```
 </details>
@@ -2672,20 +2695,19 @@ This document contains test results for **every registered endpoint** of the Nat
 ### LuckPerms Group Details
 - **Method:** `GET`
 - **Path:** `/luckperms/groups/default`
-- **HTTP Status:** `200`
+- **HTTP Status:** `429`
 
 <details>
 <summary>🔍 Click to expand/collapse full JSON Response</summary>
 
 ```json
 {
-  "data": {
-    "displayName": null,
-    "name": "default",
-    "weight": 0
-  },
-  "success": true,
-  "timestamp": 1781246255565
+  "success": false,
+  "error": {
+    "code": "RATE_LIMITED",
+    "message": "Too many requests.",
+    "timestamp": 1781246785683
+  }
 }
 ```
 </details>
@@ -2697,7 +2719,7 @@ This document contains test results for **every registered endpoint** of the Nat
 ### LuckPerms Group Members
 - **Method:** `GET`
 - **Path:** `/luckperms/groups/default/members`
-- **HTTP Status:** `500`
+- **HTTP Status:** `429`
 
 <details>
 <summary>🔍 Click to expand/collapse full JSON Response</summary>
@@ -2706,9 +2728,9 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "success": false,
   "error": {
-    "code": "INTERNAL_ERROR",
-    "message": "Error fetching LuckPerms group members: No serializer found for class net.luckperms.api.node.SimpleNodeType and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: java.util.HashMap[\"data\"]->java.util.ArrayList[0]->java.util.HashMap[\"username\"]->com.google.common.collect.SingletonImmutableList[0]->me.lucko.luckperms.common.node.types.Inheritance[\"type\"])",
-    "timestamp": 1781246255725
+    "code": "RATE_LIMITED",
+    "message": "Too many requests.",
+    "timestamp": 1781246785721
   }
 }
 ```
@@ -2721,16 +2743,19 @@ This document contains test results for **every registered endpoint** of the Nat
 ### LuckPerms Group Permissions
 - **Method:** `GET`
 - **Path:** `/luckperms/groups/default/permissions`
-- **HTTP Status:** `200`
+- **HTTP Status:** `429`
 
 <details>
 <summary>🔍 Click to expand/collapse full JSON Response</summary>
 
 ```json
 {
-  "data": [],
-  "success": true,
-  "timestamp": 1781246255815
+  "success": false,
+  "error": {
+    "code": "RATE_LIMITED",
+    "message": "Too many requests.",
+    "timestamp": 1781246785762
+  }
 }
 ```
 </details>
@@ -2764,7 +2789,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "player"
   ],
   "success": true,
-  "timestamp": 1781246255865
+  "timestamp": 1781246786519
 }
 ```
 </details>
@@ -2787,7 +2812,7 @@ This document contains test results for **every registered endpoint** of the Nat
   "error": {
     "code": "INVALID_REQUEST",
     "message": "Invalid body format",
-    "timestamp": 1781246255967
+    "timestamp": 1781246786621
   }
 }
 ```
@@ -2800,7 +2825,7 @@ This document contains test results for **every registered endpoint** of the Nat
 ### NaturalSchool Player Data
 - **Method:** `GET`
 - **Path:** `/naturalschool/player/de11f3ca-003f-3713-b771-62bc481dbfca`
-- **HTTP Status:** `404`
+- **HTTP Status:** `429`
 
 <details>
 <summary>🔍 Click to expand/collapse full JSON Response</summary>
@@ -2809,9 +2834,9 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "success": false,
   "error": {
-    "code": "PLAYER_NOT_FOUND",
-    "message": "Player not found",
-    "timestamp": 1781246256015
+    "code": "RATE_LIMITED",
+    "message": "Too many requests.",
+    "timestamp": 1781246786666
   }
 }
 ```
@@ -2836,7 +2861,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "success": true
   },
   "success": true,
-  "timestamp": 1781246256116
+  "timestamp": 1781246787372
 }
 ```
 </details>
@@ -2850,11 +2875,11 @@ This document contains test results for **every registered endpoint** of the Nat
 | Endpoint Name | Method | Path | Status | Details |
 |---|---|---|---|---|
 | Admin Health | `GET` | `/admin/health` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#admin-health) |
-| Admin OpenAPI (JSON) | `GET` | `/admin/openapi.json` | ![Status 501](https://img.shields.io/badge/Status-501-red) | [View Details](#admin-openapi-json) |
-| Admin API Keys | `GET` | `/admin/keys` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#admin-api-keys) |
-| Admin Config | `GET` | `/admin/config` | ![Status 200](https://img.shields.io/badge/Status-200-green) | [View Details](#admin-config) |
-| Admin Rate Limits | `GET` | `/admin/rate-limits` | ![Status 501](https://img.shields.io/badge/Status-501-red) | [View Details](#admin-rate-limits) |
-| Admin Snapshot History | `GET` | `/admin/snapshot/history` | ![Status 501](https://img.shields.io/badge/Status-501-red) | [View Details](#admin-snapshot-history) |
+| Admin OpenAPI (JSON) | `GET` | `/admin/openapi.json` | ![Status 429](https://img.shields.io/badge/Status-429-red) | [View Details](#admin-openapi-json) |
+| Admin API Keys | `GET` | `/admin/keys` | ![Status 429](https://img.shields.io/badge/Status-429-red) | [View Details](#admin-api-keys) |
+| Admin Config | `GET` | `/admin/config` | ![Status 429](https://img.shields.io/badge/Status-429-red) | [View Details](#admin-config) |
+| Admin Rate Limits | `GET` | `/admin/rate-limits` | ![Status 429](https://img.shields.io/badge/Status-429-red) | [View Details](#admin-rate-limits) |
+| Admin Snapshot History | `GET` | `/admin/snapshot/history` | ![Status 429](https://img.shields.io/badge/Status-429-red) | [View Details](#admin-snapshot-history) |
 
 ### Admin Health
 - **Method:** `GET`
@@ -2870,7 +2895,7 @@ This document contains test results for **every registered endpoint** of the Nat
     "status": "ok"
   },
   "success": true,
-  "timestamp": 1781246256152
+  "timestamp": 1781246787414
 }
 ```
 </details>
@@ -2882,7 +2907,7 @@ This document contains test results for **every registered endpoint** of the Nat
 ### Admin OpenAPI (JSON)
 - **Method:** `GET`
 - **Path:** `/admin/openapi.json`
-- **HTTP Status:** `501`
+- **HTTP Status:** `429`
 
 <details>
 <summary>🔍 Click to expand/collapse full JSON Response</summary>
@@ -2891,9 +2916,9 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "success": false,
   "error": {
-    "code": "NOT_IMPLEMENTED",
-    "message": "Please use /admin/openapi.yaml for the OpenAPI spec.",
-    "timestamp": 1781246256197
+    "code": "RATE_LIMITED",
+    "message": "Too many requests.",
+    "timestamp": 1781246787463
   }
 }
 ```
@@ -2906,53 +2931,19 @@ This document contains test results for **every registered endpoint** of the Nat
 ### Admin API Keys
 - **Method:** `GET`
 - **Path:** `/admin/keys`
-- **HTTP Status:** `200`
+- **HTTP Status:** `429`
 
 <details>
 <summary>🔍 Click to expand/collapse full JSON Response</summary>
 
 ```json
 {
-  "data": [
-    {
-      "expires_at": null,
-      "last_used": 1781246256115,
-      "name": "test",
-      "created_at": 1781161852460,
-      "id": "2f27591d-d0ba-4ef9-a796-cf8a9f35c175",
-      "scopes": "*",
-      "enabled": true
-    },
-    {
-      "expires_at": null,
-      "last_used": 1781245377654,
-      "name": "web",
-      "created_at": 1781015698653,
-      "id": "38fd1267-b237-45a0-ae36-8c86a9304908",
-      "scopes": "*",
-      "enabled": true
-    },
-    {
-      "expires_at": null,
-      "last_used": 1781172728754,
-      "name": "a",
-      "created_at": 1781172706865,
-      "id": "bd2d5561-7a15-4a78-b4b9-5762bffe33b1",
-      "scopes": "*",
-      "enabled": true
-    },
-    {
-      "expires_at": null,
-      "last_used": null,
-      "name": "test_script_key",
-      "created_at": 1781162109015,
-      "id": "fa44f143-ca63-48fd-a348-41003fdb5e55",
-      "scopes": "*",
-      "enabled": true
-    }
-  ],
-  "success": true,
-  "timestamp": 1781246256255
+  "success": false,
+  "error": {
+    "code": "RATE_LIMITED",
+    "message": "Too many requests.",
+    "timestamp": 1781246787508
+  }
 }
 ```
 </details>
@@ -2964,127 +2955,19 @@ This document contains test results for **every registered endpoint** of the Nat
 ### Admin Config
 - **Method:** `GET`
 - **Path:** `/admin/config`
-- **HTTP Status:** `200`
+- **HTTP Status:** `429`
 
 <details>
 <summary>🔍 Click to expand/collapse full JSON Response</summary>
 
 ```json
 {
-  "data": {
-    "server": {
-      "bind-address": "0.0.0.0",
-      "port": 19133,
-      "swagger-path": "/swagger",
-      "base-path": "/api/v1",
-      "public-url": "http://natural.nodevoid.my.id:19133",
-      "swagger-enabled": true
-    },
-    "features": {
-      "leaderboard": {
-        "providers": {
-          "kills": "database",
-          "balance": "database",
-          "votes": "database",
-          "playtime": "database",
-          "exp": "database",
-          "deaths": "database"
-        }
-      },
-      "endpoints": {
-        "server": true,
-        "worlds": true,
-        "offline-players": true,
-        "players": true
-      },
-      "luckperms": {
-        "enabled": true
-      },
-      "websocket": {
-        "server-stats-interval": 40,
-        "endpoints": {
-          "chat": true,
-          "player-detail": true,
-          "server-stats": true,
-          "player-events": true
-        },
-        "enabled": true
-      },
-      "skin": {
-        "cache-ttl-hours": 6
-      },
-      "vanish": {
-        "show-vanished-in-count": false,
-        "show-vanished-in-list": false
-      },
-      "snapshot": {
-        "interval-minutes": 10,
-        "retention-days": 30,
-        "auto-save": true
-      },
-      "papi": {
-        "enabled": true
-      },
-      "vault": {
-        "enabled": true
-      }
-    },
-    "database": {
-      "mariadb": {
-        "pool-size": 10,
-        "database": "pl_dev",
-        "port": 3306,
-        "host": "oc.keidev.my.id",
-        "username": "pl_dev"
-      },
-      "sqlite": {
-        "file": "data.db"
-      },
-      "provider": "mariadb",
-      "mysql": {
-        "pool-size": 10,
-        "connection-timeout": 30000,
-        "database": "naturalapi",
-        "port": 3306,
-        "host": "localhost",
-        "username": "root"
-      }
-    },
-    "security": {
-      "rate-limit": {
-        "burst": 30,
-        "requests-per-minute": 120,
-        "enabled": true
-      },
-      "cors": {
-        "allowed-methods": [
-          "GET",
-          "POST",
-          "DELETE"
-        ],
-        "allowed-headers": [
-          "Authorization",
-          "Content-Type"
-        ],
-        "allowed-origins": [
-          "*"
-        ],
-        "enabled": true
-      },
-      "ip-allowlist": {
-        "ips": [],
-        "enabled": false
-      },
-      "swagger-auth-required": true
-    },
-    "logging": {
-      "log-requests": true,
-      "log-level": "INFO",
-      "log-auth-failures": true
-    }
-  },
-  "success": true,
-  "timestamp": 1781246256297
+  "success": false,
+  "error": {
+    "code": "RATE_LIMITED",
+    "message": "Too many requests.",
+    "timestamp": 1781246787549
+  }
 }
 ```
 </details>
@@ -3096,7 +2979,7 @@ This document contains test results for **every registered endpoint** of the Nat
 ### Admin Rate Limits
 - **Method:** `GET`
 - **Path:** `/admin/rate-limits`
-- **HTTP Status:** `501`
+- **HTTP Status:** `429`
 
 <details>
 <summary>🔍 Click to expand/collapse full JSON Response</summary>
@@ -3105,9 +2988,9 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "success": false,
   "error": {
-    "code": "NOT_IMPLEMENTED",
-    "message": "Rate limit viewing not implemented yet.",
-    "timestamp": 1781246256337
+    "code": "RATE_LIMITED",
+    "message": "Too many requests.",
+    "timestamp": 1781246787596
   }
 }
 ```
@@ -3120,7 +3003,7 @@ This document contains test results for **every registered endpoint** of the Nat
 ### Admin Snapshot History
 - **Method:** `GET`
 - **Path:** `/admin/snapshot/history`
-- **HTTP Status:** `501`
+- **HTTP Status:** `429`
 
 <details>
 <summary>🔍 Click to expand/collapse full JSON Response</summary>
@@ -3129,9 +3012,9 @@ This document contains test results for **every registered endpoint** of the Nat
 {
   "success": false,
   "error": {
-    "code": "NOT_IMPLEMENTED",
-    "message": "Snapshot history not implemented yet.",
-    "timestamp": 1781246256379
+    "code": "RATE_LIMITED",
+    "message": "Too many requests.",
+    "timestamp": 1781246787642
   }
 }
 ```
