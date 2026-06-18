@@ -52,7 +52,7 @@ public class HttpServer {
             });
 
             app.exception(Exception.class, (e, ctx) -> {
-                plugin.getLogger().severe("API Error: " + e.getMessage());
+                plugin.getLogger().log(java.util.logging.Level.SEVERE, "API Error: " + e.getMessage(), e);
                 ctx.status(500).json(id.naturalsmp.naturalApi.util.ResponseBuilder.error("INTERNAL_ERROR", "An unexpected error occurred: " + e.getMessage()));
             });
 

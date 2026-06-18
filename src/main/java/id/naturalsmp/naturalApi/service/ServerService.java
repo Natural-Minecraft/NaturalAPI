@@ -36,13 +36,23 @@ public class ServerService implements Runnable {
 
     @Override
     public void run() {
-        tickTimes[tickCount % WINDOW_SIZE] = System.nanoTime();
+        int index = tickCount % WINDOW_SIZE;
+        if (index < 0) index += WINDOW_SIZE;
+        tickTimes[index] = System.nanoTime();
         tickCount++;
+        if (tickCount < 0) {
+            tickCount = 0; // Prevent overflow / negative values completely
+        }
     }
 
     public double getRecentTps() {
+        if (tickCount <= 0) {
+            return 20.0;
+        }
         int head = (tickCount - 1) % WINDOW_SIZE;
+        if (head < 0) head += WINDOW_SIZE;
         int tail = tickCount % WINDOW_SIZE;
+        if (tail < 0) tail += WINDOW_SIZE;
         long elapsedNano = tickTimes[head] - tickTimes[tail];
         if (elapsedNano <= 0) return 20.0;
         double elapsedSeconds = elapsedNano / 1_000_000_000.0;
